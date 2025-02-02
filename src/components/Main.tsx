@@ -1,6 +1,6 @@
 "use client";
 // import "locomotive-scroll/bundled/locomotive-scroll.css";
-import LocomotiveScroll from "locomotive-scroll";
+// import LocomotiveScroll from "locomotive-scroll";
 import {  motion, useScroll, useSpring } from "framer-motion";
 // import { InfiniteSliderHoverSpeed } from "./ui/Marquee";
 import Floating from "./Floating";
@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 
 /* Locomotive scroll instance */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const locomotiveScroll = new LocomotiveScroll();
+// const locomotiveScroll = new LocomotiveScroll();
 
 const App = () => {
   const { scrollYProgress } = useScroll();

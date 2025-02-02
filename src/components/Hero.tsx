@@ -17,23 +17,8 @@ import {
 } from "@/components/ui/card";
 import { File, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 const Hero = () => {
-
-  const [gridWidth, setGridWidth] = useState(1200);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setGridWidth(window.innerWidth);
-      const handleResize = () => setGridWidth(window.innerWidth);
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-   
-    }
-  
-  }, []);
-
   const layout = [
     { i: "a", x: 2, y: 0, w: 4, h: 7 },
     { i: "b", x: 6, y: 0, w: 4, h: 2 }, // Portfolio
@@ -53,7 +38,7 @@ const Hero = () => {
         layout={layout}
         cols={12}
         rowHeight={40}
-        width={gridWidth}
+        width={1200}
         autoSize={true}
         isDraggable={false}
         isResizable={false}
