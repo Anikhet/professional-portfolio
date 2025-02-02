@@ -6,21 +6,21 @@ import localFont from "next/font/local";
 
 // Load a local font
 const customFont = localFont({
-  src: "./fonts/font.woff2", // ✅ Correct: Use absolute URL, not relative paths
+  src: "./fonts/stolzl_light.ttf", // ✅ Correct: Use absolute URL, not relative paths
   variable: "--font-custom",
   weight: "200", // Adjust weight if necessary
   display: "swap",
 });
 
 const customFont1 = localFont({
-  src: "./fonts/ptags.ttf", // ✅ Correct: Use absolute URL, not relative paths
+  src: "./fonts/stolzl_bold.ttf", // ✅ Correct: Use absolute URL, not relative paths
   variable: "--font-ptags",
   weight: "200", // Adjust weight if necessary
   display: "swap",
 });
 
 const customFont2 = localFont({
-  src: "./fonts/htags.ttf", // ✅ Correct: Use absolute URL, not relative paths
+  src: "./fonts/stolzl_book.ttf", // ✅ Correct: Use absolute URL, not relative paths
   variable: "--font-htags",
   weight: "200", // Adjust weight if necessary
   display: "swap",
@@ -47,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en"     className={`${customFont.variable} ${customFont1.variable} ${customFont2.variable}`}>
-      <body className="font-ptags">
+      <body className="font-custom">
         {children}
       </body>
     </html>

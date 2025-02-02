@@ -9,7 +9,7 @@ import { SplashCursor } from "./ui/splash-cursor";
 
 import { SpinningText } from "./ui/spinning-text";
 import Hero from "./Hero";
-import { Typewriter } from "./ui/typewriter-text";
+// import { Typewriter } from "./ui/typewriter-text";
 import { useEffect, useState } from "react";
 
 /* Locomotive scroll instance */
@@ -36,7 +36,7 @@ const App = () => {
   return (
     <div className="min-h-[200vh] relative">
       {/* Intro Div */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 1 }}
         animate={{ y: -1000 }}
         transition={{ duration: 1, delay: 5.5, ease: [0.65, 0, 0.35, 1] }}
@@ -48,7 +48,7 @@ const App = () => {
           loop={true}
           className="text-3xl text-white font-bold"
         />
-      </motion.div>
+      </motion.div> */}
     {/* bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] */}
 
       <div className="fixed card   top-0 z-[-2] h-screen w-screen bg-zinc-950 "></div>

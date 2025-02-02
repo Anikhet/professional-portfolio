@@ -64,8 +64,12 @@ export default {
         },
       },
       animation: {
-        "background-shine": "background-shine 2s linear infinite",
+        "background-shine": "background-shine 4s linear infinite",
+        'text-pulse': 'text-pulse 1.5s ease-in-out infinite',
+        
+        
       },
+      
 	  fontFamily: {
 		custom: "var(--font-custom), sans-serif",
         ptags: "var(--font-ptags), sans-serif",

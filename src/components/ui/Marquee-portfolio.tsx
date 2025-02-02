@@ -13,6 +13,14 @@ export function InfiniteSliderHoverSpeedportfolio() {
   <p>•</p>
   <p>Professional Portfolio  </p>
   <p>•</p>
+  <p>Professional Portfolio  </p>
+  <p>•</p>
+  <p>Professional Portfolio  </p>
+  <p>•</p>
+  <p>Professional Portfolio  </p>
+  <p>•</p>
+  <p>Professional Portfolio  </p>
+  <p>•</p>
     </InfiniteSlider>
   );
 }

@@ -15,7 +15,7 @@ const Floating = () => {
         },
       };
   return (
-    <div>
+    <div className=''>
           {/* Floating Emojis */}
       <motion.div
         className="absolute top-56 left-10"
