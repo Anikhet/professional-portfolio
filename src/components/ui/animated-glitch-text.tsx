@@ -17,7 +17,7 @@ interface GlitchTextProps extends React.HTMLAttributes<HTMLDivElement> {
 const GlitchText = React.forwardRef<HTMLDivElement, GlitchTextProps>(
   ({
     text,
-    as: Component = "h1",
+    // as: Component = "h1",
     className,
     textClassName,
     containerClassName,

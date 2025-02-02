@@ -1,7 +1,7 @@
 "use client";
 // import "locomotive-scroll/bundled/locomotive-scroll.css";
 import LocomotiveScroll from "locomotive-scroll";
-import { delay, motion, useScroll, useSpring } from "framer-motion";
+import {  motion, useScroll, useSpring } from "framer-motion";
 // import { InfiniteSliderHoverSpeed } from "./ui/Marquee";
 import Floating from "./Floating";
 
