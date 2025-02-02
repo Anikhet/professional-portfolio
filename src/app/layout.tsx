@@ -1,16 +1,39 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+import localFont from "next/font/local";
+
+// Load a local font
+const customFont = localFont({
+  src: "./fonts/font.woff2", // ✅ Correct: Use absolute URL, not relative paths
+  variable: "--font-custom",
+  weight: "200", // Adjust weight if necessary
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const customFont1 = localFont({
+  src: "./fonts/ptags.ttf", // ✅ Correct: Use absolute URL, not relative paths
+  variable: "--font-ptags",
+  weight: "200", // Adjust weight if necessary
+  display: "swap",
 });
+
+const customFont2 = localFont({
+  src: "./fonts/htags.ttf", // ✅ Correct: Use absolute URL, not relative paths
+  variable: "--font-htags",
+  weight: "200", // Adjust weight if necessary
+  display: "swap",
+});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
+
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,10 +46,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en"     className={`${customFont.variable} ${customFont1.variable} ${customFont2.variable}`}>
+      <body className="font-ptags">
         {children}
       </body>
     </html>
