@@ -23,6 +23,8 @@ import {
 } from "@/components/ui/card";
 import { File, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { Spotlight } from "./ui/spotlight-new";
 
 export default function Hero() {
   /**
@@ -101,12 +103,18 @@ export default function Hero() {
         {/* Card: Profile/About */}
         <Card
           key="a"
-          className="bg-transparent bg-zinc-900 w-96 border-neutral-700 hover:bg-neutral-900 p-4"
+          className=" bg-transparent overflow-hidden bg-zinc-900 w-96 border-neutral-700 hover:bg-neutral-900 p-4"
         >
           <CardHeader>
+            <Spotlight height={800}
+            
+            
+            
+            
+            />
             <CardTitle className="flex justify-center items-center">
               {/* Avatar */}
-              <div className="w-28 h-28 flex-shrink-0 rounded-full mr-4">
+              <div className="w-28 h-28 flex-shrink-0 rounded-full ">
                 <Image
                   src={"/avatar1.jpg"}
                   alt="Anikhet Mulky"
@@ -152,9 +160,17 @@ export default function Hero() {
         {/* Card: Portfolio */}
         <Card
           key="b"
-          className="bg-transparent flex relative justify-center items-center h-20 w-96 rounded-2xl overflow-hidden bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
+          className="bg-transparent overflow-hidden flex relative justify-center items-center h-20 w-96 rounded-2xl overflow-hidden bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
         >
+          
           <CardHeader>
+          <Spotlight height={1800}
+            
+            
+            
+            
+            />
+            
             <CardTitle className="text-white flex justify-center gap-2">
               <InfiniteSliderHoverSpeedportfolio />
             </CardTitle>
@@ -164,9 +180,17 @@ export default function Hero() {
         {/* Card: Resume */}
         <Card
           key="c"
-          className="bg-transparent flex justify-center items-center h-20 w-96 rounded-2xl bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
+          className="bg-transparent overflow-hidden flex justify-center items-center h-20 w-96 rounded-2xl bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
         >
           <CardHeader>
+          <Spotlight height={1800}
+            
+            
+            
+            
+            />
+            
+            <Link href="/Anikhet_Mulky_Resume.pdf" passHref>
             <CardTitle
               className="
                 text-white flex justify-center gap-2 
@@ -175,15 +199,17 @@ export default function Hero() {
             >
               Resume <File className="size-4" />
             </CardTitle>
+            </Link>
           </CardHeader>
         </Card>
 
         {/* Card: Experience - Currently Working */}
         <Card
           key=""
-          className="bg-transparent flex h-72 w-96 bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
+          className="bg-transparent overflow-hidden flex h-72 w-96 bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
         >
           <CardHeader>
+            
             <CardTitle>
               <TextScramble
                 className="
@@ -215,11 +241,18 @@ export default function Hero() {
 
         <Card
           key="d"
-          className="bg-zinc-900 border border-neutral-700 p-4 w-96 
+          className="bg-zinc-900  overflow-hidden border border-neutral-700 p-4 w-96 
              hover:bg-neutral-900 transition-colors duration-300"
         >
           {/* Header */}
           <CardHeader>
+          <Spotlight height={2000}
+          // width={100}
+            
+            
+            
+            
+            />
             <CardTitle className="text-lg font-bold  font-htags
             text-white
              
@@ -269,7 +302,15 @@ export default function Hero() {
           <div className="absolute top-[-20%] left-[-20%] w-40 h-40 bg-blue-400 blur-3xl opacity-30 animate-pulse" />
           <div className="absolute bottom-[-10%] right-[-10%] w-32 h-32 bg-purple-500 blur-2xl opacity-20 animate-pulse delay-200" />
 
+     
           <CardHeader>
+          <Spotlight height={1000}
+          width={200}
+            
+            
+            
+            
+            />
             <CardTitle>
               <TextRoll
                 className="
@@ -305,10 +346,19 @@ export default function Hero() {
         <Card
           key="f"
           className="bg-zinc-900 border border-neutral-700 p-4 w-96 
-             hover:bg-neutral-900 transition-colors duration-300"
+             hover:bg-neutral-900 transition-colors duration-300 overflow-hidden"
         >
           {/* Header */}
+
           <CardHeader>
+          <Spotlight height={2000}
+          // width={20}
+          // smallWidth={50}
+            
+            
+            
+            
+            />
             <CardTitle className="text-lg font-bold font-htags text-white">
               Education
             </CardTitle>
@@ -345,14 +395,22 @@ export default function Hero() {
         {/* Card: Contact */}
         <Card
           key="g"
-          className="bg-transparent h-60 w-96 bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
+          className="bg-transparent h-60 w-96 bg-zinc-900 border-neutral-700 hover:bg-neutral-900 overflow-hidden"
         >
           <CardHeader>
+          <Spotlight height={1500}
+          width={40}
+          smallWidth={20}
+            
+            
+            
+            
+            />
             <CardTitle>
               <TextScramble
                 className="
                   text-xl
-                  text-white
+                  text-white font-htags
                 "
               >
                 Contact
