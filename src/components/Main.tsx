@@ -34,7 +34,9 @@ const App = () => {
  
 
   return (
-    <div className="min-h-[200vh] relative">
+    <div className="min-h-[200vh] relative"
+   
+    >
       {/* Intro Div */}
       {/* <motion.div
         initial={{ opacity: 1 }}
@@ -64,8 +66,14 @@ const App = () => {
 
       <Floating />
 
-      <main className="flex w-full min-h-screen  relative items-center justify-center  ">
-        <nav className="top-20 absolute left-20">
+      <motion.main
+
+      
+      className="flex w-full min-h-screen  relative items-center justify-center  ">
+        <motion.nav className="top-20 absolute left-20"
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1 }}
+         transition={{ duration: 1, delay: 0.5, ease: [0.65, 0, 0.35, 1] }}>
           <SpinningText
             radius={5}
             fontSize={0.8}
@@ -73,12 +81,12 @@ const App = () => {
           >
             {`Software Engineer • Web Developer • `}
           </SpinningText>
-        </nav>
+        </motion.nav>
 
         <Hero />
 
         <SplashCursor />
-      </main>
+      </motion.main>
       </>
 )}
     </div>

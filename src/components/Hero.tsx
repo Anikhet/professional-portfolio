@@ -3,7 +3,7 @@
 // import React, { useState, useEffect } from "react";
 // If you're using the default import:
 // import GridLayout from "react-grid-layout";
-
+import {motion} from "motion/react"
 // For responsive layout, use:
 import { Responsive, WidthProvider } from "react-grid-layout";
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -85,7 +85,11 @@ export default function Hero() {
   };
 
   return (
-    <div className="text-white w-full h-1/2 ">
+    <motion.div className="text-white w-full h-1/2 "
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 0.1, ease: [0.65, 0, 0.35, 1] }}
+    >
       {/* 
         Use the ResponsiveGridLayout. It automatically applies
         layouts based on screen size. 
@@ -160,7 +164,7 @@ export default function Hero() {
         {/* Card: Portfolio */}
         <Card
           key="b"
-          className="bg-transparent overflow-hidden flex relative justify-center items-center h-20 w-96 rounded-2xl overflow-hidden bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
+          className="bg-transparent  flex relative justify-center items-center h-20 w-96 rounded-2xl overflow-hidden bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
         >
           
           <CardHeader>
@@ -440,6 +444,6 @@ export default function Hero() {
           </CardContent>
         </Card>
       </ResponsiveGridLayout>
-    </div>
+    </motion.div>
   );
 }
