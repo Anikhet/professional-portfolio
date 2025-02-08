@@ -3,7 +3,7 @@
 // import React, { useState, useEffect } from "react";
 // If you're using the default import:
 // import GridLayout from "react-grid-layout";
-import {motion} from "motion/react"
+import { motion } from "motion/react";
 // For responsive layout, use:
 import { Responsive, WidthProvider } from "react-grid-layout";
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -25,6 +25,7 @@ import { File, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Spotlight } from "./ui/spotlight-new";
+import { Tilt } from "./ui/tilt";
 
 export default function Hero() {
   /**
@@ -41,6 +42,7 @@ export default function Hero() {
       { i: "d", x: 6, y: 4, w: 4, h: 5 }, // Experience
       { i: "f", x: 6, y: 12, w: 4, h: 6 }, // Education
       { i: "g", x: 2, y: 11, w: 4, h: 3 }, // Contact
+      { i: "h", x: 2, y: 14, w: 4, h: 3 }, // Contact
     ],
     md: [
       // Stacked for medium screens
@@ -51,6 +53,7 @@ export default function Hero() {
       { i: "d", x: 0, y: 15, w: 10, h: 5 },
       { i: "f", x: 0, y: 20, w: 10, h: 6 },
       { i: "g", x: 0, y: 26, w: 10, h: 3 },
+      { i: "h", x: 0, y: 29, w: 10, h: 3 },
     ],
     sm: [
       // Stacked for small screens
@@ -61,6 +64,7 @@ export default function Hero() {
       { i: "d", x: 0, y: 15, w: 6, h: 5 },
       { i: "f", x: 0, y: 20, w: 6, h: 6 },
       { i: "g", x: 0, y: 26, w: 6, h: 3 },
+      { i: "h", x: 0, y: 29, w: 6, h: 3 },
     ],
     xs: [
       // Extra-small screens
@@ -71,6 +75,7 @@ export default function Hero() {
       { i: "d", x: 0, y: 15, w: 4, h: 5 },
       { i: "f", x: 0, y: 20, w: 4, h: 6 },
       { i: "g", x: 0, y: 26, w: 4, h: 3 },
+      { i: "h", x: 0, y: 29, w: 4, h: 3 },
     ],
     xxs: [
       // Very small mobile
@@ -81,14 +86,16 @@ export default function Hero() {
       { i: "d", x: 0, y: 16, w: 2, h: 5 },
       { i: "f", x: 0, y: 20, w: 2, h: 6 },
       { i: "g", x: 0, y: 26, w: 2, h: 3 },
+      { i: "h", x: 0, y: 29, w: 2, h: 3 },
     ],
   };
 
   return (
-    <motion.div className="text-white w-full h-1/2 "
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1, delay: 0.1, ease: [0.65, 0, 0.35, 1] }}
+    <motion.div
+      className="text-white w-full h-full py-20 "
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.1, ease: [0.65, 0, 0.35, 1] }}
     >
       {/* 
         Use the ResponsiveGridLayout. It automatically applies
@@ -105,32 +112,29 @@ export default function Hero() {
         autoSize={true}
       >
         {/* Card: Profile/About */}
+
         <Card
           key="a"
           className=" bg-transparent overflow-hidden bg-zinc-900 w-96 border-neutral-700 hover:bg-neutral-900 p-4"
         >
-          <CardHeader>
-            <Spotlight height={800}
-            
-            
-            
-            
-            />
-            <CardTitle className="flex justify-center items-center">
-              {/* Avatar */}
-              <div className="w-28 h-28 flex-shrink-0 rounded-full ">
-                <Image
-                  src={"/avatar1.jpg"}
-                  alt="Anikhet Mulky"
-                  width={400}
-                  height={400}
-                  className="h-28 object-cover rounded-full"
-                />
-              </div>
-              {/* Name with text scramble */}
-              <div className="w-full text-center">
-              <TextScramble
-  className="
+          <Tilt rotationFactor={8} isRevese>
+            <CardHeader>
+              <Spotlight height={800} />
+              <CardTitle className="flex justify-center items-center">
+                {/* Avatar */}
+                <div className="w-28 h-28 flex-shrink-0 rounded-full ">
+                  <Image
+                    src={"/avatar1.jpg"}
+                    alt="Anikhet Mulky"
+                    width={400}
+                    height={400}
+                    className="h-28 object-cover rounded-full"
+                  />
+                </div>
+                {/* Name with text scramble */}
+                <div className="w-full text-center">
+                  <TextScramble
+                    className="
     inline-flex
     font-ptags
     text-4xl
@@ -139,26 +143,27 @@ export default function Hero() {
     text-transparent 
     animate-text-pulse
   "
->
-  Anikhet Mulky
-</TextScramble>
-              </div>
-            </CardTitle>
-          </CardHeader>
+                  >
+                    Anikhet Mulky
+                  </TextScramble>
+                </div>
+              </CardTitle>
+            </CardHeader>
 
-          <CardContent>
-            <TextEffect
-              className="text-white font-semibold font-"
-              per="char"
-              preset="fade"
-            >
-              Highly driven Software and AI Engineer with a Master&apos;s in
-              Computer Science from RIT. Proficient in TypeScript, React,
-              Next.js, Python, Docker, and AWS, with a track record of
-              optimizing performance and reliability to build scalable web
-              applications.
-            </TextEffect>
-          </CardContent>
+            <CardContent>
+              <TextEffect
+                className="text-white font-semibold font-"
+                per="char"
+                preset="fade"
+              >
+                Highly driven Software and AI Engineer with a Master&apos;s in
+                Computer Science from RIT. Proficient in TypeScript, React,
+                Next.js, Python, Docker, and AWS, with a track record of
+                optimizing performance and reliability to build scalable web
+                applications.
+              </TextEffect>
+            </CardContent>
+          </Tilt>
         </Card>
 
         {/* Card: Portfolio */}
@@ -166,15 +171,9 @@ export default function Hero() {
           key="b"
           className="bg-transparent  flex relative justify-center items-center h-20 w-96 rounded-2xl overflow-hidden bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
         >
-          
           <CardHeader>
-          <Spotlight height={1800}
-            
-            
-            
-            
-            />
-            
+            <Spotlight height={1800} />
+
             <CardTitle className="text-white flex justify-center gap-2">
               <InfiniteSliderHoverSpeedportfolio />
             </CardTitle>
@@ -187,22 +186,17 @@ export default function Hero() {
           className="bg-transparent overflow-hidden flex justify-center items-center h-20 w-96 rounded-2xl bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
         >
           <CardHeader>
-          <Spotlight height={1800}
-            
-            
-            
-            
-            />
-            
+            <Spotlight height={1800} />
+
             <Link href="/Anikhet_Mulky_Resume.pdf" passHref>
-            <CardTitle
-              className="
+              <CardTitle
+                className="
                 text-white flex justify-center gap-2 
              font-htags
               "
-            >
-              Resume <File className="size-4" />
-            </CardTitle>
+              >
+                Resume <File className="size-4" />
+              </CardTitle>
             </Link>
           </CardHeader>
         </Card>
@@ -213,7 +207,6 @@ export default function Hero() {
           className="bg-transparent overflow-hidden flex h-72 w-96 bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
         >
           <CardHeader>
-            
             <CardTitle>
               <TextScramble
                 className="
@@ -240,9 +233,6 @@ export default function Hero() {
           </CardContent>
         </Card>
 
-
-
-
         <Card
           key="d"
           className="bg-zinc-900  overflow-hidden border border-neutral-700 p-4 w-96 
@@ -250,17 +240,16 @@ export default function Hero() {
         >
           {/* Header */}
           <CardHeader>
-          <Spotlight height={2000}
-          // width={100}
-            
-            
-            
-            
+            <Spotlight
+              height={2000}
+              // width={100}
             />
-            <CardTitle className="text-lg font-bold  font-htags
+            <CardTitle
+              className="text-lg font-bold  font-htags
             text-white
              
-                ">
+                "
+            >
               Experience
             </CardTitle>
           </CardHeader>
@@ -270,30 +259,23 @@ export default function Hero() {
             {/* Graduate Degree */}
             <div className="mb-4">
               <h4 className="text-base font-semibold text-white">
-                Software & AI Engineer @ Peeker.AI
+                Software & AI Engineer : Aug 2024 - <span className="text-neutral-100 font-htags text-lg">Present</span>
               </h4>
-              <p className="text-sm text-neutral-400">
-                New York
-              </p>
-             
+              <p className="text-sm text-neutral-400">Peeker.AI, New York </p>
+       
             </div>
 
             {/* Undergraduate Degree */}
             <div>
               <h4 className="text-base font-semibold text-white">
-               Software Intern
+                Software Intern : May 2020 - July 2020
               </h4>
               <p className="text-sm text-neutral-400">
-               Bhabha Atomic Research Centre
+                Bhabha Atomic Research Centre, Mumbai
               </p>
-      
             </div>
           </CardContent>
         </Card>
-
-
-
-
 
         {/* Card: Tech Stack */}
         <Card
@@ -306,15 +288,8 @@ export default function Hero() {
           <div className="absolute top-[-20%] left-[-20%] w-40 h-40 bg-blue-400 blur-3xl opacity-30 animate-pulse" />
           <div className="absolute bottom-[-10%] right-[-10%] w-32 h-32 bg-purple-500 blur-2xl opacity-20 animate-pulse delay-200" />
 
-     
           <CardHeader>
-          <Spotlight height={1000}
-          width={200}
-            
-            
-            
-            
-            />
+            <Spotlight height={1000} width={200} />
             <CardTitle>
               <TextRoll
                 className="
@@ -355,13 +330,10 @@ export default function Hero() {
           {/* Header */}
 
           <CardHeader>
-          <Spotlight height={2000}
-          // width={20}
-          // smallWidth={50}
-            
-            
-            
-            
+            <Spotlight
+              height={2000}
+              // width={20}
+              // smallWidth={50}
             />
             <CardTitle className="text-lg font-bold font-htags text-white">
               Education
@@ -402,14 +374,7 @@ export default function Hero() {
           className="bg-transparent h-60 w-96 bg-zinc-900 border-neutral-700 hover:bg-neutral-900 overflow-hidden"
         >
           <CardHeader>
-          <Spotlight height={1500}
-          width={40}
-          smallWidth={20}
-            
-            
-            
-            
-            />
+            <Spotlight height={1500} width={40} smallWidth={20} />
             <CardTitle>
               <TextScramble
                 className="
@@ -443,6 +408,41 @@ export default function Hero() {
             </a>
           </CardContent>
         </Card>
+
+
+
+
+<div  key='h' >
+    <Tilt 
+    // className="bg-transparent overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900"
+    
+    rotationFactor={8} isRevese
+   >
+      <div
+      
+        style={{
+          borderRadius: '12px',
+        }}
+        className='flex  flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900'
+      >
+        <Image
+          src='/Map.png'
+          alt='Ghost in the shell - Kôkaku kidôtai'
+          className='h-48 w-full object-cover'
+          width={570}
+          height={180}
+        />
+        <div className='p-2'>
+          <h1 className='font-mono leading-snug text-zinc-950 dark:text-zinc-50'>
+            Distance Visualizer using MapGL
+          </h1>
+          {/* <p className='text-zinc-700 dark:text-zinc-400'>Kôkaku kidôtai</p> */}
+        </div>
+      </div>
+    </Tilt>
+    </div>
+
+
       </ResponsiveGridLayout>
     </motion.div>
   );
