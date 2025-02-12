@@ -411,7 +411,7 @@ export default function Hero() {
 
 
 
-
+{/* Projects */}
 <div  key='h' >
     <Tilt 
     // className="bg-transparent overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900"
@@ -441,6 +441,7 @@ export default function Hero() {
       </div>
     </Tilt>
     </div>
+
 
 
       </ResponsiveGridLayout>
