@@ -34,7 +34,7 @@ const App = () => {
  
 
   return (
-    <div className="min-h-[200vh] relative"
+    <div className="  min-h-[200vh] relative"
    
     >
       {/* Intro Div */}

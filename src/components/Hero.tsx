@@ -35,47 +35,28 @@ export default function Hero() {
    */
   const layouts = {
     lg: [
-      { i: "a", x: 2, y: 0, w: 4, h: 7 },
+      { i: "a", x: 2, y: 0, w: 4, h: 8 },
       { i: "b", x: 6, y: 0, w: 4, h: 2 }, // Portfolio
       { i: "c", x: 6, y: 2, w: 4, h: 2 }, // Resume
-      { i: "e", x: 2, y: 7, w: 4, h: 4 }, // Tech Stack
+      { i: "e", x: 2, y: 8, w: 4, h: 4 }, // Tech Stack
       { i: "d", x: 6, y: 4, w: 4, h: 5 }, // Experience
       { i: "f", x: 6, y: 12, w: 4, h: 6 }, // Education
-      { i: "g", x: 2, y: 11, w: 4, h: 3 }, // Contact
-      { i: "h", x: 2, y: 14, w: 4, h: 3 }, // Contact
+      { i: "g", x: 2, y: 12, w: 4, h: 3 }, // Contact
+      { i: "h", x: 2, y: 15, w: 4, h: 5 },//Projects
+      { i: "i", x: 6, y: 20, w: 4, h: 5 },
+      { i: "j", x: 2, y:  25, w: 4, h: 5 },
     ],
-    md: [
-      // Stacked for medium screens
-      { i: "a", x: 0, y: 0, w: 10, h: 7 },
-      { i: "b", x: 0, y: 7, w: 10, h: 2 },
-      { i: "c", x: 0, y: 9, w: 10, h: 2 },
-      { i: "e", x: 0, y: 11, w: 10, h: 4 },
-      { i: "d", x: 0, y: 15, w: 10, h: 5 },
-      { i: "f", x: 0, y: 20, w: 10, h: 6 },
-      { i: "g", x: 0, y: 26, w: 10, h: 3 },
-      { i: "h", x: 0, y: 29, w: 10, h: 3 },
-    ],
-    sm: [
-      // Stacked for small screens
-      { i: "a", x: 0, y: 0, w: 6, h: 9 },
-      { i: "b", x: 0, y: 7, w: 6, h: 2 },
-      { i: "c", x: 0, y: 9, w: 6, h: 2 },
-      { i: "e", x: 0, y: 11, w: 6, h: 4 },
-      { i: "d", x: 0, y: 15, w: 6, h: 5 },
-      { i: "f", x: 0, y: 20, w: 6, h: 6 },
-      { i: "g", x: 0, y: 26, w: 6, h: 3 },
-      { i: "h", x: 0, y: 29, w: 6, h: 3 },
-    ],
+
     xs: [
       // Extra-small screens
       { i: "a", x: 0, y: 0, w: 4, h: 7 },
-      { i: "b", x: 0, y: 7, w: 4, h: 2 },
-      { i: "c", x: 0, y: 9, w: 4, h: 2 },
-      { i: "e", x: 0, y: 11, w: 4, h: 4 },
-      { i: "d", x: 0, y: 15, w: 4, h: 5 },
-      { i: "f", x: 0, y: 20, w: 4, h: 6 },
-      { i: "g", x: 0, y: 26, w: 4, h: 3 },
-      { i: "h", x: 0, y: 29, w: 4, h: 3 },
+      { i: "b", x: 0, y: 7, w: 4, h: 2 }, // Portfolio
+      { i: "c", x: 0, y: 9, w: 4, h: 2 }, // Resume
+      { i: "e", x: 0, y: 11, w: 4, h: 4 },// Tech Stack
+      { i: "d", x: 0, y: 15, w: 4, h: 5 },// Experience
+      { i: "f", x: 0, y: 20, w: 4, h: 8 },// Education
+      { i: "g", x: 0, y: 28, w: 4, h: 3 },
+      { i: "h", x: 0, y: 31, w: 4, h: 3 },
     ],
     xxs: [
       // Very small mobile
@@ -86,13 +67,15 @@ export default function Hero() {
       { i: "d", x: 0, y: 16, w: 2, h: 5 },
       { i: "f", x: 0, y: 20, w: 2, h: 6 },
       { i: "g", x: 0, y: 26, w: 2, h: 3 },
-      { i: "h", x: 0, y: 29, w: 2, h: 3 },
+      { i: "h", x: 0, y: 29, w: 2, h: 5 },
+      { i: "i", x: 0, y: 32, w: 2, h: 5 },
+      { i: "j", x: 0, y: 35, w: 2, h: 5 },
     ],
   };
 
   return (
     <motion.div
-      className="text-white w-full h-full py-20 "
+      className="text-white w-full h-full py-20 mt-14"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.1, ease: [0.65, 0, 0.35, 1] }}
@@ -202,7 +185,7 @@ export default function Hero() {
         </Card>
 
         {/* Card: Experience - Currently Working */}
-        <Card
+        {/* <Card
           key=""
           className="bg-transparent overflow-hidden flex h-72 w-96 bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
         >
@@ -231,7 +214,7 @@ export default function Hero() {
           <CardContent>
             <p className=""></p>
           </CardContent>
-        </Card>
+        </Card> */}
 
         <Card
           key="d"
@@ -435,6 +418,66 @@ export default function Hero() {
         <div className='p-2'>
           <h1 className='font-mono leading-snug text-zinc-950 dark:text-zinc-50'>
             Distance Visualizer using MapGL
+          </h1>
+          {/* <p className='text-zinc-700 dark:text-zinc-400'>Kôkaku kidôtai</p> */}
+        </div>
+      </div>
+    </Tilt>
+    </div>
+
+    <div  key='i' >
+    <Tilt 
+    // className="bg-transparent overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900"
+    
+    rotationFactor={8} isRevese
+   >
+      <div
+      
+        style={{
+          borderRadius: '12px',
+        }}
+        className='flex  flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900'
+      >
+        <Image
+          src='/roi.png'
+          alt='Ghost in the shell - Kôkaku kidôtai'
+          className='h-48 w-full object-cover'
+          width={570}
+          height={180}
+        />
+        <div className='p-2'>
+          <h1 className='font-mono leading-snug text-zinc-950 dark:text-zinc-50'>
+            ROI Calculator
+          </h1>
+          {/* <p className='text-zinc-700 dark:text-zinc-400'>Kôkaku kidôtai</p> */}
+        </div>
+      </div>
+    </Tilt>
+    </div>
+
+    <div  key='j' >
+    <Tilt 
+    // className="bg-transparent overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900"
+    
+    rotationFactor={8} isRevese
+   >
+      <div
+      
+        style={{
+          borderRadius: '12px',
+        }}
+        className='flex  flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900'
+      >
+        <Image
+          src='/airbnb.png'
+          alt='Ghost in the shell - Kôkaku kidôtai'
+          className='h-48 w-full object-cover'
+          width={570}
+          height={180}
+        />
+        <div className='p-2'>
+          <h1 className='font-mono leading-snug text-zinc-950 dark:text-zinc-50'>
+            AirBnb Clone
           </h1>
           {/* <p className='text-zinc-700 dark:text-zinc-400'>Kôkaku kidôtai</p> */}
         </div>
