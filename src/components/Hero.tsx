@@ -36,15 +36,18 @@ export default function Hero() {
   const layouts = {
     lg: [
       { i: "a", x: 2, y: 0, w: 4, h: 8 },
-      { i: "b", x: 6, y: 0, w: 4, h: 2 }, // Portfolio
-      { i: "c", x: 6, y: 2, w: 4, h: 2 }, // Resume
       { i: "e", x: 2, y: 8, w: 4, h: 4 }, // Tech Stack
-      { i: "d", x: 6, y: 4, w: 4, h: 5 }, // Experience
-      { i: "f", x: 6, y: 12, w: 4, h: 6 }, // Education
       { i: "g", x: 2, y: 12, w: 4, h: 3 }, // Contact
       { i: "h", x: 2, y: 15, w: 4, h: 5 },//Projects
-      { i: "i", x: 6, y: 20, w: 4, h: 5 },
-      { i: "j", x: 2, y:  25, w: 4, h: 5 },
+      { i: "j", x: 2, y: 25, w: 4, h: 5 },//Projects
+      { i: "b", x: 6, y: 0, w: 4, h: 2 }, // Portfolio
+      { i: "c", x: 6, y: 2, w: 4, h: 2 }, // Resume
+      { i: "d", x: 6, y: 4, w: 4, h: 6 }, // Experience
+      { i: "f", x: 6, y: 10, w: 4, h: 7 }, // Education
+      { i: "i", x: 6, y: 17, w: 4, h: 5 }, // Projects
+
+     
+
     ],
 
     xs: [
@@ -56,7 +59,9 @@ export default function Hero() {
       { i: "d", x: 0, y: 15, w: 4, h: 5 },// Experience
       { i: "f", x: 0, y: 20, w: 4, h: 8 },// Education
       { i: "g", x: 0, y: 28, w: 4, h: 3 },
-      { i: "h", x: 0, y: 31, w: 4, h: 3 },
+      { i: "h", x: 0, y: 31, w: 4, h: 5 },
+      { i: "i", x: 0, y: 36, w: 4, h: 5 },
+      { i: "j", x: 0, y: 41, w: 4, h: 5 },
     ],
     xxs: [
       // Very small mobile
@@ -70,6 +75,7 @@ export default function Hero() {
       { i: "h", x: 0, y: 29, w: 2, h: 5 },
       { i: "i", x: 0, y: 32, w: 2, h: 5 },
       { i: "j", x: 0, y: 35, w: 2, h: 5 },
+
     ],
   };
 
