@@ -21,7 +21,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { File, Github, Linkedin, Mail } from "lucide-react";
+import {  Github, Linkedin, Mail, Rocket} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Spotlight } from "./ui/spotlight-new";
@@ -45,6 +45,7 @@ export default function Hero() {
       { i: "d", x: 6, y: 4, w: 4, h: 6 }, // Experience
       { i: "f", x: 6, y: 10, w: 4, h: 7 }, // Education
       { i: "i", x: 6, y: 17, w: 4, h: 5 }, // Projects
+      { i: "k", x: 6, y: 22, w: 4, h: 5 }, // Projects
 
      
 
@@ -62,6 +63,7 @@ export default function Hero() {
       { i: "h", x: 0, y: 31, w: 4, h: 5 },
       { i: "i", x: 0, y: 36, w: 4, h: 5 },
       { i: "j", x: 0, y: 41, w: 4, h: 5 },
+      { i: "k", x: 0, y: 46, w: 4, h: 5 },
     ],
     xxs: [
       // Very small mobile
@@ -69,12 +71,13 @@ export default function Hero() {
       { i: "b", x: 0, y: 8, w: 2, h: 2 },
       { i: "c", x: 0, y: 10, w: 2, h: 2 },
       { i: "e", x: 0, y: 12, w: 2, h: 4 },
-      { i: "d", x: 0, y: 16, w: 2, h: 5 },
-      { i: "f", x: 0, y: 20, w: 2, h: 6 },
-      { i: "g", x: 0, y: 26, w: 2, h: 3 },
-      { i: "h", x: 0, y: 29, w: 2, h: 5 },
-      { i: "i", x: 0, y: 32, w: 2, h: 5 },
-      { i: "j", x: 0, y: 35, w: 2, h: 5 },
+      { i: "d", x: 0, y: 16, w: 2, h: 7 },
+      { i: "f", x: 0, y: 23, w: 2, h: 8 },
+      { i: "g", x: 0, y: 31, w: 2, h: 3 },
+      { i: "h", x: 0, y: 34, w: 2, h: 5 },
+      { i: "i", x: 0, y: 39, w: 2, h: 5 },
+      { i: "j", x: 0, y: 44, w: 2, h: 5 },
+      { i: "k", x: 0, y: 49, w: 2, h: 5 },
 
     ],
   };
@@ -174,20 +177,22 @@ export default function Hero() {
           key="c"
           className="bg-transparent overflow-hidden flex justify-center items-center h-20 w-96 rounded-2xl bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
         >
+          <Link href="https://drive.google.com/file/d/1duRBvBZS3XMfqZCmkUbD-ZDUGmMAhIjk/view?usp=sharing" passHref>
           <CardHeader>
             <Spotlight height={1800} />
 
-            <Link href="/Anikhet_Mulky_Resume.pdf" passHref>
+            
               <CardTitle
                 className="
-                text-white flex justify-center gap-2 
-             font-htags
+                text-white infl flex justify-center items-center gap-4 
+             font-htags 
               "
               >
-                Resume <File className="size-4" />
+                Resume <Rocket/>
               </CardTitle>
-            </Link>
+          
           </CardHeader>
+          </Link>
         </Card>
 
         {/* Card: Experience - Currently Working */}
@@ -414,16 +419,18 @@ export default function Hero() {
         }}
         className='flex  flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900'
       >
+        <Link href="https://peeker-apify.vercel.app/">
         <Image
-          src='/Map.png'
+          src='/apify.png'
           alt='Ghost in the shell - Kôkaku kidôtai'
           className='h-48 w-full object-cover'
           width={570}
           height={180}
         />
+        </Link>
         <div className='p-2'>
-          <h1 className='font-mono leading-snug text-zinc-950 dark:text-zinc-50'>
-            Distance Visualizer using MapGL
+          <h1 className='font-mono font-semibold leading-snug text-zinc-950 dark:text-zinc-50'>
+            Apify Web Scraper
           </h1>
           {/* <p className='text-zinc-700 dark:text-zinc-400'>Kôkaku kidôtai</p> */}
         </div>
@@ -431,7 +438,8 @@ export default function Hero() {
     </Tilt>
     </div>
 
-    <div  key='i' >
+
+<div  key='i' >
     <Tilt 
     // className="bg-transparent overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900"
     
@@ -444,6 +452,40 @@ export default function Hero() {
         }}
         className='flex  flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900'
       >
+              <Link href="https://map-wanderer-visualizer.vercel.app/" >
+        <Image
+          src='/Map.png'
+          alt='Ghost in the shell - Kôkaku kidôtai'
+          className='h-48 w-full object-cover'
+          width={570}
+          height={180}
+        />
+        </Link>
+        <div className='p-2'>
+          <h1 className='font-mono font-semibold leading-snug text-zinc-950 dark:text-zinc-50'>
+            Distance Visualizer using MapGL
+          </h1>
+          {/* <p className='text-zinc-700 dark:text-zinc-400'>Kôkaku kidôtai</p> */}
+        </div>
+      </div>
+    </Tilt>
+    </div>
+      
+    <div  key='j' >
+    
+    <Tilt 
+    // className="bg-transparent overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900"
+    
+    rotationFactor={8} isRevese
+   >
+      <div
+      
+        style={{
+          borderRadius: '12px',
+        }}
+        className='flex  flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900'
+      >
+            <Link href="https://roi-calculator-kohl.vercel.app/" >
         <Image
           src='/roi.png'
           alt='Ghost in the shell - Kôkaku kidôtai'
@@ -451,8 +493,9 @@ export default function Hero() {
           width={570}
           height={180}
         />
+        </Link>
         <div className='p-2'>
-          <h1 className='font-mono leading-snug text-zinc-950 dark:text-zinc-50'>
+          <h1 className='font-mono font-semibold leading-snug text-zinc-950 dark:text-zinc-50'>
             ROI Calculator
           </h1>
           {/* <p className='text-zinc-700 dark:text-zinc-400'>Kôkaku kidôtai</p> */}
@@ -461,7 +504,7 @@ export default function Hero() {
     </Tilt>
     </div>
 
-    <div  key='j' >
+    <div  key='k' >
     <Tilt 
     // className="bg-transparent overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900"
     
@@ -474,6 +517,7 @@ export default function Hero() {
         }}
         className='flex  flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900'
       >
+        <Link href="https://roomie-three.vercel.app/">
         <Image
           src='/airbnb.png'
           alt='Ghost in the shell - Kôkaku kidôtai'
@@ -481,8 +525,9 @@ export default function Hero() {
           width={570}
           height={180}
         />
+        </Link>
         <div className='p-2'>
-          <h1 className='font-mono leading-snug text-zinc-950 dark:text-zinc-50'>
+          <h1 className='font-mono font-semibold leading-snug text-zinc-950 dark:text-zinc-50'>
             AirBnb Clone
           </h1>
           {/* <p className='text-zinc-700 dark:text-zinc-400'>Kôkaku kidôtai</p> */}
