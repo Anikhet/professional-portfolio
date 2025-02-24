@@ -51,6 +51,21 @@ export default function Hero() {
 
     ],
 
+    md: [
+      // Extra-small screens
+      { i: "a", x: 0, y: 0, w: 4, h: 7 },
+      { i: "b", x: 0, y: 7, w: 4, h: 2 }, // Portfolio
+      { i: "c", x: 0, y: 9, w: 4, h: 2 }, // Resume
+      { i: "e", x: 0, y: 11, w: 4, h: 4 },// Tech Stack
+      { i: "d", x: 0, y: 15, w: 4, h: 6 },// Experience
+      { i: "f", x: 0, y: 20, w: 4, h: 6 },// Education
+      { i: "g", x: 0, y: 28, w: 4, h: 3 },
+      { i: "h", x: 0, y: 31, w: 4, h: 5 },
+      { i: "i", x: 0, y: 36, w: 4, h: 5 },
+      { i: "j", x: 0, y: 41, w: 4, h: 5 },
+      { i: "k", x: 0, y: 46, w: 4, h: 5 },
+    ],
+
     xs: [
       // Extra-small screens
       { i: "a", x: 0, y: 0, w: 4, h: 7 },
@@ -67,7 +82,7 @@ export default function Hero() {
     ],
     xxs: [
       // Very small mobile
-      { i: "a", x: 0, y: 0, w: 2, h: 8 },
+      { i: "a", x: 0, y: 0, w: 2, h: 9 },
       { i: "b", x: 0, y: 8, w: 2, h: 2 },
       { i: "c", x: 0, y: 10, w: 2, h: 2 },
       { i: "e", x: 0, y: 12, w: 2, h: 4 },
@@ -84,7 +99,7 @@ export default function Hero() {
 
   return (
     <motion.div
-      className="text-white w-full h-full py-20 mt-14"
+      className="text-white w-full h-full py-20 mt-14 "
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.1, ease: [0.65, 0, 0.35, 1] }}
