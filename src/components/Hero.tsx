@@ -210,38 +210,6 @@ export default function Hero() {
           </Link>
         </Card>
 
-        {/* Card: Experience - Currently Working */}
-        {/* <Card
-          key=""
-          className="bg-transparent overflow-hidden flex h-72 w-96 bg-zinc-900 border-neutral-700 hover:bg-neutral-900"
-        >
-          <CardHeader>
-            <CardTitle>
-              <TextScramble
-                className="
-                  text-xl 
-                  bg-gradient-to-t from-[#a78bfa] to-[#38bdf8]
-                  bg-clip-text text-transparent
-                "
-              >
-                Currently Working
-              </TextScramble>
-            </CardTitle>
-            <CardDescription className=" text-white/60 font- font-thin w-full h-full text-center text-3xl flex justify-center items-center">
-              <TextEffect
-                className="font-semibold font-"
-                per="char"
-                preset="fade"
-              >
-                Software & AI Engineering Intern at Peeker.ai
-              </TextEffect>
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className=""></p>
-          </CardContent>
-        </Card> */}
-
         <Card
           key="d"
           className="bg-zinc-900  overflow-hidden border border-neutral-700 p-4 w-96 
