@@ -70,10 +70,9 @@ export default {
         
       },
       
-	  fontFamily: {
-		custom: "var(--font-custom), sans-serif",
-        ptags: "var(--font-ptags), sans-serif",
-        htags: "var(--font-htags), serif",
+      fontFamily: {
+        sans: ["var(--font-sans)", "sans-serif"],
+        serif: ["var(--font-serif)", "serif"],
       },
     },
   },

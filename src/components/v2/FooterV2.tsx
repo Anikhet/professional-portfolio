@@ -10,7 +10,7 @@ export function FooterV2() {
         <p className="text-neutral-500 text-xl mb-8">Have an idea?</p>
         <Link 
             href="mailto:am9559@rit.edu"
-            className="text-6xl md:text-9xl font-bold text-white hover:text-cyan-400 transition-colors text-center leading-none"
+            className="text-6xl md:text-9xl font-bold text-white hover:text-neutral-400 transition-colors text-center leading-none"
         >
             Let&apos;s Talk
         </Link>

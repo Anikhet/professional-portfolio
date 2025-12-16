@@ -1,41 +1,17 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Analytics } from "@vercel/analytics/react"
 
-import localFont from "next/font/local";
-
-// Load a local font
-const customFont = localFont({
-  src: "./fonts/stolzl_light.ttf", // ✅ Correct: Use absolute URL, not relative paths
-  variable: "--font-custom",
-  weight: "200", // Adjust weight if necessary
-  display: "swap",
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-serif",
 });
 
-const customFont1 = localFont({
-  src: "./fonts/stolzl_bold.ttf", // ✅ Correct: Use absolute URL, not relative paths
-  variable: "--font-ptags",
-  weight: "200", // Adjust weight if necessary
-  display: "swap",
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
 });
-
-const customFont2 = localFont({
-  src: "./fonts/stolzl_book.ttf", // ✅ Correct: Use absolute URL, not relative paths
-  variable: "--font-htags",
-  weight: "200", // Adjust weight if necessary
-  display: "swap",
-});
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 export const metadata: Metadata = {
   title: "Anikhet's Portfolio Website",
@@ -48,9 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en"     className={`${customFont.variable} ${customFont1.variable} ${customFont2.variable}`}>
-      <body className="font-custom">
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+      <body className="font-sans antialiased bg-black text-white">
         {children}
+        <Analytics />
       </body>
     </html>
   );

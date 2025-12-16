@@ -44,11 +44,20 @@ function ProjectCard({ project }: { project: typeof portfolioData.projects[0] })
       <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500" />
       <div className="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black/90 to-transparent">
         <h3 className="text-4xl md:text-6xl font-bold text-white mb-2">{project.title}</h3>
-        <p className="text-xl text-neutral-300 mb-6 max-w-xl">{project.description}</p>
-        <Link 
-            href={project.link} 
+        <p className="text-xl text-neutral-300 mb-4 max-w-xl">{project.description}</p>
+        {"tags" in project && project.tags && (
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.tags.map((tag, i) => (
+              <span key={i} className="px-3 py-1 text-sm bg-white/10 text-neutral-200 border border-white/20">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+        <Link
+            href={project.link}
             target="_blank"
-            className="inline-block px-8 py-4 bg-white text-black font-bold text-lg hover:bg-cyan-400 transition-colors"
+            className="inline-block px-8 py-4 bg-white text-black font-bold text-lg hover:bg-neutral-200 transition-colors"
         >
             View Project
         </Link>
