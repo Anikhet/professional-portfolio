@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { portfolioData } from "@/data/portfolio";
@@ -16,15 +16,25 @@ export function ProjectGallery() {
 
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-neutral-900">
+      {/* Background grid */}
+      <div className="fixed inset-0 tech-grid-dense opacity-20 pointer-events-none" />
+
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div style={{ x }} className="flex gap-4">
-          <div className="w-[20vw] flex items-center justify-center shrink-0">
-             <h2 className="text-6xl md:text-8xl font-bold text-white writing-vertical-rl rotate-180">
-                Selected Works
-             </h2>
+        <motion.div style={{ x }} className="flex gap-6">
+          {/* Section header */}
+          <div className="w-[25vw] flex flex-col items-center justify-center shrink-0 px-8">
+            <span className="font-mono text-xs text-neutral-600 mb-4">{`// projects.map()`}</span>
+            <h2 className="text-5xl md:text-7xl font-bold text-white writing-vertical-rl rotate-180">
+              <span className="gradient-text-cyber">Selected</span>
+              <br />
+              <span className="text-white">Works</span>
+            </h2>
+            <div className="mt-8 w-px h-20 bg-gradient-to-b from-cyan-500 to-transparent" />
           </div>
+
+          {/* Project cards */}
           {portfolioData.projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </motion.div>
       </div>
@@ -32,36 +42,142 @@ export function ProjectGallery() {
   );
 }
 
-function ProjectCard({ project }: { project: typeof portfolioData.projects[0] }) {
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  tags?: string[];
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div className="group relative h-[70vh] w-[80vw] md:w-[60vw] overflow-hidden bg-neutral-200 shrink-0">
-      <Image
-        src={project.image}
-        alt={project.title}
-        fill
-        className="object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
-      />
-      <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500" />
-      <div className="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black/90 to-transparent">
-        <h3 className="text-4xl md:text-6xl font-bold text-white mb-2">{project.title}</h3>
-        <p className="text-xl text-neutral-300 mb-4 max-w-xl">{project.description}</p>
-        {"tags" in project && project.tags && (
-          <div className="flex flex-wrap gap-2 mb-6">
-            {project.tags.map((tag, i) => (
-              <span key={i} className="px-3 py-1 text-sm bg-white/10 text-neutral-200 border border-white/20">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-        <Link
+    <motion.div
+      className="group relative h-[75vh] w-[75vw] md:w-[55vw] overflow-hidden shrink-0"
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      {/* Card container with gradient border on hover */}
+      <div className="relative h-full w-full bg-neutral-950 border border-neutral-800 group-hover:border-cyan-500/30 transition-colors duration-500">
+        {/* Project number */}
+        <div className="absolute top-4 left-4 z-20 font-mono text-sm text-neutral-600">
+          <span className="text-cyan-400">0{index + 1}</span>
+          <span className="mx-2">/</span>
+          <span>0{portfolioData.projects.length}</span>
+        </div>
+
+        {/* Terminal dots */}
+        <div className="absolute top-4 right-4 z-20 flex gap-2">
+          <div className="w-3 h-3 rounded-full bg-neutral-800 group-hover:bg-red-500/80 transition-colors" />
+          <div className="w-3 h-3 rounded-full bg-neutral-800 group-hover:bg-yellow-500/80 transition-colors" />
+          <div className="w-3 h-3 rounded-full bg-neutral-800 group-hover:bg-green-500/80 transition-colors" />
+        </div>
+
+        {/* Image */}
+        <div className="relative h-full w-full overflow-hidden">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+          />
+
+          {/* Scanline overlay on hover */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 0.1 : 0 }}
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,255,0.03) 2px, rgba(0,255,255,0.03) 4px)",
+            }}
+          />
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
+
+          {/* Glitch effect lines on hover */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-1/4 left-0 right-0 h-px bg-cyan-500/50 origin-left"
+          />
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+            className="absolute top-1/2 left-0 right-0 h-px bg-purple-500/50 origin-right"
+          />
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+            className="absolute top-3/4 left-0 right-0 h-px bg-cyan-500/50 origin-left"
+          />
+        </div>
+
+        {/* Content overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-8">
+          {/* Tags */}
+          {project.tags && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: isHovered ? 1 : 0.7, y: isHovered ? 0 : 5 }}
+              className="flex flex-wrap gap-2 mb-4"
+            >
+              {project.tags.map((tag, i) => (
+                <span
+                  key={i}
+                  className="px-2 py-1 text-xs font-mono bg-black/50 border border-neutral-700 text-neutral-400 group-hover:border-cyan-500/30 group-hover:text-cyan-400 transition-colors"
+                >
+                  {tag}
+                </span>
+              ))}
+            </motion.div>
+          )}
+
+          {/* Title */}
+          <motion.h3
+            className="text-3xl md:text-5xl font-bold text-white mb-3"
+            animate={{
+              textShadow: isHovered
+                ? "0 0 20px rgba(0,255,255,0.3)"
+                : "none",
+            }}
+          >
+            {project.title}
+          </motion.h3>
+
+          {/* Description */}
+          <p className="text-lg text-neutral-400 mb-6 max-w-xl font-light">
+            {project.description}
+          </p>
+
+          {/* CTA Button */}
+          <Link
             href={project.link}
             target="_blank"
-            className="inline-block px-8 py-4 bg-white text-black font-bold text-lg hover:bg-neutral-200 transition-colors"
-        >
-            View Project
-        </Link>
+            className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border border-white/20 text-white font-mono text-sm hover:bg-cyan-500 hover:border-cyan-500 hover:text-black transition-all duration-300 group/btn"
+          >
+            <span>View Project</span>
+            <motion.span
+              animate={{ x: isHovered ? 5 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="text-cyan-400 group-hover/btn:text-black"
+            >
+              →
+            </motion.span>
+          </Link>
+        </div>
+
+        {/* Corner accents */}
+        <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-transparent group-hover:border-cyan-500/50 transition-colors duration-500" />
+        <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-transparent group-hover:border-cyan-500/50 transition-colors duration-500" />
+        <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-transparent group-hover:border-cyan-500/50 transition-colors duration-500" />
+        <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-transparent group-hover:border-cyan-500/50 transition-colors duration-500" />
       </div>
-    </div>
+    </motion.div>
   );
 }
