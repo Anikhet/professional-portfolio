@@ -74,7 +74,7 @@ export function ExperienceV2() {
 
                 {/* Connection line */}
                 {index < portfolioData.experience.length - 1 && (
-                  <div className="absolute left-6 top-full w-px h-8 bg-gradient-to-b from-neutral-800 to-transparent" />
+                  <div className="absolute left-6 top-full w-px h-8 bg-neutral-800" />
                 )}
               </motion.div>
             ))}
@@ -140,7 +140,7 @@ export function ExperienceV2() {
 
                 {/* Connection line */}
                 {index < portfolioData.education.length - 1 && (
-                  <div className="absolute left-6 top-full w-px h-8 bg-gradient-to-b from-neutral-800 to-transparent" />
+                  <div className="absolute left-6 top-full w-px h-8 bg-neutral-800" />
                 )}
               </motion.div>
             ))}

@@ -31,7 +31,7 @@ export function AboutSection() {
 
         <h2 className="text-4xl md:text-6xl font-bold leading-tight text-white mb-12">
           <span className="text-purple-400 font-mono text-3xl md:text-4xl">const</span>{" "}
-          <span className="gradient-text-cyber">aboutMe</span>{" "}
+          <span className="text-cyan-400">aboutMe</span>{" "}
           <span className="text-neutral-500 font-mono text-3xl md:text-4xl">=</span>{" "}
           <span className="text-neutral-500 font-mono text-3xl md:text-4xl">{`{`}</span>
         </h2>

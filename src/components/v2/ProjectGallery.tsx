@@ -25,11 +25,11 @@ export function ProjectGallery() {
           <div className="w-[25vw] flex flex-col items-center justify-center shrink-0 px-8">
             <span className="font-mono text-xs text-neutral-600 mb-4">{`// projects.map()`}</span>
             <h2 className="text-5xl md:text-7xl font-bold text-white writing-vertical-rl rotate-180">
-              <span className="gradient-text-cyber">Selected</span>
+              <span className="text-cyan-400">Selected</span>
               <br />
               <span className="text-white">Works</span>
             </h2>
-            <div className="mt-8 w-px h-20 bg-gradient-to-b from-cyan-500 to-transparent" />
+            <div className="mt-8 w-px h-20 bg-cyan-500/50" />
           </div>
 
           {/* Project cards */}
@@ -94,8 +94,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             }}
           />
 
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/80 group-hover:bg-black/60 transition-opacity duration-500" />
 
           {/* Glitch effect lines on hover */}
           <motion.div

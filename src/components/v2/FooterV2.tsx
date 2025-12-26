@@ -10,9 +10,6 @@ export function FooterV2() {
       {/* Background elements */}
       <div className="absolute inset-0 tech-grid opacity-30" />
 
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[150px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[150px]" />
 
       {/* Main content */}
       <div className="flex-1 flex flex-col justify-center items-center relative z-10">
@@ -50,11 +47,11 @@ export function FooterV2() {
             href="mailto:animulky@gmail.com"
             className="group relative inline-block"
           >
-            <span className="text-5xl md:text-8xl font-bold text-white hover:gradient-text-cyber transition-all duration-500 text-glow-cyan">
+            <span className="text-5xl md:text-8xl font-bold text-white hover:text-cyan-400 transition-all duration-500">
               Let&apos;s Talk
             </span>
             {/* Underline animation */}
-            <span className="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-500" />
+            <span className="absolute -bottom-2 left-0 w-0 h-1 bg-cyan-400 group-hover:w-full transition-all duration-500" />
           </Link>
         </motion.div>
 

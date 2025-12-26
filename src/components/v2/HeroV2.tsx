@@ -17,25 +17,6 @@ export function HeroV2() {
 
   return (
     <section className="h-screen w-full flex flex-col justify-center relative overflow-hidden bg-black text-white px-4 md:px-20 tech-grid noise">
-      {/* Animated gradient orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/20 rounded-full blur-[100px]"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-40 -right-40 w-96 h-96 bg-purple-500/20 rounded-full blur-[100px]"
-        />
-      </div>
 
       <motion.div style={{ y, opacity }} className="z-10 flex flex-col items-start max-w-7xl w-full">
         {/* Terminal-style role */}
@@ -75,7 +56,7 @@ export function HeroV2() {
           )}
         </motion.div>
 
-        {/* Tagline with gradient */}
+        {/* Tagline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -83,7 +64,7 @@ export function HeroV2() {
           className="text-xl md:text-3xl font-light max-w-3xl leading-relaxed"
         >
           <span className="text-neutral-400">{`{ `}</span>
-          <span className="gradient-text-cyber font-medium">{portfolioData.profile.tagline}</span>
+          <span className="text-cyan-400 font-medium">{portfolioData.profile.tagline}</span>
           <span className="text-neutral-400">{` }`}</span>
         </motion.p>
 
@@ -137,7 +118,7 @@ export function HeroV2() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-16 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"
+          className="w-px h-16 bg-cyan-400/50"
         />
         <p className="text-neutral-600 text-xs uppercase tracking-widest font-mono">Scroll</p>
       </motion.div>
