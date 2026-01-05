@@ -1,20 +1,28 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { useRef } from "react";
 import { SplitText } from "@/components/ui/split-text";
 import { Reveal, LineReveal, StaggerReveal, StaggerItem } from "@/components/ui/reveal";
 import { Magnetic } from "@/components/ui/magnetic";
 
-export function AboutSection() {
+export function AboutSection({ progress }: { progress?: MotionValue<number> }) {
   const container = useRef(null);
+  // Fallback if not controlled
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const activeProgress = progress || scrollYProgress;
+
+  const y = useTransform(activeProgress, [0, 1], [100, -100]);
+  // Disable internal opacity fade if controlled by parent, or keep it?
+  // If controlled, parent handles main fade. Inner fade might be redundant or conflicting.
+  // Let's keep 'y' but disable opacity if progress is provided to avoid double fade.
+  const opacity = useTransform(activeProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  
+  const finalOpacity = progress ? 1 : opacity; // If external progress, let parent handle opacity fade-in/out via ScrollSection
 
   return (
     <section ref={container} className="min-h-screen flex items-center justify-center px-4 md:px-20 bg-zinc-950 py-32 relative overflow-hidden">
@@ -37,7 +45,7 @@ export function AboutSection() {
         transition={{ duration: 5, repeat: Infinity }}
       />
 
-      <motion.div style={{ y }} className="max-w-5xl relative z-10">
+      <motion.div style={{ y, opacity: finalOpacity }} className="max-w-5xl relative z-10">
         {/* Code comment header */}
         <Reveal delay={0} direction="left">
           <div className="font-mono text-sm text-neutral-600 mb-4">

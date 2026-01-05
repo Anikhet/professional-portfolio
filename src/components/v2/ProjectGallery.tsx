@@ -1,18 +1,20 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { portfolioData } from "@/data/portfolio";
 
-export function ProjectGallery() {
+export function ProjectGallery({ progress }: { progress?: MotionValue<number> }) {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
+  const activeProgress = progress || scrollYProgress;
+
+  const x = useTransform(activeProgress, [0, 1], ["1%", "-95%"]);
 
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-neutral-900">

@@ -16,7 +16,7 @@ export function HeroV2() {
     <section className="h-screen w-full flex flex-col justify-center relative overflow-hidden bg-black text-white px-4 md:px-20 tech-grid noise">
       <motion.div style={{ y, opacity }} className="z-10 flex flex-col items-start max-w-7xl w-full">
         {/* Terminal-style role with typing animation */}
-        <Reveal delay={0.2} direction="left">
+        <Reveal delay={0} direction="left">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-cyan-400 font-mono text-sm">$</span>
             <span className="font-mono text-sm text-neutral-500">whoami</span>
@@ -25,7 +25,7 @@ export function HeroV2() {
               className="font-mono text-lg text-cyan-400"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.3 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
             >
               {portfolioData.profile.role}
             </motion.span>
@@ -45,18 +45,18 @@ export function HeroV2() {
             className="text-6xl md:text-[8rem] font-bold tracking-tight leading-[0.9] text-white"
             splitBy="char"
             animation="slideUp"
-            delay={0.4}
+            delay={0}
             staggerChildren={0.04}
             duration={0.6}
           />
         </div>
 
         {/* Animated line */}
-        <LineReveal className="w-32 mb-8" delay={1} />
+        <LineReveal className="w-32 mb-8" delay={0.2} />
 
         {/* Tagline with word reveal */}
         <div className="mb-8">
-          <MaskReveal delay={1.2}>
+          <MaskReveal delay={0.3}>
             <p className="text-xl md:text-3xl font-light max-w-3xl leading-relaxed">
               <span className="text-neutral-400">{`{ `}</span>
               <span className="text-cyan-400 font-medium">{portfolioData.profile.tagline}</span>
@@ -66,7 +66,7 @@ export function HeroV2() {
         </div>
 
         {/* Status indicator */}
-        <Reveal delay={1.5} direction="up">
+        <Reveal delay={0.4} direction="up">
           <div className="flex gap-6 items-center mb-8">
             <div className="flex items-center gap-2">
               <span className="relative flex h-3 w-3">
@@ -89,8 +89,8 @@ export function HeroV2() {
             hidden: {},
             visible: {
               transition: {
-                staggerChildren: 0.08,
-                delayChildren: 1.8,
+                staggerChildren: 0.05,
+                delayChildren: 0.5,
               },
             },
           }}
@@ -122,7 +122,7 @@ export function HeroV2() {
         style={{ opacity }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.2, duration: 1 }}
+        transition={{ delay: 0.8, duration: 1 }}
         className="absolute bottom-10 right-10 flex flex-col items-center gap-2"
       >
         <Floating duration={2} distance={8}>
@@ -144,7 +144,7 @@ export function HeroV2() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 0.5 }}
+        transition={{ delay: 0.6, duration: 0.5 }}
       >
         <div className="absolute top-8 left-8 w-16 h-16 border-l border-t border-neutral-800" />
         <div className="absolute top-8 right-8 w-16 h-16 border-r border-t border-neutral-800" />

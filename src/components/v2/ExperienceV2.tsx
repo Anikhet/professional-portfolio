@@ -1,14 +1,16 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { portfolioData } from "@/data/portfolio";
 import { SplitText } from "@/components/ui/split-text";
 import { Reveal, LineReveal } from "@/components/ui/reveal";
 
-export function ExperienceV2() {
+export function ExperienceV2({ isActive }: { isActive?: boolean }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInViewInternal = useInView(ref, { once: true, margin: "-100px" });
+  
+  const show = isActive !== undefined ? isActive : isInViewInternal;
 
   return (
     <section ref={ref} className="py-32 px-4 md:px-20 bg-zinc-950 text-white relative overflow-hidden">
@@ -49,7 +51,7 @@ export function ExperienceV2() {
           <motion.div
             className="space-y-6"
             initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+            animate={show ? "visible" : "hidden"}
             variants={{
               hidden: {},
               visible: {
@@ -96,7 +98,7 @@ export function ExperienceV2() {
           <motion.div
             className="space-y-6"
             initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+            animate={show ? "visible" : "hidden"}
             variants={{
               hidden: {},
               visible: {
