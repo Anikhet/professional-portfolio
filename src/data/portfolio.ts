@@ -40,12 +40,14 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
       company: "Clover Labs",
       location: "Remote, US",
       date: "Oct 2025 - Present",
+      url: "https://cloverlabs.ai/",
     },
     {
       role: "Software & AI Engineering Co-op",
       company: "Peeker AI",
       location: "New York",
       date: "Aug 2024 - May 2025",
+      url: "https://www.peeker.ai/",
     },
     {
       role: "Software Engineer",
@@ -59,7 +61,7 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
       degree: "MS in Computer Science",
       school: "Rochester Institute of Technology",
       location: "Rochester, NY, USA",
-      date: "Aug 2022 - Aug 2025",
+      date: "Aug 2022 - Dec 2025",
     },
     {
       degree: "BS in Electronics and Computer Engineering",
@@ -69,6 +71,20 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     },
   ],
   projects: [
+    {
+      title: "Racing Car Reinforcement Learning",
+      description: "Autonomous cars learning to navigate a race track using neuroevolution (Neural Networks + Genetic Algorithms). Features real-time physics simulation and 5-sensor raycasting.",
+      image: "/racing-rl.png", 
+      link: "https://github.com/Anikhet/pytorch-tutorial/tree/main/racing_car_rl",
+      tags: ["Python", "PyTorch", "Pygame", "Genetic Algorithms", "Reinforcement Learning"],
+    },
+    {
+      title: "Red Rover",
+      description: "AI-driven 'Reddit Operating System' for automated engagement and SEO. Scaled brand presence using AI agents to drive organic traffic and manage reputation.",
+      image: "/redrover.png", 
+      link: "https://app.tryredrover.com/metrics",
+      tags: ["AI Agents", "SEO", "Automation", "Reddit API", "Next.js"],
+    },
     {
       title: "Discord Knowledge Bot",
       description: "Production-grade Q&A Discord bot using RAG with GPT-4o and OpenAI embeddings.",
@@ -140,5 +156,11 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     "CI/CD",
     "Jest",
     "Playwright",
+  ],
+  hobbies: [
+    { name: "Visual Astronomy", icon: "Telescope" },
+    { name: "Music Production", icon: "Music" },
+    { name: "Video Games", icon: "Gamepad2" },
+    { name: "Competitive Programming", icon: "Trophy" },
   ],
 };

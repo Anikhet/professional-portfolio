@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 240 5% 6%; /* #0f0f10 - Soft Midnight Graphite */
-    --foreground: 0 0% 100%;
+    --background: 60 5% 96%; /* #f5f5f4 - Warm Paper / Stone 100 */
+    --foreground: 240 10% 3.9%; /* #09090b - Zinc 950 */
     --cyan: 180 100% 50%;
     --purple: 270 100% 60%;
     --green: 142 76% 36%;
