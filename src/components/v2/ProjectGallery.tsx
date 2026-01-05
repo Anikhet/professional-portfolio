@@ -19,6 +19,9 @@ export function ProjectGallery() {
       {/* Background grid */}
       <div className="fixed inset-0 tech-grid-dense opacity-20 pointer-events-none" />
 
+      {/* Section transition at top */}
+      <div className="absolute top-0 left-0 right-0 h-32 pointer-events-none z-30" style={{ background: "linear-gradient(to bottom, rgb(24,24,27) 0%, transparent 100%)" }} />
+
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-6">
           {/* Section header */}
@@ -29,7 +32,7 @@ export function ProjectGallery() {
               <br />
               <span className="text-white">Works</span>
             </h2>
-            <div className="mt-8 w-px h-20 bg-cyan-500/50" />
+            <div className="mt-8 w-px h-20" style={{ background: "linear-gradient(to bottom, rgb(6,182,212) 0%, transparent 100%)" }} />
           </div>
 
           {/* Project cards */}
@@ -94,8 +97,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             }}
           />
 
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black/80 group-hover:bg-black/60 transition-opacity duration-500" />
+          {/* Dark overlay - fades from bottom for content readability */}
+          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500" />
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, black 0%, black 20%, transparent 60%)" }} />
 
           {/* Glitch effect lines on hover */}
           <motion.div

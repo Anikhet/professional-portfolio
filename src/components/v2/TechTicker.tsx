@@ -8,11 +8,9 @@ export function TechTicker() {
 
   return (
     <section className="py-16 bg-black overflow-hidden relative">
-      {/* Top border */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-neutral-800" />
-
-      {/* Bottom border */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-neutral-800" />
+      {/* Section transitions */}
+      <div className="absolute top-0 left-0 right-0 h-16 pointer-events-none z-20" style={{ background: "linear-gradient(to bottom, rgb(9,9,11) 0%, transparent 100%)" }} />
+      <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-20" style={{ background: "linear-gradient(to top, rgb(24,24,27) 0%, transparent 100%)" }} />
 
       {/* Section label */}
       <div className="max-w-6xl mx-auto px-4 md:px-20 mb-8">
@@ -67,9 +65,9 @@ export function TechTicker() {
         </motion.div>
       </div>
 
-      {/* Fade edges */}
-      <div className="absolute inset-y-0 left-0 w-32 bg-black/90 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-32 bg-black/90 pointer-events-none" />
+      {/* Fade edges - opacity mask */}
+      <div className="absolute inset-y-0 left-0 w-40 pointer-events-none" style={{ background: "linear-gradient(to right, black 0%, black 50%, transparent 100%)" }} />
+      <div className="absolute inset-y-0 right-0 w-40 pointer-events-none" style={{ background: "linear-gradient(to left, black 0%, black 50%, transparent 100%)" }} />
     </section>
   );
 }
