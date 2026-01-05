@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { portfolioData } from "@/data/portfolio";
 import { SplitText } from "@/components/ui/split-text";
 import { Reveal, LineReveal } from "@/components/ui/reveal";

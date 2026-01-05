@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { motion, useTransform, MotionValue } from "framer-motion";
 import { ReactNode } from "react";
 
 interface ScrollSectionProps {

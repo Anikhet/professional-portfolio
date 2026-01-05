@@ -6,14 +6,7 @@ import { portfolioData } from "@/data/portfolio";
 
 export function GravityTechStack() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsMobile(window.innerWidth < 768);
-    }
-  }, []);
 
   return (
     <div ref={containerRef} className="w-full h-full relative overflow-hidden bg-zinc-950">
@@ -31,7 +24,7 @@ function PhysicsCanvas() {
     const sceneRef = useRef<HTMLDivElement>(null);
     const engineRef = useRef<Matter.Engine>(null);
     
-    const [items, setItems] = useState<any[]>([]);
+    const [items, setItems] = useState<{body: Matter.Body, width: number, height: number, text: string}[]>([]);
     const [positions, setPositions] = useState<{[key: string]: {x: number, y: number, angle: number}}>({});
 
     useEffect(() => {
@@ -97,7 +90,7 @@ function PhysicsCanvas() {
         // Mouse interaction
         const mouse = Mouse.create(sceneRef.current);
         // Fix pixel sizing for retina displays
-        // @ts-ignore
+
         mouse.pixelRatio = window.devicePixelRatio || 1;
         
         const mouseConstraint = MouseConstraint.create(engine, {
@@ -117,7 +110,7 @@ function PhysicsCanvas() {
         const update = () => {
             if (!engineRef.current) return;
             
-            const newPositions: any = {};
+            const newPositions: Record<string, {x: number, y: number, angle: number}> = {};
             skillBodies.forEach(item => {
                 const { x, y } = item.body.position;
                 newPositions[item.text] = { x, y, angle: item.body.angle };
