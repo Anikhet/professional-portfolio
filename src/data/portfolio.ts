@@ -21,7 +21,7 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     {
       name: "LinkedIn",
       icon: Linkedin,
-      url: "https://linkedin.com/in/anikhet-mulky",
+      url: "https://www.linkedin.com/in/anikhetmulkyyy",
     },
     {
       name: "GitHub",
