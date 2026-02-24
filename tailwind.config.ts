@@ -51,6 +51,11 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        landing: {
+          bg: "hsl(var(--landing-bg))",
+          accent: "hsl(var(--landing-accent))",
+          muted: "hsl(var(--landing-muted))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -9,6 +9,22 @@
     --cyan: 180 100% 50%;
     --purple: 270 100% 60%;
     --green: 142 76% 36%;
+    /* Landing page palette */
+    --landing-bg: 6 78% 95%; /* #fbebeb - Pale pink */
+    --landing-accent: 0 72% 51%; /* #dc2626 - Bright red */
+    --landing-muted: 0 20% 45%; /* Subtle red/grey for secondary text */
+  }
+}
+
+@layer utilities {
+  .font-stolzl-book {
+    font-family: var(--font-stolzl-book), var(--font-sans), sans-serif;
+    font-weight: 400;
+  }
+
+  .font-stolzl-bold {
+    font-family: var(--font-stolzl-bold), var(--font-sans), sans-serif;
+    font-weight: 700;
   }
 }
 

@@ -5,6 +5,14 @@ export const portfolioData = {
     name: "Anikhet Mulky",
     role: "Software Engineer",
     tagline: "Startup Hustle Mindset. AI Core.",
+    /** Landing page hero display name (uppercase) */
+    heroName: "ANIKHET",
+    /** One-line description for landing hero */
+    heroDescription:
+      "ANIKHET MULKY IS A SOFTWARE ENGINEER WHO BRIDGES STARTUP HUSTLE WITH AI-DRIVEN PRODUCT DEVELOPMENT",
+    /** Footer CTA for landing page */
+    ctaLabel: "View Resume",
+    ctaUrl: "https://drive.google.com/file/d/1duRBvBZS3XMfqZCmkUbD-ZDUGmMAhIjk/view?usp=sharing",
     bio: `I'm a Software Engineer with a startup hustle mindset, currently building full-stack products with AI at the core. From migrating frontends to Next.js and integrating LLM APIs, to scaling backend architectures — I enjoy solving tough problems and shipping fast, reliable code.
 
 My experience spans scrappy startups to structured engineering teams, with a focus on modern web tech (Next.js, TypeScript, Go), automation, and cloud-native development (AWS). I’ve led projects involving lead scraping, AI-driven personalization, and data workflows that power real-world impact.
