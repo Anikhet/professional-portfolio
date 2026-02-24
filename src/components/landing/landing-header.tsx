@@ -23,7 +23,9 @@ export function LandingHeader({ name }: LandingHeaderProps) {
       <span className="font-stolzl-book text-base tracking-wide text-landing-accent md:text-[2rem] md:tracking-[0.02em]">
         {initials}
       </span>
-      <div className="h-3 w-3 rounded-full bg-landing-accent md:h-4 md:w-4" />
+      <div className="flex h-4 w-4 items-center justify-center rounded-full border border-landing-accent md:h-5 md:w-5">
+        <div className="h-1.5 w-1.5 rounded-full bg-landing-accent md:h-2 md:w-2" />
+      </div>
     </header>
   );
 }

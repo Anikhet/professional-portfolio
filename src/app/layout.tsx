@@ -30,7 +30,7 @@ const stolzlBold = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Anikhet's Portfolio Website",
+  title: "Anikhet Mulky",
   description: "Anikhet Mulky's Portfolio Website",
 };
 

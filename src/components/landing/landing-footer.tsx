@@ -26,6 +26,12 @@ export function LandingFooter({
   role,
   heroDescription,
 }: LandingFooterProps) {
+  const highlightPhrase = "AI-DRIVEN";
+  const hasHighlight = heroDescription.includes(highlightPhrase);
+  const [beforeHighlight, afterHighlight] = hasHighlight
+    ? heroDescription.split(highlightPhrase)
+    : [heroDescription, ""];
+
   return (
     <footer className="pointer-events-none fixed bottom-0 left-0 right-0 z-20 px-7 pb-7 md:px-12 md:pb-9">
       <div className="grid grid-cols-3 items-end gap-4">
@@ -49,11 +55,13 @@ export function LandingFooter({
         </div>
 
         <div className="mx-auto max-w-[46rem] text-center">
-          <p className="font-stolzl-book text-[0.75rem] uppercase leading-[1.2] text-landing-accent md:text-[1.25rem]">
+          <p className="font-stolzl-book text-[0.75rem] uppercase leading-[1.2] text-landing-muted md:text-[1.25rem]">
             {role}
           </p>
-          <p className="mt-1 font-stolzl-bold text-[0.75rem] uppercase leading-[1.2] tracking-tight text-landing-accent md:mt-2 md:text-[1.45rem]">
-            {heroDescription}
+          <p className="mt-1 font-stolzl-bold text-[0.75rem] uppercase leading-[1.2] tracking-tight text-landing-muted md:mt-2 md:text-[1.45rem]">
+            {beforeHighlight}
+            {hasHighlight ? <span className="text-landing-accent">{highlightPhrase}</span> : null}
+            {afterHighlight}
           </p>
         </div>
 

@@ -10,9 +10,10 @@
     --purple: 270 100% 60%;
     --green: 142 76% 36%;
     /* Landing page palette */
-    --landing-bg: 6 78% 95%; /* #fbebeb - Pale pink */
-    --landing-accent: 0 72% 51%; /* #dc2626 - Bright red */
-    --landing-muted: 0 20% 45%; /* Subtle red/grey for secondary text */
+    --landing-bg: 22 33% 88%; /* #E9DED5 - Premium warm background */
+    --landing-bg-alt: 24 29% 86%; /* Slightly deeper warm gradient stop */
+    --landing-accent: 0 58% 40%; /* #A12A2A - Premium red accent */
+    --landing-muted: 6 15% 38%; /* #6E5552 - Premium muted text */
   }
 }
 
@@ -25,6 +26,10 @@
   .font-stolzl-bold {
     font-family: var(--font-stolzl-bold), var(--font-sans), sans-serif;
     font-weight: 700;
+  }
+
+  .landing-canvas {
+    background: linear-gradient(180deg, hsl(var(--landing-bg)) 0%, hsl(var(--landing-bg-alt)) 100%);
   }
 }
 
