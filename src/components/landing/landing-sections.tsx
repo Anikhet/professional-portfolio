@@ -90,8 +90,14 @@ export function LandingSections({ profile, social, projects }: LandingSectionsPr
           trigger: rootRef.current,
           start: "top top",
           end: "+=150%",
-          scrub: 2,
+          scrub: 1.5,
           invalidateOnRefresh: true,
+          onLeave: () => {
+            gsap.set(overlay, { autoAlpha: 0, pointerEvents: "none" });
+          },
+          onEnterBack: () => {
+            gsap.set(overlay, { autoAlpha: 1, pointerEvents: "auto" });
+          },
         },
       });
 
@@ -143,6 +149,7 @@ export function LandingSections({ profile, social, projects }: LandingSectionsPr
 
   return (
     <main ref={rootRef} className="landing-canvas relative">
+      <div className="landing-canvas h-[150vh]" aria-hidden="true" />
       <LandingSwissStage
         name={profile.name}
         role={profile.role}

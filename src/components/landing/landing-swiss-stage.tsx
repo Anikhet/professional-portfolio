@@ -60,7 +60,7 @@ export function LandingSwissStage({
         const targets = gsap.utils.toArray<HTMLElement>("[data-swiss-slat]", stageRef.current ?? undefined);
         targets.forEach((target, index) => {
           const direction = index % 2 === 0 ? 1 : -1;
-          const rotation = window.matchMedia("(min-width: 1024px)").matches ? 0.45 : 0.35;
+          const rotation = window.matchMedia("(min-width: 1024px)").matches ? 1.2 : 0.8;
           gsap.fromTo(
             target,
             {
@@ -88,8 +88,8 @@ export function LandingSwissStage({
         });
       };
 
-      mm.add("(min-width: 1024px)", () => setupMotion(32, 16, 4));
-      mm.add("(max-width: 1023px)", () => setupMotion(18, 8, 2.5));
+      mm.add("(min-width: 1024px)", () => setupMotion(44, 28, 7));
+      mm.add("(max-width: 1023px)", () => setupMotion(26, 14, 4.5));
 
       return () => mm.revert();
     },

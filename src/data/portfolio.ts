@@ -9,15 +9,15 @@ export const portfolioData = {
     heroName: "ANIKHET",
     /** One-line description for landing hero */
     heroDescription:
-      "ANIKHET MULKY IS A SOFTWARE ENGINEER WHO BRIDGES STARTUP HUSTLE WITH AI-DRIVEN PRODUCT DEVELOPMENT",
+      "SOFTWARE ENGINEER BUILDING AI-POWERED PRODUCTS AT SCALE — FROM AUTONOMOUS AGENTS TO FULL-STACK PLATFORMS",
     /** Footer CTA for landing page */
     ctaLabel: "View Resume",
     ctaUrl: "https://drive.google.com/file/d/1duRBvBZS3XMfqZCmkUbD-ZDUGmMAhIjk/view?usp=sharing",
-    bio: `I'm a Software Engineer with a startup hustle mindset, currently building full-stack products with AI at the core. From migrating frontends to Next.js and integrating LLM APIs, to scaling backend architectures — I enjoy solving tough problems and shipping fast, reliable code.
+    bio: `Software Engineer based in Fremont, CA with a Master’s in Computer Science from RIT. Currently building AI agent products at Clover Labs — autonomous systems that drive distribution, pricing, and growth for businesses at scale.
 
-My experience spans scrappy startups to structured engineering teams, with a focus on modern web tech (Next.js, TypeScript, Go), automation, and cloud-native development (AWS). I’ve led projects involving lead scraping, AI-driven personalization, and data workflows that power real-world impact.
+My work spans the full stack: from architecting Next.js frontends and integrating LLM APIs, to scaling cloud-native backends on AWS. At Peeker AI I built deliverability infrastructure for cold email at scale. At BARC I worked on embedded systems at India’s premier atomic research facility.
 
-Currently pursuing my Master’s in Computer Science at RIT, I’m looking to join a team where I can push technical boundaries and learn from strong builders. Let’s connect if you're working on something cool — or want to jam about product, AI, video games, music (I've worked a ton with FL Studio) or engineering systems that scale or perhaps my current hobby - visual astronomy!`,
+When I’m not shipping code, I’m producing music in FL Studio, stargazing through a telescope, or gaming. Always down to talk AI, product, or systems that scale.`,
     avatar: "/avatar1.jpg",
   },
   social: [
@@ -29,7 +29,7 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     {
       name: "LinkedIn",
       icon: Linkedin,
-      url: "https://www.linkedin.com/in/anikhetmulkyyy",
+      url: "https://www.linkedin.com/in/anikhet-mulky",
     },
     {
       name: "GitHub",
@@ -95,42 +95,42 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     },
     {
       title: "Discord Knowledge Bot",
-      description: "Production-grade Q&A Discord bot using RAG with GPT-4o and OpenAI embeddings.",
+      description: "Production-grade Q&A bot for Discord using retrieval-augmented generation. Indexes channel history into vector embeddings via OpenAI, stores them in Supabase, and answers questions with GPT-4o grounded in real context.",
       image: "/discord-bot.png",
       link: "https://github.com/Anikhet",
       tags: ["Node.js", "GPT-4o", "Supabase", "RAG", "EC2"],
     },
     {
       title: "MicroCart",
-      description: "Microservices-based e-commerce platform with server-side rendering and scalable GraphQL APIs.",
+      description: "E-commerce platform built on a microservices architecture with server-side rendered storefronts and a unified GraphQL gateway. Each service is independently deployable via Docker and orchestrated with Kubernetes.",
       image: "/microcart.png",
       link: "https://github.com/Anikhet",
       tags: ["Next.js", "Node.js", "GraphQL", "Docker", "Kubernetes"],
     },
     {
-      title: "Apify Web Scraper",
-      description: "A powerful web scraper built with Apify.",
+      title: "Video Anomaly Detection",
+      description: "Undergraduate capstone detecting abnormal activity in surveillance footage using 3D CNNs and 2D Convolutional LSTMs. Trained on real-world video streams for temporal pattern recognition.",
       image: "/apify.png",
-      link: "https://peeker-apify.vercel.app/",
-      tags: ["Apify", "Web Scraping", "Node.js"],
+      link: "https://github.com/Anikhet/Smart-Detection-of-Abnormalities-in-Video-Footage",
+      tags: ["Python", "3D CNNs", "Conv-LSTM", "OpenCV"],
     },
     {
-      title: "Distance Visualizer",
-      description: "Visualizing distances using MapGL.",
+      title: "Vehicle Path Planning",
+      description: "Genetic algorithm simulation for autonomous vehicle path planning. Evolves optimal routes through obstacle-filled environments using fitness-based selection and crossover operators.",
       image: "/Map.png",
-      link: "https://map-wanderer-visualizer.vercel.app/",
-      tags: ["MapGL", "React", "Geolocation"],
+      link: "https://github.com/Anikhet/Vehicle-Path-Planning-Simulation-Using-Genetic-Algorithms",
+      tags: ["Python", "Genetic Algorithms", "Simulation"],
     },
     {
       title: "ROI Calculator",
-      description: "Calculate Return on Investment easily.",
+      description: "Interactive financial tool for calculating return on investment with dynamic charts, compound interest projections, and exportable breakdowns.",
       image: "/roi.png",
       link: "https://roi-calculator-kohl.vercel.app/",
       tags: ["React", "TypeScript", "Finance"],
     },
     {
       title: "AirBnb Clone",
-      description: "A full-stack clone of AirBnb.",
+      description: "Full-stack rental marketplace with search, booking, and host management. Features authentication, image uploads, and map-based property discovery.",
       image: "/airbnb.png",
       link: "https://roomie-three.vercel.app/",
       tags: ["Next.js", "MongoDB", "Tailwind"],
@@ -142,6 +142,7 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     "Python",
     "Java",
     "C++",
+    "Go",
     "SQL",
     "Node.js",
     "Express",
@@ -151,6 +152,7 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     "GraphQL",
     "Zustand",
     "Redux",
+    "Svelte",
     "TailwindCSS",
     "PostgreSQL",
     "MongoDB",

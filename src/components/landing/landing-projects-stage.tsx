@@ -228,11 +228,7 @@ export function LandingProjectsStage({ projects }: LandingProjectsStageProps) {
           ))}
         </div>
       </div>
-      <div className="px-5 pb-10 md:px-10">
-        <p className="font-stolzl-book text-[0.62rem] uppercase tracking-[0.22em] text-landing-muted md:text-[0.78rem]">
-          Scroll to traverse projects
-        </p>
-      </div>
+ 
     </section>
   );
 }
