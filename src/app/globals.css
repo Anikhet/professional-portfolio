@@ -30,27 +30,42 @@
   
   .border-manuscript {
     border-image-source: url('/images/manuscript_border.png');
-    border-image-slice: 15% 15% 15% 15% fill;
+    border-image-slice: 20% fill;
     border-image-repeat: stretch;
     border-style: solid;
     border-width: 40px;
   }
 
+  @media (min-width: 768px) {
+    .border-manuscript {
+      border-width: 60px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .border-manuscript {
+      border-width: 80px;
+    }
+  }
+
   .drop-cap {
     float: left;
-    font-size: 6rem;
-    line-height: 5rem;
-    padding: 0 0.5rem 0 0;
+    font-size: 5rem;
+    line-height: 4.5rem;
+    padding: 0 0.4rem 0 0;
     font-family: var(--font-uncial);
     color: theme('colors.ink.blue');
-    position: relative;
-    text-shadow: 2px 2px 0px theme('colors.gold.DEFAULT');
+    text-shadow: 2px 2px 0px theme('colors.gold.dark');
   }
 
   .rubric {
     color: theme('colors.ink.red');
     font-weight: bold;
     font-size: 1.1em;
+  }
+  
+  .manuscript-inner-frame {
+    padding: 0.5rem;
   }
 }
 

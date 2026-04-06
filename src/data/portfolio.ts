@@ -4,20 +4,26 @@ export const portfolioData = {
   profile: {
     name: "Anikhet Mulky",
     role: "Software Engineer",
-    tagline: "Startup Hustle Mindset. AI Core.",
+    tagline: "Building thoughtful systems with genuine curiosity.",
     /** Landing page hero display name (uppercase) */
     heroName: "ANIKHET",
     /** One-line description for landing hero */
     heroDescription:
-      "SOFTWARE ENGINEER BUILDING AI-POWERED PRODUCTS AT SCALE — FROM AUTONOMOUS AGENTS TO FULL-STACK PLATFORMS",
+      "SOFTWARE ENGINEER FOCUSED ON CRAFTING RELIABLE, SCALABLE FULL-STACK EXPERIENCES",
     /** Footer CTA for landing page */
     ctaLabel: "View Resume",
     ctaUrl: "https://drive.google.com/file/d/1duRBvBZS3XMfqZCmkUbD-ZDUGmMAhIjk/view?usp=sharing",
-    bio: `Software Engineer based in Fremont, CA with a Master’s in Computer Science from RIT. Currently building AI agent products at Clover Labs — autonomous systems that drive distribution, pricing, and growth for businesses at scale.
+    bio: `I am a Software Engineer based in Fremont, California, with a deep passion for building reliable and thoughtful tools.
 
-My work spans the full stack: from architecting Next.js frontends and integrating LLM APIs, to scaling cloud-native backends on AWS. At Peeker AI I built deliverability infrastructure for cold email at scale. At BARC I worked on embedded systems at India’s premier atomic research facility.
+My journey began with a simple fascination for how complex systems work under the hood. That curiosity eventually led me to pursue a Master's in Computer Science at RIT.
 
-When I’m not shipping code, I’m producing music in FL Studio, stargazing through a telescope, or gaming. Always down to talk AI, product, or systems that scale.`,
+Currently, I spend my days collaborating with the team at Clover Labs. We build AI agents designed to solve real-world distribution problems.
+
+I genuinely love the entire process of software creation. On any given week, I might be crafting clean Next.js interfaces, integrating LLMs, or wiring up the cloud infrastructure that keeps it all running smoothly.
+
+In the past, I tackled high-volume email deliverability at Peeker AI, and even spent time writing embedded code for India's atomic research facility (BARC).
+
+When the laptop finally closes, you can usually find me producing music in FL Studio, stargazing through my telescope, or just unwinding with a good game.`,
     avatar: "/avatar1.jpg",
   },
   social: [
