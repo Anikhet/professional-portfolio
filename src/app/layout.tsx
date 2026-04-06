@@ -1,37 +1,29 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { Uncial_Antiqua, IM_Fell_English, Pirata_One } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react"
 
-const playfair = Playfair_Display({
+const uncial = Uncial_Antiqua({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-serif",
+  variable: "--font-uncial",
 });
 
-const inter = Inter({
+const fellEnglish = IM_Fell_English({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-fell",
 });
 
-const jetbrains = JetBrains_Mono({
+const pirata = Pirata_One({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-mono",
-});
-
-const stolzlBook = localFont({
-  src: "./fonts/stolzl_book.ttf",
-  variable: "--font-stolzl-book",
-});
-
-const stolzlBold = localFont({
-  src: "./fonts/stolzl_bold.ttf",
-  variable: "--font-stolzl-bold",
+  variable: "--font-pirata",
 });
 
 export const metadata: Metadata = {
-  title: "Anikhet Mulky",
-  description: "Anikhet Mulky's Portfolio Website",
+  title: "Anikhet Mulky | Illuminated Portfolio",
+  description: "Anikhet Mulky's Medieval Manuscript Portfolio",
 };
 
 export default function RootLayout({
@@ -40,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${jetbrains.variable} ${stolzlBook.variable} ${stolzlBold.variable}`}>
-      <body className="font-sans antialiased text-zinc-900 bg-background">
+    <html lang="en" className={`${uncial.variable} ${fellEnglish.variable} ${pirata.variable}`}>
+      <body className="font-fell antialiased text-ink-black bg-parchment-light min-h-screen">
         {children}
         <Analytics />
       </body>

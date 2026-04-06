@@ -13,6 +13,21 @@ export default {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        parchment: {
+          light: "#f5e8c7",
+          DEFAULT: "#e8d8b0",
+          dark: "#d4b886",
+        },
+        ink: {
+          black: "#1a1a1a",
+          red: "#b32424",
+          blue: "#2c4c94",
+        },
+        gold: {
+          light: "#e5c56d",
+          DEFAULT: "#c9a03c",
+          dark: "#9c761e",
+        },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
@@ -22,40 +37,16 @@ export default {
           foreground: "hsl(var(--popover-foreground))",
         },
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#b32424",
+          foreground: "#f5e8c7",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "#2c4c94",
+          foreground: "#f5e8c7",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
-        },
-        landing: {
-          bg: "hsl(var(--landing-bg))",
-          accent: "hsl(var(--landing-accent))",
-          muted: "hsl(var(--landing-muted))",
-        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -79,6 +70,9 @@ export default {
         sans: ["var(--font-sans)", "sans-serif"],
         serif: ["var(--font-serif)", "serif"],
         mono: ["var(--font-mono)", "monospace"],
+        uncial: ["var(--font-uncial)", "serif"],
+        fell: ["var(--font-fell)", "serif"],
+        pirata: ["var(--font-pirata)", "serif"],
       },
     },
   },
