@@ -14,6 +14,8 @@
     --landing-bg-alt: 24 29% 86%; /* Slightly deeper warm gradient stop */
     --landing-accent: 0 58% 40%; /* #A12A2A - Premium red accent */
     --landing-muted: 6 15% 38%; /* #6E5552 - Premium muted text */
+    --landing-ink: 15 17% 14%; /* #2A211E - Dark rhythm-break ink */
+    --landing-paper: 33 36% 90%; /* #EFE7DD - Warm paper on dark/red */
   }
 }
 
@@ -28,8 +30,48 @@
     font-weight: 700;
   }
 
+  /* Space Grotesk — the K · Swiss Premium brand face */
+  .font-grotesk {
+    font-family: var(--font-grotesk), "Space Grotesk", var(--font-sans), sans-serif;
+    font-weight: 400;
+  }
+
+  .font-grotesk-medium {
+    font-family: var(--font-grotesk), "Space Grotesk", var(--font-sans), sans-serif;
+    font-weight: 500;
+  }
+
+  .font-grotesk-bold {
+    font-family: var(--font-grotesk), "Space Grotesk", var(--font-sans), sans-serif;
+    font-weight: 700;
+  }
+
   .landing-canvas {
     background: linear-gradient(180deg, hsl(var(--landing-bg)) 0%, hsl(var(--landing-bg-alt)) 100%);
+  }
+
+  /* Warm paper section washes (alternating direction for scroll rhythm) */
+  .landing-warm {
+    background: linear-gradient(180deg, hsl(var(--landing-bg)) 0%, hsl(var(--landing-bg-alt)) 100%);
+  }
+
+  .landing-warm-rev {
+    background: linear-gradient(180deg, hsl(var(--landing-bg-alt)) 0%, hsl(var(--landing-bg)) 100%);
+  }
+
+  /* Wireframe-style media placeholder with diagonal cross */
+  .landing-media {
+    background-color: hsl(var(--landing-bg-alt));
+    background-image:
+      linear-gradient(to top right, transparent calc(50% - 1px), hsl(var(--landing-muted) / 0.28) 50%, transparent calc(50% + 1px)),
+      linear-gradient(to top left, transparent calc(50% - 1px), hsl(var(--landing-muted) / 0.28) 50%, transparent calc(50% + 1px));
+  }
+
+  .landing-media-dark {
+    background-color: #221b18;
+    background-image:
+      linear-gradient(to top right, transparent calc(50% - 1px), hsl(var(--landing-paper) / 0.22) 50%, transparent calc(50% + 1px)),
+      linear-gradient(to top left, transparent calc(50% - 1px), hsl(var(--landing-paper) / 0.22) 50%, transparent calc(50% + 1px));
   }
 }
 
