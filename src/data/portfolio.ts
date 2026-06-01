@@ -19,6 +19,16 @@ My experience spans scrappy startups to structured engineering teams, with a foc
 
 Currently pursuing my Master’s in Computer Science at RIT, I’m looking to join a team where I can push technical boundaries and learn from strong builders. Let’s connect if you're working on something cool — or want to jam about product, AI, video games, music (I've worked a ton with FL Studio) or engineering systems that scale or perhaps my current hobby - visual astronomy!`,
     avatar: "/avatar1.jpg",
+    /** Location line used in the Swiss contact section */
+    location: "Rochester, NY · open to remote",
+    /** Editorial headline for the About section (highlight phrase rendered in accent) */
+    aboutHeadline:
+      "I build robust full-stack products with AI at the core — from neuroevolution race-cars to production agents.",
+    aboutHeadlineHighlight: "AI at the core",
+    aboutBody:
+      "From migrating frontends to Next.js to scaling backend architectures, I enjoy solving complex problems and shipping reliable code. Master's in CS from RIT — now looking to push technical boundaries with a team that ships.",
+    /** Closing line for the full-red contact section */
+    contactHeadline: "Let's build something worth shipping.",
   },
   social: [
     {
@@ -170,5 +180,11 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     { name: "Music Production", icon: "Music" },
     { name: "Video Games", icon: "Gamepad2" },
     { name: "Competitive Programming", icon: "Trophy" },
+  ],
+  games: [
+    { name: "Valorant", status: "Competitive" },
+    { name: "Deadlock", status: "Grinding" },
+    { name: "F1 25", status: "Sim Racing" },
+    { name: "Chained Together", status: "Co-op" },
   ],
 };

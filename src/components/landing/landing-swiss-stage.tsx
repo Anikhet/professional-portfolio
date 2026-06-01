@@ -101,14 +101,14 @@ export function LandingSwissStage({
       <div className="sticky top-0 grid h-screen grid-cols-12 grid-rows-12 px-5 py-5 md:px-10 md:py-8">
         <p
           data-swiss-slat
-          className="col-span-7 row-span-1 self-start font-stolzl-book text-[0.65rem] uppercase tracking-[0.18em] text-landing-muted md:col-span-4 md:text-[0.85rem]"
+          className="col-span-7 row-span-1 self-start font-grotesk text-[0.65rem] uppercase tracking-[0.18em] text-landing-muted md:col-span-4 md:text-[0.85rem]"
         >
           {role}
         </p>
 
         <div
           data-swiss-slat
-          className="col-span-5 col-start-8 row-span-1 row-start-1 justify-self-end text-right font-stolzl-book text-[0.65rem] uppercase tracking-[0.16em] text-landing-muted md:col-span-3 md:col-start-10 md:text-[0.85rem]"
+          className="col-span-5 col-start-8 row-span-1 row-start-1 justify-self-end text-right font-grotesk text-[0.65rem] uppercase tracking-[0.16em] text-landing-muted md:col-span-3 md:col-start-10 md:text-[0.85rem]"
         >
           {emailLink ? (
             <Link href={emailLink.url} className="hover:text-landing-accent">
@@ -125,28 +125,28 @@ export function LandingSwissStage({
 
         <h2
           data-swiss-slat
-          className="col-span-12 row-span-2 row-start-3 self-end font-stolzl-bold text-[2.5rem] uppercase leading-[0.88] tracking-[-0.03em] text-landing-accent sm:text-[3.5rem] md:col-span-7 md:row-start-3 md:text-[8.5rem]"
+          className="col-span-12 row-span-2 row-start-3 self-end font-grotesk-bold text-[2.5rem] uppercase leading-[0.88] tracking-[-0.03em] text-landing-accent sm:text-[3.5rem] md:col-span-7 md:row-start-3 md:text-[8.5rem]"
         >
           {name.split(" ")[0]}
         </h2>
 
         <h3
           data-swiss-slat
-          className="col-span-12 row-span-2 row-start-5 self-start justify-self-end text-right font-stolzl-bold text-[2.2rem] uppercase leading-[0.88] tracking-[-0.03em] text-landing-accent sm:text-[3.1rem] md:col-span-7 md:col-start-6 md:row-start-5 md:text-[7.6rem]"
+          className="col-span-12 row-span-2 row-start-5 self-start justify-self-end text-right font-grotesk-bold text-[2.2rem] uppercase leading-[0.88] tracking-[-0.03em] text-landing-accent sm:text-[3.1rem] md:col-span-7 md:col-start-6 md:row-start-5 md:text-[7.6rem]"
         >
           {name.split(" ").slice(1).join(" ") || role}
         </h3>
 
         <p
           data-swiss-slat
-          className="col-span-11 row-span-2 row-start-8 max-w-sm self-end font-stolzl-book text-[0.72rem] uppercase leading-[1.35] tracking-[0.08em] text-landing-muted md:col-span-4 md:row-start-8 md:max-w-md md:text-[0.9rem]"
+          className="col-span-11 row-span-2 row-start-8 max-w-sm self-end font-grotesk text-[0.72rem] uppercase leading-[1.35] tracking-[0.08em] text-landing-muted md:col-span-4 md:row-start-8 md:max-w-md md:text-[0.9rem]"
         >
           {descriptionLine}
         </p>
 
         <div
           data-swiss-slat
-          className="col-span-11 col-start-2 row-span-3 row-start-9 max-w-md self-start justify-self-end text-right font-stolzl-book text-[0.82rem] uppercase leading-[1.35] tracking-[0.07em] text-landing-muted md:col-span-5 md:col-start-8 md:row-start-8 md:text-[0.95rem]"
+          className="col-span-11 col-start-2 row-span-3 row-start-9 max-w-md self-start justify-self-end text-right font-grotesk text-[0.82rem] uppercase leading-[1.35] tracking-[0.07em] text-landing-muted md:col-span-5 md:col-start-8 md:row-start-8 md:text-[0.95rem]"
         >
           <p>{bioLines[0] ?? ""}</p>
           <p className="mt-2">{bioLines[1] ?? ""}</p>
@@ -154,14 +154,14 @@ export function LandingSwissStage({
 
         <p
           data-swiss-slat
-          className="col-span-4 row-span-1 row-start-12 self-end font-stolzl-book text-[0.62rem] uppercase tracking-[0.22em] text-landing-muted md:text-[0.8rem]"
+          className="col-span-4 row-span-1 row-start-12 self-end font-grotesk text-[0.62rem] uppercase tracking-[0.22em] text-landing-muted md:text-[0.8rem]"
         >
           Scroll
         </p>
 
         <p
           data-swiss-slat
-          className="col-span-4 col-start-9 row-span-1 row-start-12 self-end justify-self-end font-stolzl-book text-[0.62rem] uppercase tracking-[0.22em] text-landing-muted md:text-[0.8rem]"
+          className="col-span-4 col-start-9 row-span-1 row-start-12 self-end justify-self-end font-grotesk text-[0.62rem] uppercase tracking-[0.22em] text-landing-muted md:text-[0.8rem]"
         >
           {new Date().getFullYear()}
         </p>

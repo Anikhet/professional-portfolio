@@ -53,8 +53,11 @@ export default {
         },
         landing: {
           bg: "hsl(var(--landing-bg))",
+          bgAlt: "hsl(var(--landing-bg-alt))",
           accent: "hsl(var(--landing-accent))",
           muted: "hsl(var(--landing-muted))",
+          ink: "hsl(var(--landing-ink))",
+          paper: "hsl(var(--landing-paper))",
         },
       },
       borderRadius: {
@@ -79,6 +82,7 @@ export default {
         sans: ["var(--font-sans)", "sans-serif"],
         serif: ["var(--font-serif)", "serif"],
         mono: ["var(--font-mono)", "monospace"],
+        grotesk: ["var(--font-grotesk)", "Space Grotesk", "sans-serif"],
       },
     },
   },

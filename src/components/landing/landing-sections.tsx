@@ -4,17 +4,53 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { LandingFooter } from "@/components/landing/landing-footer";
 import { LandingHeader } from "@/components/landing/landing-header";
-import { LandingHero } from "@/components/landing/landing-hero";
-import { LandingProjectsStage } from "@/components/landing/landing-projects-stage";
 import { LandingSwissStage } from "@/components/landing/landing-swiss-stage";
+import { LandingAbout } from "@/components/landing/landing-about";
+import { LandingExperience } from "@/components/landing/landing-experience";
+import { LandingWork } from "@/components/landing/landing-work";
+import { LandingStack } from "@/components/landing/landing-stack";
+import { LandingOffDuty } from "@/components/landing/landing-offduty";
+import { LandingContact } from "@/components/landing/landing-contact";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 interface SocialLink {
   name: string;
   url: string;
+}
+
+interface ExperienceItem {
+  role: string;
+  company: string;
+  location: string;
+  date: string;
+  url?: string;
+}
+
+interface EducationItem {
+  degree: string;
+  school: string;
+  location: string;
+  date: string;
+}
+
+interface ProjectItem {
+  title: string;
+  description: string;
+  image?: string;
+  link?: string;
+  tags?: string[];
+}
+
+interface Hobby {
+  name: string;
+  icon: string;
+}
+
+interface Game {
+  name: string;
+  status: string;
 }
 
 interface LandingProfile {
@@ -25,20 +61,40 @@ interface LandingProfile {
   bio: string;
   ctaLabel?: string;
   ctaUrl?: string;
+  avatar?: string;
+  location: string;
+  aboutHeadline: string;
+  aboutHeadlineHighlight?: string;
+  aboutBody: string;
+  contactHeadline: string;
 }
 
 interface LandingSectionsProps {
   profile: LandingProfile;
   social: SocialLink[];
-  projects: Array<{
-    title: string;
-    description: string;
-    link?: string;
-    tags?: string[];
-  }>;
+  experience: ExperienceItem[];
+  education: EducationItem[];
+  projects: ProjectItem[];
+  skills: string[];
+  hobbies: Hobby[];
+  games: Game[];
 }
 
-export function LandingSections({ profile, social, projects }: LandingSectionsProps) {
+/**
+ * K · Swiss Premium — the full scroll story.
+ * Warm-paper hero (split-name reveal) → About → Experience → Selected Work →
+ * Stack → a dark Off-Duty break → a full-red Contact sign-off.
+ */
+export function LandingSections({
+  profile,
+  social,
+  experience,
+  education,
+  projects,
+  skills,
+  hobbies,
+  games,
+}: LandingSectionsProps) {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const splitTopRef = useRef<HTMLDivElement | null>(null);
@@ -46,8 +102,10 @@ export function LandingSections({ profile, social, projects }: LandingSectionsPr
   const splitWrapRef = useRef<HTMLDivElement | null>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  const emailLink = social.find((item) => item.name === "Email");
-  const linkedInLink = social.find((item) => item.name === "LinkedIn");
+  const emailLink = social.find((item) => item.name.toLowerCase() === "email");
+  const githubLink = social.find((item) => item.name.toLowerCase() === "github");
+  const linkedInLink = social.find((item) => item.name.toLowerCase() === "linkedin");
+  const email = (emailLink?.url ?? "mailto:am9559@rit.edu").replace(/^mailto:/, "");
 
   const heroName = useMemo(
     () => profile.heroName ?? profile.name.split(" ")[0]?.toUpperCase() ?? "ANIKHET",
@@ -106,28 +164,46 @@ export function LandingSections({ profile, social, projects }: LandingSectionsPr
     { scope: rootRef, dependencies: [prefersReducedMotion] }
   );
 
+  const story = (
+    <>
+      <LandingAbout
+        headline={profile.aboutHeadline}
+        highlight={profile.aboutHeadlineHighlight}
+        body={profile.aboutBody}
+        hobbies={hobbies}
+        avatar={profile.avatar}
+        prefersReducedMotion={prefersReducedMotion}
+      />
+      <LandingExperience
+        experience={experience}
+        education={education}
+        prefersReducedMotion={prefersReducedMotion}
+      />
+      <LandingWork
+        projects={projects}
+        total={projects.length}
+        allProjectsUrl={githubLink?.url}
+        prefersReducedMotion={prefersReducedMotion}
+      />
+      <LandingStack skills={skills} prefersReducedMotion={prefersReducedMotion} />
+      <LandingOffDuty games={games} hobbies={hobbies} prefersReducedMotion={prefersReducedMotion} />
+      <LandingContact
+        headline={profile.contactHeadline}
+        email={email}
+        location={profile.location}
+        github={githubLink?.url}
+        linkedin={linkedInLink?.url}
+        resumeUrl={profile.ctaUrl}
+        name={profile.name}
+        prefersReducedMotion={prefersReducedMotion}
+      />
+    </>
+  );
+
   if (prefersReducedMotion) {
     return (
       <main className="landing-canvas relative">
-        <section className="flex min-h-screen flex-col">
-          <LandingHeader name={profile.name} />
-          <LandingHero
-            heroName={heroName}
-            role={profile.role}
-            heroDescription={profile.heroDescription ?? ""}
-          />
-          <LandingFooter
-            primarySocial={{
-              name: linkedInLink?.name ?? "LinkedIn",
-              url: linkedInLink?.url ?? "https://www.linkedin.com/in/anikhetmulkyyy",
-            }}
-            emailUrl={emailLink?.url ?? "mailto:am9559@rit.edu"}
-            ctaLabel={profile.ctaLabel ?? "View Resume"}
-            ctaUrl={profile.ctaUrl ?? ""}
-            role={profile.role}
-            heroDescription={profile.heroDescription ?? ""}
-          />
-        </section>
+        <LandingHeader name={profile.name} />
         <LandingSwissStage
           name={profile.name}
           role={profile.role}
@@ -136,7 +212,7 @@ export function LandingSections({ profile, social, projects }: LandingSectionsPr
           social={social}
           prefersReducedMotion
         />
-        <LandingProjectsStage projects={projects} />
+        {story}
       </main>
     );
   }
@@ -150,24 +226,20 @@ export function LandingSections({ profile, social, projects }: LandingSectionsPr
         bio={profile.bio}
         social={social}
       />
-      <LandingProjectsStage projects={projects} />
+      {story}
 
       <div ref={overlayRef} className="pointer-events-none fixed inset-0 z-30">
-     
-
-
-
         <div ref={splitWrapRef} className="pointer-events-none absolute inset-0">
           <div
             ref={splitTopRef}
             className="landing-canvas absolute inset-0"
             style={{ clipPath: "inset(0 0 50% 0)" }}
           >
-               <div className="pointer-events-auto">
-          <LandingHeader name={profile.name} />
-        </div>
+            <div className="pointer-events-auto">
+              <LandingHeader name={profile.name} />
+            </div>
             <div className="flex h-full items-center justify-center px-6 text-center md:px-10">
-              <h1 className="font-stolzl-bold text-[6rem] uppercase leading-none tracking-[-0.02em] text-landing-accent sm:text-[7.5rem] md:max-w-[78vw] md:text-[12rem] lg:text-[15rem]">
+              <h1 className="font-grotesk-bold text-[6rem] uppercase leading-none tracking-[-0.02em] text-landing-accent sm:text-[7.5rem] md:max-w-[78vw] md:text-[12rem] lg:text-[15rem]">
                 {heroName}
               </h1>
             </div>
@@ -178,7 +250,7 @@ export function LandingSections({ profile, social, projects }: LandingSectionsPr
             style={{ clipPath: "inset(50% 0 0 0)" }}
           >
             <div className="flex h-full items-center justify-center px-6 text-center md:px-10">
-              <h1 className="font-stolzl-bold text-[6rem] uppercase leading-none tracking-[-0.02em] text-landing-accent sm:text-[7.5rem] md:max-w-[78vw] md:text-[12rem] lg:text-[14rem]">
+              <h1 className="font-grotesk-bold text-[6rem] uppercase leading-none tracking-[-0.02em] text-landing-accent sm:text-[7.5rem] md:max-w-[78vw] md:text-[12rem] lg:text-[14rem]">
                 {heroName}
               </h1>
             </div>

@@ -20,7 +20,7 @@ export function LandingHeader({ name }: LandingHeaderProps) {
 
   return (
     <header className="fixed left-0 right-0 top-0 z-20 flex items-center justify-between px-7 py-6 md:px-12 md:py-10">
-      <span className="font-stolzl-book text-base tracking-wide text-landing-accent md:text-[2rem] md:tracking-[0.02em]">
+      <span className="font-grotesk text-base tracking-wide text-landing-accent md:text-[2rem] md:tracking-[0.02em]">
         {initials}
       </span>
       <div className="flex h-4 w-4 items-center justify-center rounded-full border border-landing-accent md:h-5 md:w-5">
