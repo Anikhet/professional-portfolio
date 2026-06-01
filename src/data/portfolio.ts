@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, FileText } from "lucide-react";
+import { Github, Mail, FileText, Twitter, Music, PenLine } from "lucide-react";
 
 export const portfolioData = {
   profile: {
@@ -34,17 +34,27 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     {
       name: "Email",
       icon: Mail,
-      url: "mailto:am9559@rit.edu",
-    },
-    {
-      name: "LinkedIn",
-      icon: Linkedin,
-      url: "https://www.linkedin.com/in/anikhetmulkyyy",
+      url: "mailto:animulky@gmail.com",
     },
     {
       name: "GitHub",
       icon: Github,
       url: "https://github.com/Anikhet",
+    },
+    {
+      name: "X",
+      icon: Twitter,
+      url: "https://x.com/anikhetmulkyy",
+    },
+    {
+      name: "SoundCloud",
+      icon: Music,
+      url: "https://soundcloud.com/anikhetmulky",
+    },
+    {
+      name: "Medium",
+      icon: PenLine,
+      url: "https://medium.com/@animu",
     },
     {
       name: "Resume",

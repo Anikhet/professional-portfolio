@@ -104,8 +104,12 @@ export function LandingSections({
 
   const emailLink = social.find((item) => item.name.toLowerCase() === "email");
   const githubLink = social.find((item) => item.name.toLowerCase() === "github");
-  const linkedInLink = social.find((item) => item.name.toLowerCase() === "linkedin");
-  const email = (emailLink?.url ?? "mailto:am9559@rit.edu").replace(/^mailto:/, "");
+  const resumeLink = social.find((item) => item.name.toLowerCase() === "resume");
+  const email = (emailLink?.url ?? "mailto:animulky@gmail.com").replace(/^mailto:/, "");
+  // Everything except email + resume becomes the contact link row (GitHub, X, SoundCloud, Medium…)
+  const contactLinks = social.filter(
+    (item) => !["email", "resume"].includes(item.name.toLowerCase())
+  );
 
   const heroName = useMemo(
     () => profile.heroName ?? profile.name.split(" ")[0]?.toUpperCase() ?? "ANIKHET",
@@ -191,9 +195,8 @@ export function LandingSections({
         headline={profile.contactHeadline}
         email={email}
         location={profile.location}
-        github={githubLink?.url}
-        linkedin={linkedInLink?.url}
-        resumeUrl={profile.ctaUrl}
+        links={contactLinks}
+        resumeUrl={resumeLink?.url ?? profile.ctaUrl}
         name={profile.name}
         prefersReducedMotion={prefersReducedMotion}
       />

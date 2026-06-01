@@ -8,12 +8,16 @@ import { ScrollTrigger } from "gsap/all";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
+interface ContactLink {
+  name: string;
+  url: string;
+}
+
 interface LandingContactProps {
   headline: string;
   email: string;
   location: string;
-  github?: string;
-  linkedin?: string;
+  links?: ContactLink[];
   resumeUrl?: string;
   name: string;
   prefersReducedMotion?: boolean;
@@ -27,8 +31,7 @@ export function LandingContact({
   headline,
   email,
   location,
-  github,
-  linkedin,
+  links = [],
   resumeUrl,
   name,
   prefersReducedMotion = false,
@@ -85,16 +88,17 @@ export function LandingContact({
             {email}
           </Link>
           <div className="flex flex-wrap items-center gap-4 font-grotesk text-[0.72rem] uppercase tracking-[0.12em] md:text-[0.8rem]">
-            {github ? (
-              <Link href={github} target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-70">
-                GitHub ↗
+            {links.map((link) => (
+              <Link
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-opacity hover:opacity-70"
+              >
+                {link.name} ↗
               </Link>
-            ) : null}
-            {linkedin ? (
-              <Link href={linkedin} target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-70">
-                LinkedIn ↗
-              </Link>
-            ) : null}
+            ))}
             {resumeUrl ? (
               <Link
                 href={resumeUrl}

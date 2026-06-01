@@ -43,7 +43,7 @@ export function LandingSwissStage({
 }: LandingSwissStageProps) {
   const stageRef = useRef<HTMLDivElement | null>(null);
   const emailLink = social.find((entry) => entry.name.toLowerCase() === "email");
-  const linkedInLink = social.find((entry) => entry.name.toLowerCase() === "linkedin");
+  const githubLink = social.find((entry) => entry.name.toLowerCase() === "github");
   const bioLines = firstSentences(bio, 2);
   const descriptionLine = heroDescription
     .split(" ")
@@ -115,10 +115,10 @@ export function LandingSwissStage({
               Email
             </Link>
           ) : null}
-          {emailLink && linkedInLink ? <span className="mx-2 opacity-40">/</span> : null}
-          {linkedInLink ? (
-            <Link href={linkedInLink.url} className="hover:text-landing-accent">
-              LinkedIn
+          {emailLink && githubLink ? <span className="mx-2 opacity-40">/</span> : null}
+          {githubLink ? (
+            <Link href={githubLink.url} target="_blank" rel="noopener noreferrer" className="hover:text-landing-accent">
+              GitHub
             </Link>
           ) : null}
         </div>
