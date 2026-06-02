@@ -59,6 +59,12 @@ export default {
           ink: "hsl(var(--landing-ink))",
           paper: "hsl(var(--landing-paper))",
         },
+        wf: {
+          ink: "var(--wf-ink)",
+          paper: "var(--wf-paper)",
+          paper2: "var(--wf-paper2)",
+          accent: "var(--wf-accent)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -1,28 +1,30 @@
 import { portfolioData } from "@/data/portfolio";
-import { LandingSections } from "@/components/landing/landing-sections";
+import { WorkFirstGallery } from "@/components/gallery/work-first-gallery";
 
 export default function Home() {
-  const { profile, social, experience, education, projects, skills, hobbies, games } = portfolioData;
-
-  const socialLinks = social.map(({ name, url }) => ({ name, url }));
-  const projectCards = projects.map(({ title, description, image, link, tags }) => ({
-    title,
-    description,
-    image,
-    link,
-    tags,
-  }));
+  const { profile, social, projects, experience, skills, hobbies } = portfolioData;
 
   return (
-    <LandingSections
-      profile={profile}
-      social={socialLinks}
+    <WorkFirstGallery
+      profile={{
+        name: profile.name,
+        role: profile.role,
+        tagline: profile.tagline,
+        micro: profile.micro,
+        avatar: profile.avatar,
+      }}
+      location={profile.location}
+      projects={projects.map(({ title, description, image, link, tags }) => ({
+        title,
+        description,
+        image,
+        link,
+        tags,
+      }))}
       experience={experience}
-      education={education}
-      projects={projectCards}
       skills={skills}
       hobbies={hobbies}
-      games={games}
+      social={social.map(({ name, url }) => ({ name, url }))}
     />
   );
 }
