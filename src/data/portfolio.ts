@@ -5,6 +5,8 @@ export const portfolioData = {
     name: "Anikhet Mulky",
     role: "Software Engineer",
     tagline: "Startup Hustle Mindset. AI Core.",
+    /** Playful one-liner (his voice) for the gallery identity strip */
+    micro: "Currently floundering in the shallow waters of Software Engineering.",
     /** Landing page hero display name (uppercase) */
     heroName: "ANIKHET",
     /** One-line description for landing hero */
