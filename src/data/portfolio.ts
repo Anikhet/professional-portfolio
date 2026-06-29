@@ -1,4 +1,4 @@
-import { Github, Mail, FileText, Twitter, Music, PenLine } from "lucide-react";
+import { Github, Mail, FileText, Twitter, Music, PenLine, Linkedin } from "lucide-react";
 
 export const portfolioData = {
   profile: {
@@ -35,6 +35,11 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
       name: "Email",
       icon: Mail,
       url: "mailto:animulky@gmail.com",
+    },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      url: "https://www.linkedin.com/in/anikhet-mulky/",
     },
     {
       name: "GitHub",
@@ -162,6 +167,7 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     "Python",
     "Java",
     "C++",
+    "C",
     "SQL",
     "Node.js",
     "Express",
@@ -185,6 +191,12 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     "Jest",
     "Playwright",
   ],
+  /**
+   * Languages I've worked in but haven't touched recently — solid foundation,
+   * a quick brush-up away from daily fluency. Surfaced as a separate "also in
+   * the kit" tier so the primary stack reads as current.
+   */
+  familiarSkills: ["Java", "C++", "C"],
   hobbies: [
     { name: "Visual Astronomy", icon: "Telescope" },
     { name: "Music Production", icon: "Music" },
