@@ -9,11 +9,11 @@ export function Masthead({ name, strapline }: MastheadModel) {
     <div style={{ display: "flex", alignItems: "baseline", gap: 16, flexWrap: "wrap" }}>
       <h1
         className="ed-serif"
-        style={{ fontSize: "var(--ed-fs-name)", fontWeight: 700, lineHeight: 0.95, letterSpacing: "-0.5px", margin: 0 }}
+        style={{ fontSize: "var(--ed-fs-name)", fontWeight: 400, lineHeight: 1.2, letterSpacing: "-0.75px", margin: 0 }}
       >
         {name}
       </h1>
-      <div className="ed-meta" style={{ fontSize: "var(--ed-fs-cap)", letterSpacing: "4px" }}>
+      <div className="ed-meta" style={{ fontSize: "var(--ed-fs-meta)" }}>
         {strapline}
       </div>
     </div>

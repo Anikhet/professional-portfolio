@@ -6,7 +6,8 @@
  * media placeholder, and the small stroke icons. All are presentational and
  * stateless — they take only the data they render.
  */
-import type { CSSProperties, ReactNode } from "react";
+import type { CSSProperties, ComponentType, ReactNode } from "react";
+import { Telescope, Music4, Gamepad2, Trophy, type LucideProps } from "lucide-react";
 import type { LinkIconName, OffDutyIconName } from "@/types/editorial";
 
 /** The three cycled wobbly-corner classes (see globals.css). */
@@ -79,34 +80,12 @@ const STROKE = {
   strokeLinejoin: "round" as const,
 };
 
-/** Off-duty pursuit icons, keyed by `OffDutyIconName`. */
-const OFF_DUTY_PATHS: Record<OffDutyIconName, ReactNode> = {
-  telescope: (
-    <g {...STROKE}>
-      <path d="M3 13l9-3 2 4-9 3z" />
-      <path d="M14 10l4-1 1 4-4 1" />
-      <path d="M6 15l-2 4M11 14l1 5" />
-    </g>
-  ),
-  music: (
-    <g {...STROKE}>
-      <path d="M7 16V5l9-2v11" />
-      <circle cx="5" cy="16" r="2" />
-      <circle cx="14" cy="14" r="2" />
-    </g>
-  ),
-  game: (
-    <g {...STROKE}>
-      <rect x="3" y="8" width="16" height="8" rx="4" />
-      <path d="M7 11v2M6 12h2M14 12h.01M16 11h.01" />
-    </g>
-  ),
-  trophy: (
-    <g {...STROKE}>
-      <path d="M7 4h8v4a4 4 0 01-8 0z" />
-      <path d="M7 6H4v1a3 3 0 003 3M15 6h3v1a3 3 0 01-3 3M9 14h4M8 18h6M10 14v3" />
-    </g>
-  ),
+/** Off-duty pursuit icons, keyed by `OffDutyIconName` — crisp Lucide glyphs. */
+const OFF_DUTY_ICONS: Record<OffDutyIconName, ComponentType<LucideProps>> = {
+  telescope: Telescope,
+  music: Music4,
+  game: Gamepad2,
+  trophy: Trophy,
 };
 
 /** Link / contact icons, keyed by `LinkIconName`. */
@@ -141,10 +120,9 @@ const LINK_PATHS: Record<LinkIconName, ReactNode> = {
 
 /** Renders an off-duty pursuit icon. */
 export function OffDutyIcon({ name, size = 18 }: { name: OffDutyIconName; size?: number }) {
+  const Icon = OFF_DUTY_ICONS[name];
   return (
-    <svg width={size} height={size} viewBox="0 0 22 22" aria-hidden="true" style={{ flex: "0 0 auto" }}>
-      {OFF_DUTY_PATHS[name]}
-    </svg>
+    <Icon width={size} height={size} strokeWidth={1.6} aria-hidden="true" style={{ flex: "0 0 auto" }} />
   );
 }
 

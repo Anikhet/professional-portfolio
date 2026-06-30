@@ -101,16 +101,16 @@
   --ed-bar-strong: rgba(44, 39, 34, 0.22);
   --ed-bar-soft: rgba(44, 39, 34, 0.1);
   --ed-image-line: rgba(44, 39, 34, 0.28);
-  /* Font scale — bumped ~15% over the original sizes for screen readability.
-     Each step preserves the editorial hierarchy (badge < meta < body < title). */
-  --ed-fs-badge: 11px; /* was 9–9.5 */
-  --ed-fs-meta: 12px; /* was 10–10.5 small-caps labels */
-  --ed-fs-cap: 13.5px; /* was 11–12 captions, chips, section heads */
-  --ed-fs-body: 15.5px; /* was 13–13.5 reading text */
-  --ed-fs-role: 15px; /* was 13 role/blurb sub-text */
-  --ed-fs-title: 18px; /* was 15–16 company/project/nav titles */
-  --ed-fs-lead: 19px; /* was 17 off-duty list */
-  --ed-fs-name: 54px; /* was 48 nameplate */
+  /* Font scale — minimalist, matched to adrianlam.sh: a tight 5-step scale
+     (12 / 14 / 15 / 16 / 30px), 16px body, single 30px heading. */
+  --ed-fs-badge: 12px;
+  --ed-fs-meta: 14px;
+  --ed-fs-cap: 14px;
+  --ed-fs-body: 16px;
+  --ed-fs-role: 14px;
+  --ed-fs-title: 15px;
+  --ed-fs-lead: 16px;
+  --ed-fs-name: 30px;
   background: var(--ed-paper);
   color: var(--ed-ink);
   color-scheme: light;
@@ -140,8 +140,8 @@ html[data-editorial-theme="night"] .editorial {
 }
 .editorial .ed-meta {
   font-family: var(--font-space-mono), monospace;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  text-transform: none;
+  letter-spacing: normal;
   font-size: var(--ed-fs-cap);
   opacity: 0.85;
 }
@@ -156,7 +156,7 @@ html[data-editorial-theme="night"] .editorial {
 }
 .editorial .ed-nav-link[aria-current="page"] {
   background: var(--ed-paper2);
-  font-weight: 700;
+  font-weight: 500;
 }
 .editorial .ed-nav-hint {
   font-family: var(--font-space-mono), monospace;
@@ -211,10 +211,9 @@ html[data-editorial-theme="night"] .editorial {
   color: var(--ed-accent) !important;
 }
 
-/* Justified bio body — newspaper lede set in the Kalam hand. */
+/* Bio body — left-aligned, no hyphenation. */
 .editorial .ed-body {
   font-family: var(--font-kalam), "Comic Sans MS", cursive;
-  hyphens: auto;
 }
 .editorial .ed-body p {
   margin: 0;
@@ -311,7 +310,7 @@ html[data-editorial-theme="night"] .editorial {
   gap: 7px;
   padding: 8px 14px;
   font-size: var(--ed-fs-title);
-  font-weight: 700;
+  font-weight: 400;
   background: var(--ed-paper2);
   color: var(--ed-ink);
   cursor: pointer;

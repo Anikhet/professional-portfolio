@@ -47,7 +47,7 @@ function CompanyName({ company, url, current }: { company: string; url?: string;
   );
 
   return (
-    <div style={{ fontWeight: 700, fontSize: "var(--ed-fs-title)", display: "flex", alignItems: "center", flexWrap: "wrap" }}>
+    <div style={{ fontWeight: 400, fontSize: "var(--ed-fs-title)", display: "flex", alignItems: "center", flexWrap: "wrap" }}>
       {url ? (
         <a
           href={url}
@@ -81,7 +81,7 @@ export function JobColumn({
       {bio.length > 0 && (
         <div
           className="ed-body"
-          style={{ fontSize: "var(--ed-fs-body)", lineHeight: 1.5, textAlign: "justify", marginBottom: 18 }}
+          style={{ fontSize: "var(--ed-fs-body)", lineHeight: 1.5, marginBottom: 18, opacity: 0.85 }}
         >
           {bio.map((para, i) => (
             <p key={para.slice(0, 24)} style={{ margin: i ? "8px 0 0" : 0 }}>
@@ -107,7 +107,7 @@ export function JobColumn({
 
       {schooling.map((entry) => (
         <div key={entry.school} style={{ marginBottom: 11 }}>
-          <div style={{ fontWeight: 700, fontSize: "var(--ed-fs-role)" }}>{entry.school}</div>
+          <div style={{ fontWeight: 400, fontSize: "var(--ed-fs-role)" }}>{entry.school}</div>
           <div style={{ fontSize: "var(--ed-fs-cap)", opacity: 0.8 }}>{entry.degree}</div>
         </div>
       ))}
