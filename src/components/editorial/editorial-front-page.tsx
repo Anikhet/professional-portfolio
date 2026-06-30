@@ -1,45 +1,25 @@
 /**
- * Editorial Front Page (Direction A) — a magazine-masthead portfolio layout.
- *
- * Composes the dateline, nameplate, three-column body (THE LEAD / ON THE JOB /
- * THE TOOLKIT), and the SELECTED WORK band from an `EditorialContent`
- * view-model. Purely presentational: it receives the fully-mapped model and
- * renders it, so it carries no data-fetching or business logic.
+ * Home page body — masthead lives in the shell; this renders the three-column
+ * editorial (THE LEAD portrait, ON THE JOB with the bio on top, THE TOOLKIT).
+ * Work, off-duty, and frames now have their own routes, so the home page stays
+ * a clean landing.
  */
 import type { EditorialContent } from "@/types/editorial";
-import { Dateline } from "@/components/editorial/dateline";
-import { Masthead } from "@/components/editorial/masthead";
+import { EditorialShell } from "@/components/editorial/editorial-shell";
 import { LeadColumn } from "@/components/editorial/lead-column";
 import { JobColumn } from "@/components/editorial/job-column";
 import { ToolkitColumn } from "@/components/editorial/toolkit-column";
-import { SelectedWork } from "@/components/editorial/selected-work";
 
 export function EditorialFrontPage({ content }: { content: EditorialContent }) {
-  const { dateline, masthead, lead, jobs, schooling, stack, offDuty, links, work } = content;
+  const { nav, dateline, masthead, lead, jobs, schooling, stack, links } = content;
 
   return (
-    <main style={{ minHeight: "100vh", background: "#d8d2c4", padding: "40px 20px" }}>
-      <div
-        className="editorial"
-        style={{
-          position: "relative",
-          maxWidth: 1320,
-          margin: "0 auto",
-          padding: "30px 40px 40px",
-          boxShadow: "0 20px 60px rgba(0,0,0,.18)",
-        }}
-      >
-        <Dateline {...dateline} />
-        <Masthead {...masthead} />
-
-        <div style={{ display: "flex", gap: 26 }}>
-          <LeadColumn {...lead} />
-          <JobColumn jobs={jobs} schooling={schooling} />
-          <ToolkitColumn stack={stack} offDuty={offDuty} links={links} />
-        </div>
-
-        <SelectedWork work={work} />
+    <EditorialShell nav={nav} dateline={dateline} masthead={masthead}>
+      <div style={{ display: "flex", gap: 30 }}>
+        <LeadColumn {...lead} />
+        <JobColumn jobs={jobs} schooling={schooling} bio={lead.body} />
+        <ToolkitColumn stack={stack} links={links} />
       </div>
-    </main>
+    </EditorialShell>
   );
 }

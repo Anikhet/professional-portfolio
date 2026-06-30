@@ -1,19 +1,19 @@
 /**
  * "THE TOOLKIT" column — the tech-stack chips (split into a "CORE" tier of the
- * current daily stack and a "FAMILIAR" tier of brushing-up languages), an OFF
- * DUTY list, and a row of sketch-button contact links.
+ * current daily stack and a "FAMILIAR" tier of brushing-up languages) and a row
+ * of sketch-button contact links. (OFF DUTY lives in the sidebar.)
  */
 import type { CSSProperties } from "react";
-import type { LinkEntry, OffDutyEntry, Stack } from "@/types/editorial";
-import { EditorialColumn, SectionRule } from "@/components/editorial/editorial-column";
-import { Chip, LinkIcon, OffDutyIcon, radiusClass } from "@/components/editorial/primitives";
+import type { LinkEntry, Stack } from "@/types/editorial";
+import { EditorialColumn } from "@/components/editorial/editorial-column";
+import { Chip, LinkIcon, radiusClass } from "@/components/editorial/primitives";
 
 /** A small-caps tier label (CORE / FAMILIAR) above a chip group. */
 function TierLabel({ children, style }: { children: string; style?: CSSProperties }) {
   return (
     <div
       className="ed-meta"
-      style={{ fontSize: 10, letterSpacing: "2px", marginBottom: 8, opacity: 0.75, ...style }}
+      style={{ fontSize: "var(--ed-fs-meta)", letterSpacing: "2px", marginBottom: 8, opacity: 0.75, ...style }}
     >
       {children}
     </div>
@@ -33,11 +33,9 @@ function ChipGroup({ skills, muted = false }: { skills: string[]; muted?: boolea
 
 export function ToolkitColumn({
   stack,
-  offDuty,
   links,
 }: {
   stack: Stack;
-  offDuty: OffDutyEntry[];
   links: LinkEntry[];
 }) {
   return (
@@ -52,17 +50,7 @@ export function ToolkitColumn({
         </>
       )}
 
-      <SectionRule style={{ margin: "18px 0 12px" }}>OFF DUTY</SectionRule>
-      {offDuty.map((entry) => (
-        <div
-          key={entry.label}
-          style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 9, fontSize: 14 }}
-        >
-          <OffDutyIcon name={entry.icon} /> {entry.label}
-        </div>
-      ))}
-
-      <div style={{ display: "flex", gap: 7, marginTop: 16, flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: 7, marginTop: 22, flexWrap: "wrap" }}>
         {links.map((link, i) => (
           <a
             key={link.label}
@@ -70,7 +58,7 @@ export function ToolkitColumn({
             target="_blank"
             rel="noopener noreferrer"
             className={`ed-sk ed-btn ${radiusClass(i)}`}
-            style={{ color: "inherit", textDecoration: "none" }}
+            style={{ textDecoration: "none" }}
           >
             <LinkIcon name={link.icon} />
             {link.label}

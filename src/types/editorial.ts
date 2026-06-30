@@ -9,9 +9,8 @@
 /** A single titled column heading in the three-column body. */
 export type ColumnTitle = "THE LEAD" | "ON THE JOB" | "THE TOOLKIT";
 
-/** Top dateline row — the small-caps spans under the masthead rule. */
+/** Top dateline row — the origin line under the masthead rule. */
 export interface Dateline {
-  publication: string;
   origin: string;
 }
 
@@ -72,9 +71,13 @@ export interface LinkEntry {
 /** A front-page "story" in the SELECTED WORK band. */
 export interface WorkStory {
   name: string;
+  /** Short description / dek shown under the headline. */
+  blurb: string;
   /** Cover image; falls back to a labeled placeholder when missing. */
   image: EditorialImage | null;
   tags: string[];
+  /** External project link (repo or live demo); absent when none. */
+  url?: string;
 }
 
 /** Icon keys for the off-duty list. */
@@ -92,8 +95,46 @@ export interface Stack {
   familiar: string[];
 }
 
+/**
+ * A masonry picture in the FRAMES gallery. `span` lets a tile take two rows so
+ * the grid reads as a varied masonry rather than a uniform grid.
+ */
+export interface Picture {
+  src: string;
+  alt: string;
+  /** Row span (1 = normal, 2 = tall). Drives the masonry rhythm. */
+  span: 1 | 2;
+  /** Short visible caption (e.g. "Saturn", "Waxing gibbous Moon"). */
+  caption: string;
+}
+
+/**
+ * A nav-rail entry. In-page items jump to a section anchor (`href` like
+ * "#work"); external items open a URL in a new tab. `hint` is the optional
+ * keyboard-shortcut chip shown on the right.
+ */
+export interface NavItem {
+  label: string;
+  href: string;
+  external?: boolean;
+  hint?: string;
+}
+
+/** A game in the OFF DUTY page's cover-art grid. */
+export interface Game {
+  name: string;
+  /** Short playing tag, e.g. "Competitive", "Grinding". */
+  status: string;
+  /** "Developer · Genre · Year" credit line shown under the title. */
+  meta: string;
+  /** Portrait cover art (~2:3). */
+  cover: EditorialImage;
+}
+
 /** The complete editorial front-page view-model. */
 export interface EditorialContent {
+  /** Left nav-rail items. */
+  nav: NavItem[];
   dateline: Dateline;
   masthead: Masthead;
   lead: Lead;
@@ -102,5 +143,12 @@ export interface EditorialContent {
   stack: Stack;
   offDuty: OffDutyEntry[];
   links: LinkEntry[];
+  /** The three featured front-page stories. */
   work: WorkStory[];
+  /** The full project catalog for the dedicated /work page. */
+  allWork: WorkStory[];
+  /** Games for the /off-duty page. */
+  games: Game[];
+  /** Masonry pictures for the /frames page. */
+  pictures: Picture[];
 }

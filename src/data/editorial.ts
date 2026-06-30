@@ -14,8 +14,10 @@ import type {
   EditorialImage,
   LinkEntry,
   LinkIconName,
+  NavItem,
   OffDutyEntry,
   OffDutyIconName,
+  Picture,
 } from "@/types/editorial";
 
 /** Maps a hobby's stored icon name to an editorial off-duty icon key. */
@@ -66,12 +68,55 @@ function toStack(): { core: string[]; familiar: string[] } {
   return { core, familiar };
 }
 
-/** Splits a multi-paragraph bio into trimmed, non-empty paragraphs. */
-function toParagraphs(bio: string): string[] {
-  return bio
-    .split("\n")
-    .map((line) => line.trim())
-    .filter(Boolean);
+/**
+ * FRAMES gallery — real visual-astronomy shots taken through a telescope, plus
+ * one travel portrait. Each tile carries a caption and a masonry row-span.
+ */
+const PICTURE_SOURCES: Picture[] = [
+  { src: "/astro-full-moon.jpg", alt: "Full Moon through a telescope", span: 2, caption: "Full Moon" },
+  { src: "/astro-saturn-rings.jpg", alt: "Saturn and its rings", span: 1, caption: "Saturn & its rings" },
+  { src: "/astro-jupiter.jpg", alt: "Jupiter with cloud bands", span: 1, caption: "Jupiter & cloud bands" },
+  { src: "/astro-moon-terminator.jpg", alt: "Moon craters along the terminator", span: 1, caption: "Lunar terminator" },
+  { src: "/astro-moon-craters-closeup.jpg", alt: "Close-up of lunar craters", span: 1, caption: "Crater close-up" },
+  { src: "/astro-saturn.jpg", alt: "Saturn through a telescope", span: 1, caption: "Saturn" },
+  { src: "/astro-star-cluster.jpg", alt: "Open star cluster through the eyepiece", span: 1, caption: "Star cluster" },
+  { src: "/astro-milky-way.jpg", alt: "Milky Way star field", span: 2, caption: "Milky Way" },
+  { src: "/astro-moon-half-disc.jpg", alt: "Half-disc of the Moon", span: 1, caption: "Waxing Moon" },
+  { src: "/astro-moon-disc.jpg", alt: "Bright lunar disc detail", span: 1, caption: "Lunar disc" },
+  { src: "/astro-saturn-portrait.jpg", alt: "Saturn, portrait framing", span: 1, caption: "Saturn, framed" },
+  { src: "/photo-sunset-boat.jpeg", alt: "Anikhet at an ocean sunset", span: 2, caption: "Off the clock" },
+];
+
+/** Builds the FRAMES masonry from picture sources that exist on disk. */
+function toPictures(): Picture[] {
+  return PICTURE_SOURCES.filter((p) => resolveImage(p.src, p.alt) !== null);
+}
+
+/** Maps one portfolio project onto a `WorkStory`. */
+type ProjectShape = (typeof portfolioData.projects)[number];
+function toWorkStory(p: ProjectShape) {
+  return {
+    name: p.title,
+    blurb: p.description,
+    image: resolveImage(p.image, p.title),
+    tags: p.tags.slice(0, 3),
+    url: p.link,
+  };
+}
+
+/** Builds the left nav-rail items — internal routes plus the GitHub link. */
+function toNav(): NavItem[] {
+  const github = portfolioData.social.find((s) => s.name === "GitHub");
+  const items: NavItem[] = [
+    { label: "home", href: "/", hint: "h" },
+    { label: "work", href: "/work", hint: "w" },
+    { label: "off duty", href: "/off-duty", hint: "o" },
+    { label: "frames", href: "/frames", hint: "f" },
+  ];
+  if (github) {
+    items.push({ label: "github", href: github.url, hint: "g", external: true });
+  }
+  return items;
 }
 
 /** Selects and orders the contact links shown in THE TOOLKIT column. */
@@ -94,11 +139,10 @@ function toOffDuty(): OffDutyEntry[] {
 /** Builds the full editorial view-model from `portfolioData`. */
 export function getEditorialContent(): EditorialContent {
   const { profile, experience, education, projects } = portfolioData;
-  const paragraphs = toParagraphs(profile.bio);
 
   return {
+    nav: toNav(),
     dateline: {
-      publication: "The Anikhet Times",
       origin: "Newark, CA · Est. 2025",
     },
     masthead: {
@@ -107,9 +151,11 @@ export function getEditorialContent(): EditorialContent {
     },
     lead: {
       tagline: profile.tagline,
-      portrait: resolveImage(profile.avatar, `${profile.name} portrait`),
-      // Cap at three paragraphs so THE LEAD column stays front-page length.
-      body: paragraphs.slice(0, 3),
+      portrait:
+        resolveImage(profile.editorialPortrait, `${profile.name} at an ocean sunset`) ??
+        resolveImage(profile.avatar, `${profile.name} portrait`),
+      // Two-paragraph bio (career arc, then studies + personal).
+      body: profile.editorialBio,
       micro: "Currently floundering in the shallow waters of Software Engineering.",
     },
     jobs: experience.map((e) => ({
@@ -125,11 +171,11 @@ export function getEditorialContent(): EditorialContent {
     stack: toStack(),
     offDuty: toOffDuty(),
     links: toLinks(),
-    // SELECTED WORK reads as three front-page stories.
-    work: projects.slice(0, 3).map((p) => ({
-      name: p.title,
-      image: resolveImage(p.image, p.title),
-      tags: p.tags.slice(0, 3),
-    })),
+    // Three featured stories for any front-page teaser.
+    work: projects.slice(0, 3).map(toWorkStory),
+    // Full catalog for the dedicated /work page.
+    allWork: projects.map(toWorkStory),
+    games: portfolioData.games,
+    pictures: toPictures(),
   };
 }

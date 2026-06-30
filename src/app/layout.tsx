@@ -81,6 +81,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} ${jetbrains.variable} ${spaceGrotesk.variable} ${stolzlBook.variable} ${stolzlBold.variable} ${libreCaslon.variable} ${kalam.variable} ${caveat.variable} ${spaceMono.variable}`}>
       <body className="font-sans antialiased text-zinc-900 bg-background">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("editorial-theme");if(!t){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"night":"day"}document.documentElement.dataset.editorialTheme=t==="night"?"night":"day"}catch(e){document.documentElement.dataset.editorialTheme="day"}`,
+          }}
+        />
         {children}
         <Analytics />
       </body>

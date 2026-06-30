@@ -1,21 +1,22 @@
-/** The top dateline row — publication and origin framed by newspaper rules. */
+/** The top dateline row — the origin line with the theme toggle on its right. */
 import type { Dateline as DatelineModel } from "@/types/editorial";
+import { ThemeToggle } from "@/components/editorial/theme-toggle";
 
-export function Dateline({ publication, origin }: DatelineModel) {
+export function Dateline({ origin }: DatelineModel) {
   return (
     <div
       className="ed-meta"
       style={{
         display: "flex",
-        justifyContent: "space-between",
-        borderTop: "3px double var(--ed-ink)",
-        borderBottom: "1px solid var(--ed-ink)",
+        justifyContent: "flex-end",
+        alignItems: "center",
+        gap: 14,
         padding: "6px 0",
-        fontSize: 11,
+        fontSize: "var(--ed-fs-cap)",
       }}
     >
-      <span>{publication}</span>
       <span>{origin}</span>
+      <ThemeToggle />
     </div>
   );
 }
