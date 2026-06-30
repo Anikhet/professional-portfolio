@@ -18,6 +18,7 @@ import type {
   OffDutyEntry,
   OffDutyIconName,
   Picture,
+  Stack,
 } from "@/types/editorial";
 
 /** Maps a hobby's stored icon name to an editorial off-duty icon key. */
@@ -52,20 +53,13 @@ function resolveImage(src: string, alt: string): EditorialImage | null {
   return existsSync(onDisk) ? { src, alt } : null;
 }
 
-/**
- * Splits the skills list into the two editorial tiers. `core` keeps the
- * current daily stack (capped so the column stays front-page length);
- * `familiar` holds the brushing-up languages, in their source order.
- */
-function toStack(): { core: string[]; familiar: string[] } {
-  const familiarSet = new Set<string>(portfolioData.familiarSkills);
-  const core: string[] = [];
-  const familiar: string[] = [];
-  for (const skill of portfolioData.skills) {
-    if (familiarSet.has(skill)) familiar.push(skill);
-    else if (core.length < 14) core.push(skill);
-  }
-  return { core, familiar };
+/** Maps the categorized toolkit straight from the data into the view-model. */
+function toStack(): Stack {
+  return portfolioData.toolkit.map((section) => ({
+    label: section.label,
+    skills: section.skills,
+    muted: "muted" in section ? section.muted : false,
+  }));
 }
 
 /**
@@ -84,7 +78,6 @@ const PICTURE_SOURCES: Picture[] = [
   { src: "/astro-moon-half-disc.jpg", alt: "Half-disc of the Moon", span: 1, caption: "Waxing Moon" },
   { src: "/astro-moon-disc.jpg", alt: "Bright lunar disc detail", span: 1, caption: "Lunar disc" },
   { src: "/astro-saturn-portrait.jpg", alt: "Saturn, portrait framing", span: 1, caption: "Saturn, framed" },
-  { src: "/photo-sunset-boat.jpeg", alt: "Anikhet at an ocean sunset", span: 2, caption: "Off the clock" },
 ];
 
 /** Builds the FRAMES masonry from picture sources that exist on disk. */
@@ -110,6 +103,7 @@ function toNav(): NavItem[] {
   const items: NavItem[] = [
     { label: "home", href: "/", hint: "h" },
     { label: "work", href: "/work", hint: "w" },
+    { label: "writing", href: "/writing", hint: "r" },
     { label: "off duty", href: "/off-duty", hint: "o" },
     { label: "frames", href: "/frames", hint: "f" },
   ];
@@ -177,5 +171,7 @@ export function getEditorialContent(): EditorialContent {
     allWork: projects.map(toWorkStory),
     games: portfolioData.games,
     pictures: toPictures(),
+    writing: portfolioData.writing,
+    writingProfileUrl: portfolioData.writingProfileUrl,
   };
 }

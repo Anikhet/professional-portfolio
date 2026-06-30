@@ -80,6 +80,14 @@ export interface WorkStory {
   url?: string;
 }
 
+/** A published article shown on the /writing page. */
+export interface WritingEntry {
+  title: string;
+  blurb: string;
+  tags: string[];
+  url: string;
+}
+
 /** Icon keys for the off-duty list. */
 export type OffDutyIconName = "telescope" | "music" | "game" | "trophy";
 
@@ -87,13 +95,17 @@ export type OffDutyIconName = "telescope" | "music" | "game" | "trophy";
 export type LinkIconName = "mail" | "link" | "git" | "doc";
 
 /**
- * The tech stack split into two tiers: `core` is the current daily stack,
- * `familiar` is languages worked in before but not recently (brushing-up).
+ * One labeled section of THE TOOLKIT (e.g. "AI & Agents", "Frontend").
+ * `muted` dims the chips — used for the brushing-up languages.
  */
-export interface Stack {
-  core: string[];
-  familiar: string[];
+export interface StackSection {
+  label: string;
+  skills: string[];
+  muted?: boolean;
 }
+
+/** The tech stack as an ordered list of labeled sections. */
+export type Stack = StackSection[];
 
 /**
  * A masonry picture in the FRAMES gallery. `span` lets a tile take two rows so
@@ -151,4 +163,8 @@ export interface EditorialContent {
   games: Game[];
   /** Masonry pictures for the /frames page. */
   pictures: Picture[];
+  /** Published articles for the /writing page. */
+  writing: WritingEntry[];
+  /** Link to the full Medium profile. */
+  writingProfileUrl: string;
 }

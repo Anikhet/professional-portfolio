@@ -33,12 +33,12 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     contactHeadline: "Let's build something worth shipping.",
     /**
      * Short editorial bio for the front page, kept separate from the longer
-     * landing-page `bio`. Two paragraphs: a career arc, then studies plus a
-     * personal turn. Written to read like a person talking, not a résumé.
+     * landing-page `bio`. One tight paragraph: niche + differentiator + a small
+     * personal note. Deliberately avoids repeating the job history listed right
+     * below it in ON THE JOB. First-person, conversational, recruiter-skimmable.
      */
     editorialBio: [
-      "Right now I'm a software engineer at Clover Labs, building full-stack products with AI in them. Before this I was a software and AI engineering co-op at Peeker AI in New York, and earlier I wrote software at the Bhabha Atomic Research Centre back in Mumbai. Lately most of my work is building agents that actually go do things, then building the evals that tell me whether they did.",
-      "I finished my MS in Computer Science at RIT. Off the clock I'm usually deep in a game (counting down to GTA 6) or out with a telescope. The astronomy started as a sidequest, and somewhere along the way I realized I was hooked on chasing Saturn's rings and the Moon's craters at 1 a.m.",
+      "Full-stack engineer who builds AI agents and the evals that prove they work. Anyone can demo an agent once; I care about measuring it at scale. Off the clock: video games and a telescope.",
     ],
   },
   social: [
@@ -116,6 +116,34 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
   ],
   projects: [
     {
+      title: "Drip",
+      description: "AI streetwear stylist — brain-dump your closet, pick a micro-tribe + occasion, and get a head-to-toe fit composed mostly from what you own. Two-surface monorepo: Next.js PWA + native SwiftUI iOS, with a GPT-5 + fal.ai generation pipeline on Trigger.dev.",
+      image: "/drip.png",
+      link: "https://github.com/Anikhet",
+      tags: ["Next.js", "SwiftUI", "GPT-5", "Trigger.dev", "Supabase"],
+    },
+    {
+      title: "Snoozy",
+      description: "Personalized bedtime stories read aloud in a parent's own cloned voice — even when they can't be there. Expo (React Native) app + Node/Express backend pairing an LLM story generator with voice-cloned TTS.",
+      image: "/snoozy.png",
+      link: "https://github.com/Anikhet",
+      tags: ["React Native", "Expo", "LLM", "Voice Cloning", "Node.js"],
+    },
+    {
+      title: "DevInterview.AI",
+      description: "AI mock-interview studio with a live VRM avatar interviewer — MediaPipe face tracking, Three.js + three-vrm rendering, and a WebAudio pipeline for real-time lip-sync and TTS.",
+      image: "/devinterview.png",
+      link: "https://github.com/Anikhet",
+      tags: ["React", "Three.js", "MediaPipe", "WebAudio", "TypeScript"],
+    },
+    {
+      title: "AstroAgent",
+      description: "Point your phone at the sky and an AI tells you what you're looking at. Full-stack app pairing real ephemeris data (JPL DE440) with an LLM that answers natural-language questions about the night sky.",
+      image: "/astroagent.png",
+      link: "https://www.tella.tv/video/astroagent-18yh",
+      tags: ["AI Agents", "Ephemeris", "Next.js", "Computer Vision"],
+    },
+    {
       title: "Racing Car Reinforcement Learning",
       description: "Autonomous cars learning to navigate a race track using neuroevolution (Neural Networks + Genetic Algorithms). Features real-time physics simulation and 5-sensor raycasting.",
       image: "/racing-rl.png", 
@@ -173,6 +201,12 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     },
   ],
   skills: [
+    "OpenAI Agents SDK",
+    "AI SDK (Vercel)",
+    "LangChain",
+    "LangGraph",
+    "Deep Agents",
+    "Google ADK",
     "JavaScript",
     "TypeScript",
     "Python",
@@ -187,7 +221,6 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     "Flask",
     "GraphQL",
     "Zustand",
-    "Redux",
     "TailwindCSS",
     "PostgreSQL",
     "MongoDB",
@@ -208,11 +241,61 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
    * the kit" tier so the primary stack reads as current.
    */
   familiarSkills: ["Java", "C++", "C"],
+  /**
+   * The editorial "THE TOOLKIT" column, grouped into labeled sections so the
+   * stack reads by domain instead of one undifferentiated wall of chips. AI &
+   * Agents leads because it's the current focus. `muted` dims a section (used
+   * for the brushing-up languages). The flat `skills` array above is kept
+   * intact for the v2 ticker/gravity components that consume it.
+   */
+  toolkit: [
+    {
+      label: "AI & Agents",
+      skills: ["OpenAI Agents SDK", "AI SDK (Vercel)", "LangChain", "LangGraph", "Deep Agents", "Google ADK"],
+    },
+    {
+      label: "Languages",
+      skills: ["TypeScript", "JavaScript", "Python", "SQL"],
+    },
+    {
+      label: "Frontend",
+      skills: ["React", "Next.js", "TailwindCSS", "Zustand", "GraphQL"],
+    },
+    {
+      label: "Backend & Data",
+      skills: ["Node.js", "Express", "Flask", "PostgreSQL", "MongoDB", "Supabase", "Redis"],
+    },
+    {
+      label: "Infra & Tooling",
+      skills: ["AWS", "Docker", "Kubernetes", "Terraform", "CI/CD", "Jest", "Playwright"],
+    },
+    {
+      label: "Brushing up",
+      skills: ["Java", "C++", "C"],
+      muted: true,
+    },
+  ],
   hobbies: [
     { name: "Visual Astronomy", icon: "Telescope" },
     { name: "Music Production", icon: "Music" },
     { name: "Video Games", icon: "Gamepad2" },
     { name: "Competitive Programming", icon: "Trophy" },
+  ],
+  /** Published writing (Medium), newest first. Surfaced on the /writing page. */
+  writingProfileUrl: "https://medium.com/@anikhetmulky",
+  writing: [
+    {
+      title: "Turning Discord into a Knowledge Engine: A Practical RAG-Powered Bot",
+      blurb: "How I built a production Q&A Discord bot with retrieval-augmented generation, GPT-4o, and OpenAI embeddings.",
+      tags: ["RAG", "GPT-4o", "Discord", "Node.js"],
+      url: "https://medium.com/@anikhetmulky/turning-discord-into-a-knowledge-engine-a-practical-rag-powered-bot-c4ae45b2ac48",
+    },
+    {
+      title: "How I Passed the AWS Certified Cloud Practitioner Exam in Just 24 Hours",
+      blurb: "A focused, no-fluff study plan for clearing the AWS Cloud Practitioner cert in a single day.",
+      tags: ["AWS", "Certification", "Cloud"],
+      url: "https://medium.com/@anikhetmulky/how-i-passed-the-aws-certified-cloud-practitioner-exam-in-just-24-hours-c3105182b99e",
+    },
   ],
   games: [
     {
