@@ -1,26 +1,26 @@
 /**
- * "THE TOOLKIT" column — the tech-stack chips (split into a "CORE" tier of the
- * current daily stack and a "FAMILIAR" tier of brushing-up languages) and a row
- * of sketch-button contact links. (OFF DUTY lives in the sidebar.)
+ * "THE TOOLKIT" column — the tech stack grouped into labeled sections (AI &
+ * Agents, Languages, Frontend, etc.), followed by a row of sketch-button
+ * contact links. (OFF DUTY lives in the sidebar.)
  */
 import type { CSSProperties } from "react";
 import type { LinkEntry, Stack } from "@/types/editorial";
 import { EditorialColumn } from "@/components/editorial/editorial-column";
 import { Chip, LinkIcon, radiusClass } from "@/components/editorial/primitives";
 
-/** A small-caps tier label (CORE / FAMILIAR) above a chip group. */
+/** A small-caps section label above a chip group. */
 function TierLabel({ children, style }: { children: string; style?: CSSProperties }) {
   return (
     <div
       className="ed-meta"
-      style={{ fontSize: "var(--ed-fs-meta)", letterSpacing: "2px", marginBottom: 8, opacity: 0.75, ...style }}
+      style={{ fontSize: "var(--ed-fs-meta)", letterSpacing: "1px", marginBottom: 8, opacity: 0.75, ...style }}
     >
       {children}
     </div>
   );
 }
 
-/** A wrapping row of chips for one stack tier; `muted` dims the row. */
+/** A wrapping row of chips for one stack section; `muted` dims the row. */
 function ChipGroup({ skills, muted = false }: { skills: string[]; muted?: boolean }) {
   return (
     <div className={muted ? "ed-chips-muted" : undefined} style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -40,15 +40,12 @@ export function ToolkitColumn({
 }) {
   return (
     <EditorialColumn title="THE TOOLKIT">
-      <TierLabel>CORE</TierLabel>
-      <ChipGroup skills={stack.core} />
-
-      {stack.familiar.length > 0 && (
-        <>
-          <TierLabel style={{ marginTop: 16 }}>FAMILIAR</TierLabel>
-          <ChipGroup skills={stack.familiar} muted />
-        </>
-      )}
+      {stack.map((section, i) => (
+        <div key={section.label}>
+          <TierLabel style={i ? { marginTop: 16 } : undefined}>{section.label}</TierLabel>
+          <ChipGroup skills={section.skills} muted={section.muted} />
+        </div>
+      ))}
 
       <div style={{ display: "flex", gap: 7, marginTop: 22, flexWrap: "wrap" }}>
         {links.map((link, i) => (
