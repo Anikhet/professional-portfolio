@@ -48,14 +48,9 @@ function GameCard({ game }: { game: Game }) {
         </figcaption>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8 }}>
-        <span className="ed-serif" style={{ fontWeight: 700, fontSize: "var(--ed-fs-title)", lineHeight: 1.2 }}>
-          {game.name}
-        </span>
-        <span className="ed-meta" style={{ fontSize: "var(--ed-fs-meta)", whiteSpace: "nowrap" }}>
-          {game.status}
-        </span>
-      </div>
+      <span className="ed-serif" style={{ fontWeight: 400, fontSize: "var(--ed-fs-title)", lineHeight: 1.2 }}>
+        {game.name}
+      </span>
     </figure>
   );
 }

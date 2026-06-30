@@ -1,18 +1,13 @@
 /**
  * "SELECTED WORK" band — three projects laid out as front-page stories, each
- * with a cover image, a clickable headline, the real description dek, and tag
- * chips.
- *
- * Each cover sits in a fixed-height box so images reserve their space and
- * don't shift the band as they load.
+ * with a clickable headline, the real description dek, and tag chips.
  */
-import Image from "next/image";
 import type { WorkStory } from "@/types/editorial";
-import { Chip, MediaPlaceholder } from "@/components/editorial/primitives";
+import { Chip } from "@/components/editorial/primitives";
 
 /** The project headline — a clickable external link with "↗" when a URL exists. */
 function WorkHeadline({ name, url }: { name: string; url?: string }) {
-  const headingStyle = { fontWeight: 700, fontSize: "var(--ed-fs-title)", margin: "8px 0 5px", lineHeight: 1.1 } as const;
+  const headingStyle = { fontWeight: 400, fontSize: 19, margin: "8px 0 5px", lineHeight: 1.15 } as const;
   if (!url) {
     return (
       <h3 className="ed-serif" style={headingStyle}>
@@ -38,27 +33,10 @@ function WorkHeadline({ name, url }: { name: string; url?: string }) {
   );
 }
 
-/** One project story card — cover, headline, dek, and tag chips. */
+/** One project story card — headline, dek, and tag chips (no cover image). */
 function WorkStoryCard({ story }: { story: WorkStory }) {
   return (
     <>
-      {story.image ? (
-        <div
-          className="ed-img ed-radius-0"
-          style={{ position: "relative", width: "100%", height: 66, overflow: "hidden" }}
-        >
-          <Image
-            src={story.image.src}
-            alt={story.image.alt}
-            fill
-            sizes="(max-width: 1024px) 30vw, 400px"
-            style={{ objectFit: "cover" }}
-          />
-        </div>
-      ) : (
-        <MediaPlaceholder height={66} radiusIndex={0} />
-      )}
-
       <WorkHeadline name={story.name} url={story.url} />
 
       <p className="ed-body" style={{ fontSize: "var(--ed-fs-role)", lineHeight: 1.45, margin: "0 0 8px" }}>
@@ -74,17 +52,15 @@ function WorkStoryCard({ story }: { story: WorkStory }) {
   );
 }
 
-/** The double-rule small-caps heading above a work layout. */
+/** The small-caps section heading above a work layout. */
 function WorkHeading({ children }: { children: string }) {
   return (
     <div
       className="ed-meta"
       style={{
-        borderTop: "3px double var(--ed-ink)",
-        paddingTop: 10,
         marginBottom: 16,
         fontSize: "var(--ed-fs-cap)",
-        letterSpacing: "3px",
+        letterSpacing: "1px",
       }}
     >
       {children}
@@ -128,7 +104,7 @@ export function SelectedWork({
 
   return (
     <>
-      <WorkHeading>{`${heading} ——————————————————————————`}</WorkHeading>
+      <WorkHeading>{heading}</WorkHeading>
 
       <div style={{ display: "flex", gap: 18 }}>
         {work.map((story, i) => (
