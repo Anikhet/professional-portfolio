@@ -85,6 +85,23 @@ function toPictures(): Picture[] {
   return PICTURE_SOURCES.filter((p) => resolveImage(p.src, p.alt) !== null);
 }
 
+/**
+ * Candid photos shown as thumbnails under THE LEAD portrait — a small "life
+ * off the clock" strip. Only images that exist on disk are surfaced.
+ */
+const LEAD_GALLERY_SOURCES = [
+  { src: "/photo-yosemite.jpg", alt: "Anikhet at Yosemite's Tunnel View" },
+  { src: "/photo-google-g.jpg", alt: "Anikhet at a Google event" },
+  { src: "/photo-luau.jpg", alt: "Anikhet at a torch-lit luau" },
+];
+
+/** Builds the LEAD thumbnail strip from gallery sources that exist on disk. */
+function toLeadGallery(): EditorialImage[] {
+  return LEAD_GALLERY_SOURCES.map((g) => resolveImage(g.src, g.alt)).filter(
+    (img): img is EditorialImage => img !== null,
+  );
+}
+
 /** Maps one portfolio project onto a `WorkStory`. */
 type ProjectShape = (typeof portfolioData.projects)[number];
 function toWorkStory(p: ProjectShape) {
@@ -148,6 +165,7 @@ export function getEditorialContent(): EditorialContent {
       portrait:
         resolveImage(profile.editorialPortrait, `${profile.name} at an ocean sunset`) ??
         resolveImage(profile.avatar, `${profile.name} portrait`),
+      gallery: toLeadGallery(),
       // Two-paragraph bio (career arc, then studies + personal).
       body: profile.editorialBio,
       micro: "Currently floundering in the shallow waters of Software Engineering.",

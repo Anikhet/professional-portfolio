@@ -32,6 +32,8 @@ export interface Lead {
   tagline: string;
   /** Portrait image; falls back to a labeled placeholder when missing. */
   portrait: EditorialImage | null;
+  /** Extra candid photos shown as thumbnails under the portrait. */
+  gallery: EditorialImage[];
   /** Body copy paragraphs (already split). */
   body: string[];
   /** The handwritten accent pull-quote. */
