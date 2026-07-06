@@ -94,6 +94,8 @@
   --ed-paper: #f7f2e8;
   --ed-paper2: #efe7d6;
   --ed-accent: #7a3a8c;
+  /* Text color that sits on top of the accent (badge/button fills). */
+  --ed-on-accent: #fff;
   --ed-soft: rgba(44, 39, 34, 0.08);
   --ed-muted: rgba(44, 39, 34, 0.55);
   --ed-line: rgba(44, 39, 34, 0.25);
@@ -121,7 +123,9 @@ html[data-editorial-theme="night"] .editorial {
   --ed-ink: #f0e8dc;
   --ed-paper: #171817;
   --ed-paper2: #24231f;
-  --ed-accent: #d99cff;
+  --ed-accent: #e8a87c;
+  /* Dark ink on the light terracotta accent — white would be too low-contrast. */
+  --ed-on-accent: #24160e;
   --ed-soft: rgba(240, 232, 220, 0.09);
   --ed-muted: rgba(240, 232, 220, 0.62);
   --ed-line: rgba(240, 232, 220, 0.24);
@@ -195,7 +199,7 @@ html[data-editorial-theme="night"] .editorial {
 .editorial .ed-theme-toggle:focus-visible {
   background: var(--ed-accent);
   border-color: var(--ed-accent);
-  color: #fff;
+  color: var(--ed-on-accent);
 }
 
 /* FRAMES gallery captions — small mono label over a soft bottom gradient. */
@@ -282,7 +286,7 @@ html[data-editorial-theme="night"] .editorial {
 .editorial .ed-chip:focus-visible,
 .editorial .ed-chip-accent {
   background: var(--ed-accent);
-  color: #fff;
+  color: var(--ed-on-accent);
   border-color: var(--ed-accent);
 }
 
@@ -334,7 +338,7 @@ html[data-editorial-theme="night"] .editorial {
 .editorial .ed-btn:hover,
 .editorial .ed-btn:focus-visible {
   background: var(--ed-accent);
-  color: #fff;
+  color: var(--ed-on-accent);
   border-color: var(--ed-accent);
   transform: translateY(-2px);
   box-shadow: 3px 4px 0 var(--ed-line-strong);

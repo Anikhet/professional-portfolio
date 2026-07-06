@@ -7,18 +7,20 @@ function isCurrentRole(when: string): boolean {
   return /present/i.test(when);
 }
 
-/** Small accent pill flagging the present role. */
+/** Bold accent pill flagging the present role. */
 function CurrentBadge() {
   return (
     <span
       className="ed-meta"
       style={{
         marginLeft: 8,
-        padding: "1px 7px",
+        padding: "2px 9px",
         fontSize: "var(--ed-fs-badge)",
+        fontWeight: 700,
         letterSpacing: "1.5px",
+        textTransform: "uppercase",
         background: "var(--ed-accent)",
-        color: "#fff",
+        color: "var(--ed-on-accent)",
         borderRadius: 40,
         verticalAlign: "middle",
         whiteSpace: "nowrap",
