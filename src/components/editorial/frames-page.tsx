@@ -13,8 +13,8 @@ export function FramesPage({ content }: { content: EditorialContent }) {
     <EditorialShell nav={nav} dateline={dateline} masthead={masthead}>
       <div style={{ marginTop: 28 }}>
         <div
-          className="ed-meta"
-          style={{ marginBottom: 18, fontSize: "var(--ed-fs-cap)", letterSpacing: "1px" }}
+          className="ed-heading"
+          style={{ marginBottom: 18, letterSpacing: "1px" }}
         >
           FRAMES
         </div>

@@ -28,7 +28,7 @@ export function SectionRule({
 }) {
   return (
     <div
-      className="ed-meta"
+      className="ed-heading"
       style={{
         borderBottom: "2px solid var(--ed-ink)",
         paddingBottom: 6,

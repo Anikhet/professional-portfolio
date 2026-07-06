@@ -132,8 +132,9 @@ html[data-editorial-theme="night"] .editorial {
   color-scheme: dark;
 }
 
+/* Big titles share the BIO body face (Kalam) rather than the serif. */
 .editorial .ed-serif {
-  font-family: var(--font-caslon), Georgia, serif;
+  font-family: var(--font-kalam), "Comic Sans MS", cursive;
 }
 .editorial .ed-hand {
   font-family: var(--font-caveat), cursive;
@@ -143,6 +144,16 @@ html[data-editorial-theme="night"] .editorial {
   text-transform: none;
   letter-spacing: normal;
   font-size: var(--ed-fs-cap);
+  opacity: 0.85;
+}
+/* Section headers (BIO, SELECTED WORK, ON THE JOB, …) — the BIO body face,
+   so the big labels match the titles instead of the mono fine print. */
+.editorial .ed-heading {
+  font-family: var(--font-kalam), "Comic Sans MS", cursive;
+  text-transform: none;
+  letter-spacing: normal;
+  /* Same size as the big titles so headers and titles read as one scale. */
+  font-size: 19px;
   opacity: 0.85;
 }
 

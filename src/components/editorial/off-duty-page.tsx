@@ -11,12 +11,11 @@ import { GamesGrid } from "@/components/editorial/games-grid";
 function Heading({ children, rule = true }: { children: string; rule?: boolean }) {
   return (
     <div
-      className="ed-meta"
+      className="ed-heading"
       style={{
         borderTop: rule ? "3px double var(--ed-ink)" : "none",
         paddingTop: rule ? 10 : 0,
         marginBottom: 18,
-        fontSize: "var(--ed-fs-cap)",
         letterSpacing: "1px",
       }}
     >

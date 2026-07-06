@@ -11,8 +11,8 @@ import { Chip } from "@/components/editorial/primitives";
 function Heading({ children }: { children: string }) {
   return (
     <div
-      className="ed-meta"
-      style={{ borderTop: "3px double var(--ed-ink)", paddingTop: 10, marginBottom: 20, fontSize: "var(--ed-fs-cap)", letterSpacing: "3px" }}
+      className="ed-heading"
+      style={{ borderTop: "3px double var(--ed-ink)", paddingTop: 10, marginBottom: 20, letterSpacing: "1px" }}
     >
       {children}
     </div>

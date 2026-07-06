@@ -56,10 +56,9 @@ function WorkStoryCard({ story }: { story: WorkStory }) {
 function WorkHeading({ children }: { children: string }) {
   return (
     <div
-      className="ed-meta"
+      className="ed-heading"
       style={{
         marginBottom: 16,
-        fontSize: "var(--ed-fs-cap)",
         letterSpacing: "1px",
       }}
     >
