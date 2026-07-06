@@ -251,7 +251,7 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
   toolkit: [
     {
       label: "AI & Agents",
-      skills: ["OpenAI Agents SDK", "AI SDK (Vercel)", "LangChain", "LangGraph", "Deep Agents", "Google ADK"],
+      skills: ["OpenAI Agents SDK", "AI SDK (Vercel)", "LangGraph"],
     },
     {
       label: "Languages",
