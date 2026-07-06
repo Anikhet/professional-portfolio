@@ -79,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${jetbrains.variable} ${spaceGrotesk.variable} ${stolzlBook.variable} ${stolzlBold.variable} ${libreCaslon.variable} ${kalam.variable} ${caveat.variable} ${spaceMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${playfair.variable} ${inter.variable} ${jetbrains.variable} ${spaceGrotesk.variable} ${stolzlBook.variable} ${stolzlBold.variable} ${libreCaslon.variable} ${kalam.variable} ${caveat.variable} ${spaceMono.variable}`}>
       <body className="font-sans antialiased text-zinc-900 bg-background">
         <script
           dangerouslySetInnerHTML={{
