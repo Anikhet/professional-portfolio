@@ -80,6 +80,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${playfair.variable} ${inter.variable} ${jetbrains.variable} ${spaceGrotesk.variable} ${stolzlBook.variable} ${stolzlBold.variable} ${libreCaslon.variable} ${kalam.variable} ${caveat.variable} ${spaceMono.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Yuyu+Short&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="font-sans antialiased text-zinc-900 bg-background">
         <script
           dangerouslySetInnerHTML={{
