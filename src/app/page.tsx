@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <PageShell>
-      <h1 className="text-5xl tracking-tight text-neutral-900" style={{ fontFamily: '"Yuyu Short", sans-serif' }}>
+      <h1 className="text-4xl tracking-tight text-neutral-900 sm:text-5xl" style={{ fontFamily: '"Yuyu Short", sans-serif' }}>
         {portfolioData.profile.name}
       </h1>
 
@@ -28,7 +28,7 @@ export default function Home() {
         I am most active on:
       </p>
 
-      <div className="mt-6 flex gap-6">
+      <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
         {SOCIAL_LINKS.map((link) => (
           <a
             key={link.label}
@@ -47,7 +47,7 @@ export default function Home() {
       <div className="mt-6 space-y-8">
         {experience.map((job, i) => (
           <div key={job.company}>
-            <h3 className="flex items-center gap-3 text-sm font-semibold text-neutral-900">
+            <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold text-neutral-900">
               {job.url ? (
                 <a
                   href={job.url}

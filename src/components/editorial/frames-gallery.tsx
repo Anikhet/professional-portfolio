@@ -21,14 +21,7 @@ export function FramesGallery({ pictures }: { pictures: Picture[] }) {
 
   return (
     <>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-          gridAutoRows: 150,
-          gap: 14,
-        }}
-      >
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] auto-rows-[130px] gap-3 sm:grid-cols-[repeat(auto-fill,minmax(220px,1fr))] sm:auto-rows-[150px] sm:gap-3.5">
         {pictures.map((pic, index) => (
           <figure
             key={pic.src}

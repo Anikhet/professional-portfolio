@@ -25,10 +25,7 @@ export default function OffDuty() {
         Games I Like
       </h2>
 
-      <div
-        className="mt-6 grid gap-6"
-        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))" }}
-      >
+      <div className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(96px,1fr))] gap-4 sm:grid-cols-[repeat(auto-fill,minmax(110px,1fr))] sm:gap-6">
         {games.map((game) => (
           <figure key={game.name} className="m-0 flex flex-col gap-2">
             <div className="relative aspect-[2/3] w-full overflow-hidden rounded-md border border-neutral-200 bg-neutral-100">
