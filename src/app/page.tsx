@@ -7,7 +7,7 @@ const SOCIAL_LINKS = [
   { label: "X", href: "https://x.com/anikhetmulkyy" },
   { label: "GitHub", href: "https://github.com/Anikhet" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/anikhet-mulky/" },
-  { label: "Medium", href: "https://medium.com/@animu" },
+  { label: "Medium", href: "https://medium.com/@anikhetmulky" },
   { label: "Resume", href: portfolioData.profile.ctaUrl },
 ];
 

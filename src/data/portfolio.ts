@@ -70,7 +70,7 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     {
       name: "Medium",
       icon: PenLine,
-      url: "https://medium.com/@animu",
+      url: "https://medium.com/@anikhetmulky",
     },
     {
       name: "Resume",
