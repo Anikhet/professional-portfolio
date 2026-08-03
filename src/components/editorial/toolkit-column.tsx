@@ -23,7 +23,10 @@ function TierLabel({ children, style }: { children: string; style?: CSSPropertie
 /** A wrapping row of chips for one stack section; `muted` dims the row. */
 function ChipGroup({ skills, muted = false }: { skills: string[]; muted?: boolean }) {
   return (
-    <div className={muted ? "ed-chips-muted" : undefined} style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+    <div
+      className={`ed-toolkit-chips${muted ? " ed-chips-muted" : ""}`}
+      style={{ display: "flex", flexWrap: "wrap", gap: 5 }}
+    >
       {skills.map((skill) => (
         <Chip key={skill}>{skill}</Chip>
       ))}
@@ -42,7 +45,7 @@ export function ToolkitColumn({
     <EditorialColumn title="THE TOOLKIT">
       {stack.map((section, i) => (
         <div key={section.label}>
-          <TierLabel style={i ? { marginTop: 16 } : undefined}>{section.label}</TierLabel>
+          <TierLabel style={i ? { marginTop: 12 } : undefined}>{section.label}</TierLabel>
           <ChipGroup skills={section.skills} muted={section.muted} />
         </div>
       ))}
