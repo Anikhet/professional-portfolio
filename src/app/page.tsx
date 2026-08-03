@@ -61,7 +61,11 @@ export default function Home() {
                 job.company
               )}
               {i === 0 && (
-                <span className="rounded-full bg-amber-200 px-3 py-0.5 text-xs font-semibold uppercase tracking-widest text-amber-900">
+                <span className="inline-flex items-center gap-1.5 text-xs text-neutral-500">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-neutral-400 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-neutral-600" />
+                  </span>
                   Current
                 </span>
               )}
