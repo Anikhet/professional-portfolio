@@ -13,11 +13,11 @@ export const portfolioData = {
     /** Footer CTA for landing page */
     ctaLabel: "View Resume",
     ctaUrl: "https://drive.google.com/drive/folders/1JWtDnstCsVwS5FhZeWkuXmb8gdrVrWgT?usp=sharing",
-    bio: `I'm a Software Engineer with a startup hustle mindset, currently building full-stack products with AI at the core. From migrating frontends to Next.js and integrating LLM APIs, to scaling backend architectures — I enjoy solving tough problems and shipping fast, reliable code.
+    bio: `I'm a Software Engineer with a startup hustle mindset, currently building full-stack products with AI at the core. From migrating frontends to Next.js and integrating LLM APIs, to scaling backend architectures, I enjoy solving tough problems and shipping fast, reliable code.
 
 My experience spans scrappy startups to structured engineering teams, with a focus on modern web tech (Next.js, TypeScript, Go), automation, and cloud-native development (AWS). I’ve led projects involving lead scraping, AI-driven personalization, and data workflows that power real-world impact.
 
-Currently pursuing my Master’s in Computer Science at RIT, I’m looking to join a team where I can push technical boundaries and learn from strong builders. Let’s connect if you're working on something cool — or want to jam about product, AI, video games, music (I've worked a ton with FL Studio) or engineering systems that scale or perhaps my current hobby - visual astronomy!`,
+Currently pursuing my Master’s in Computer Science at RIT, I’m looking to join a team where I can push technical boundaries and learn from strong builders. Let’s connect if you're working on something cool, or want to jam about product, AI, video games, music (I've worked a ton with FL Studio) or engineering systems that scale or perhaps my current hobby - visual astronomy!`,
     avatar: "/avatar1.jpg",
     /** Portrait for the editorial front page (a real photo, not the memoji). */
     editorialPortrait: "/photo-sunset-boat.jpeg",
@@ -25,10 +25,10 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     location: "Rochester, NY · open to remote",
     /** Editorial headline for the About section (highlight phrase rendered in accent) */
     aboutHeadline:
-      "I build robust full-stack products with AI at the core — from neuroevolution race-cars to production agents.",
+      "I build robust full-stack products with AI at the core, from neuroevolution race-cars to production agents.",
     aboutHeadlineHighlight: "AI at the core",
     aboutBody:
-      "From migrating frontends to Next.js to scaling backend architectures, I enjoy solving complex problems and shipping reliable code. Master's in CS from RIT — now looking to push technical boundaries with a team that ships.",
+      "From migrating frontends to Next.js to scaling backend architectures, I enjoy solving complex problems and shipping reliable code. Master's in CS from RIT, now looking to push technical boundaries with a team that ships.",
     /** Closing line for the full-red contact section */
     contactHeadline: "Let's build something worth shipping.",
     /**
@@ -117,42 +117,42 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
   projects: [
     {
       title: "Drip",
-      description: "AI streetwear stylist — brain-dump your closet, pick a micro-tribe + occasion, and get a head-to-toe fit composed mostly from what you own. Two-surface monorepo: Next.js PWA + native SwiftUI iOS, with a GPT-5 + fal.ai generation pipeline on Trigger.dev.",
+      description: "AI streetwear stylist: brain-dump your closet, pick a micro-tribe and occasion, get a head-to-toe fit built mostly from what you own.",
       image: "/drip.png",
       link: "https://github.com/Anikhet",
       tags: ["Next.js", "SwiftUI", "GPT-5", "Trigger.dev", "Supabase"],
     },
     {
       title: "Snoozy",
-      description: "Personalized bedtime stories read aloud in a parent's own cloned voice — even when they can't be there. Expo (React Native) app + Node/Express backend pairing an LLM story generator with voice-cloned TTS.",
+      description: "Personalized bedtime stories read aloud in a parent's own cloned voice, even when they can't be there.",
       image: "/snoozy.png",
       link: "https://github.com/Anikhet",
       tags: ["React Native", "Expo", "LLM", "Voice Cloning", "Node.js"],
     },
     {
       title: "DevInterview.AI",
-      description: "AI mock-interview studio with a live VRM avatar interviewer — MediaPipe face tracking, Three.js + three-vrm rendering, and a WebAudio pipeline for real-time lip-sync and TTS.",
+      description: "AI mock-interview studio with a live avatar interviewer that tracks your face and lip-syncs its replies in real time.",
       image: "/devinterview.png",
       link: "https://github.com/Anikhet",
       tags: ["React", "Three.js", "MediaPipe", "WebAudio", "TypeScript"],
     },
     {
       title: "AstroAgent",
-      description: "Point your phone at the sky and an AI tells you what you're looking at. Full-stack app pairing real ephemeris data (JPL DE440) with an LLM that answers natural-language questions about the night sky.",
+      description: "Point your phone at the sky and an AI tells you what you're looking at, using real ephemeris data to answer natural-language questions about the night sky.",
       image: "/astroagent.png",
       link: "https://www.tella.tv/video/astroagent-18yh",
       tags: ["AI Agents", "Ephemeris", "Next.js", "Computer Vision"],
     },
     {
       title: "Racing Car Reinforcement Learning",
-      description: "Autonomous cars learning to navigate a race track using neuroevolution (Neural Networks + Genetic Algorithms). Features real-time physics simulation and 5-sensor raycasting.",
+      description: "Autonomous cars learn to navigate a race track through neuroevolution, with real-time physics and 5-sensor raycasting.",
       image: "/racing-rl.png", 
       link: "https://github.com/Anikhet/pytorch-tutorial/tree/main/racing_car_rl",
       tags: ["Python", "PyTorch", "Pygame", "Genetic Algorithms", "Reinforcement Learning"],
     },
     {
       title: "Red Rover",
-      description: "AI-driven 'Reddit Operating System' for automated engagement and SEO. Scaled brand presence using AI agents to drive organic traffic and manage reputation.",
+      description: "AI-driven 'Reddit Operating System': agents that automate engagement, SEO, and reputation management to grow brand presence.",
       image: "/redrover.png", 
       link: "https://app.tryredrover.com/metrics",
       tags: ["AI Agents", "SEO", "Automation", "Reddit API", "Next.js"],
@@ -236,7 +236,7 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     "Playwright",
   ],
   /**
-   * Languages I've worked in but haven't touched recently — solid foundation,
+   * Languages I've worked in but haven't touched recently, solid foundation,
    * a quick brush-up away from daily fluency. Surfaced as a separate "also in
    * the kit" tier so the primary stack reads as current.
    */

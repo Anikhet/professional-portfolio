@@ -4,7 +4,7 @@
  * These split into two layers: the raw shapes Spotify's Web API returns
  * (`SpotifyTrack`, the two endpoint responses) and the small `NowPlaying`
  * view-model our route handler returns to the client. The client never sees
- * the raw API shape — only the normalized view-model.
+ * the raw API shape, only the normalized view-model.
  */
 
 /** A simplified Spotify track image. */
@@ -49,7 +49,7 @@ export interface NowPlaying {
   songUrl: string;
 }
 
-/** The empty/off state — nothing live and no recent history. */
+/** The empty/off state: nothing live and no recent history. */
 export interface NotPlaying {
   playing: false;
 }

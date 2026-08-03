@@ -1,6 +1,6 @@
 /**
  * Reusable full-screen image lightbox, shared by the FRAMES masonry and the
- * home-page LEAD photo grid. It owns only the *overlay* — the parent owns which
+ * home-page LEAD photo grid. It owns only the *overlay*; the parent owns which
  * image is open (via `activeIndex`) and passes the flat `items` list.
  *
  * Inside the overlay you can surf with the on-screen ‹ / › arrows or the

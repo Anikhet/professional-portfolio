@@ -4,7 +4,7 @@
  * These are the reusable building blocks shared across the editorial columns:
  * the wobbly sketch radii, tag chips, text-bar placeholders, the crossed
  * media placeholder, and the small stroke icons. All are presentational and
- * stateless — they take only the data they render.
+ * stateless; they take only the data they render.
  */
 import type { CSSProperties, ComponentType, ReactNode } from "react";
 import { Telescope, Music4, Gamepad2, Trophy, type LucideProps } from "lucide-react";
@@ -18,7 +18,7 @@ export function radiusClass(i: number): string {
   return RADIUS_CLASS[i % RADIUS_CLASS.length];
 }
 
-/** A tag chip — plain by default; fills with the accent colour on hover/focus. */
+/** A tag chip; plain by default, fills with the accent colour on hover/focus. */
 export function Chip({ children }: { children: ReactNode }) {
   return <span className="ed-chip">{children}</span>;
 }
@@ -49,7 +49,7 @@ export function TextBars({
 }
 
 /**
- * Crossed media placeholder — a bordered box with the diagonal "X" and an
+ * Crossed media placeholder: a bordered box with the diagonal "X" and an
  * optional centered caption. Height is fixed by the caller to reserve layout
  * space (avoids CLS).
  */
@@ -80,7 +80,7 @@ const STROKE = {
   strokeLinejoin: "round" as const,
 };
 
-/** Off-duty pursuit icons, keyed by `OffDutyIconName` — crisp Lucide glyphs. */
+/** Off-duty pursuit icons, keyed by `OffDutyIconName`; crisp Lucide glyphs. */
 const OFF_DUTY_ICONS: Record<OffDutyIconName, ComponentType<LucideProps>> = {
   telescope: Telescope,
   music: Music4,

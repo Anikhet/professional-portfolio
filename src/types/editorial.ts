@@ -9,7 +9,7 @@
 /** A single titled column heading in the three-column body. */
 export type ColumnTitle = "THE LEAD" | "ON THE JOB" | "THE TOOLKIT";
 
-/** Top dateline row — the origin line under the masthead rule. */
+/** Top dateline row: the origin line under the masthead rule. */
 export interface Dateline {
   origin: string;
 }
@@ -98,7 +98,7 @@ export type LinkIconName = "mail" | "link" | "git" | "doc";
 
 /**
  * One labeled section of THE TOOLKIT (e.g. "AI & Agents", "Frontend").
- * `muted` dims the chips — used for the brushing-up languages.
+ * `muted` dims the chips; used for the brushing-up languages.
  */
 export interface StackSection {
   label: string;

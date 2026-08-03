@@ -3,7 +3,7 @@
  *
  * Strategy: prefer the live currently-playing track; when nothing is live,
  * fall back to the most recently played track so the widget is never empty.
- * Only track *metadata* (title, artist, album, cover-art URL) is surfaced —
+ * Only track *metadata* (title, artist, album, cover-art URL) is surfaced;
  * no audio or lyrics.
  *
  * The pure mappers (`trackToNowPlaying`, `pickNowPlaying`) are separated from
@@ -33,7 +33,7 @@ export function trackToNowPlaying(track: SpotifyTrack, isLive: boolean): NowPlay
 /**
  * Chooses what to show from the two endpoint responses: a live track wins;
  * otherwise the recent track is used as a fallback; otherwise "not playing".
- * Pure — takes the already-fetched data so it can be tested in isolation.
+ * Pure; takes the already-fetched data so it can be tested in isolation.
  */
 export function pickNowPlaying(
   current: CurrentlyPlayingResponse | null,

@@ -6,7 +6,7 @@
  * Authorization Code flow's refresh step), then calls the player endpoints.
  *
  * Secrets (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN`)
- * live in env vars and are read only here, on the server — they never reach the
+ * live in env vars and are read only here, on the server; they never reach the
  * client. See the setup guide returned by the route's error path.
  */
 import type { CurrentlyPlayingResponse, RecentlyPlayedResponse } from "@/types/spotify";

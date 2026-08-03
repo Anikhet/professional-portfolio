@@ -3,7 +3,7 @@
  * view-model (`EditorialContent`).
  *
  * Keeping this transform in one place means the presentational components in
- * `@/components/editorial` depend only on the stable view-model shape — if the
+ * `@/components/editorial` depend only on the stable view-model shape; if the
  * underlying portfolio data changes, only this file needs to follow.
  */
 import { existsSync } from "node:fs";
@@ -63,7 +63,7 @@ function toStack(): Stack {
 }
 
 /**
- * FRAMES gallery — real visual-astronomy shots taken through a telescope, plus
+ * FRAMES gallery: real visual-astronomy shots taken through a telescope, plus
  * one travel portrait. Each tile carries a caption and a masonry row-span.
  */
 const PICTURE_SOURCES: Picture[] = [
@@ -86,7 +86,7 @@ function toPictures(): Picture[] {
 }
 
 /**
- * Candid photos shown as thumbnails under THE LEAD portrait — a small "life
+ * Candid photos shown as thumbnails under THE LEAD portrait, a small "life
  * off the clock" strip. Only images that exist on disk are surfaced.
  */
 const LEAD_GALLERY_SOURCES = [
@@ -114,7 +114,7 @@ function toWorkStory(p: ProjectShape) {
   };
 }
 
-/** Builds the left nav-rail items — internal routes plus the GitHub link. */
+/** Builds the left nav-rail items: internal routes plus the GitHub link. */
 function toNav(): NavItem[] {
   const github = portfolioData.social.find((s) => s.name === "GitHub");
   const items: NavItem[] = [
