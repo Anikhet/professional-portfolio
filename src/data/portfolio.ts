@@ -116,18 +116,32 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
   ],
   projects: [
     {
-      title: "Drip",
-      description: "AI streetwear stylist: brain-dump your closet, pick a micro-tribe and occasion, get a head-to-toe fit built mostly from what you own.",
-      image: "/drip.png",
-      link: "https://github.com/Anikhet",
-      tags: ["Next.js", "SwiftUI", "GPT-5", "Trigger.dev", "Supabase"],
+      title: "Echos",
+      description: "AI content engine that generates short-form video and auto-publishes it across social platforms, backed by scrapers and workflow automation.",
+      image: "/echos.png",
+      link: "https://tryechos.com/",
+      tags: ["Next.js", "Hono", "Supabase", "AI Video", "Automation"],
+    },
+    {
+      title: "Red Rover",
+      description: "AI-driven 'Reddit Operating System': agents that automate engagement, SEO, and reputation management to grow brand presence.",
+      image: "/redrover.png",
+      link: "https://tryredrover.com/",
+      tags: ["AI Agents", "SEO", "Automation", "Reddit API", "Next.js"],
     },
     {
       title: "Snoozy",
       description: "Personalized bedtime stories read aloud in a parent's own cloned voice, even when they can't be there.",
       image: "/snoozy.png",
-      link: "https://github.com/Anikhet",
+      link: "https://apps.apple.com/in/app/snoozy-ai-bedtime-stories/id6768956602",
       tags: ["React Native", "Expo", "LLM", "Voice Cloning", "Node.js"],
+    },
+    {
+      title: "Drip",
+      description: "AI streetwear stylist: brain-dump your closet, pick a micro-tribe and occasion, get a head-to-toe fit built mostly from what you own.",
+      image: "/drip.png",
+      link: "https://github.com/Anikhet",
+      tags: ["Next.js", "SwiftUI", "GPT-5", "Trigger.dev", "Supabase"],
     },
     {
       title: "DevInterview.AI",
@@ -146,16 +160,9 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     {
       title: "Racing Car Reinforcement Learning",
       description: "Autonomous cars learn to navigate a race track through neuroevolution, with real-time physics and 5-sensor raycasting.",
-      image: "/racing-rl.png", 
+      image: "/racing-rl.png",
       link: "https://github.com/Anikhet/pytorch-tutorial/tree/main/racing_car_rl",
       tags: ["Python", "PyTorch", "Pygame", "Genetic Algorithms", "Reinforcement Learning"],
-    },
-    {
-      title: "Red Rover",
-      description: "AI-driven 'Reddit Operating System': agents that automate engagement, SEO, and reputation management to grow brand presence.",
-      image: "/redrover.png", 
-      link: "https://app.tryredrover.com/metrics",
-      tags: ["AI Agents", "SEO", "Automation", "Reddit API", "Next.js"],
     },
     {
       title: "Discord Knowledge Bot",

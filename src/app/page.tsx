@@ -88,7 +88,21 @@ export default function Home() {
         {PROJECTS.slice(0, 3).map((project) => (
           <div key={project.title}>
             <h3 className="text-sm font-semibold text-neutral-900">
-              {project.title}
+              {project.href ? (
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-neutral-300 underline-offset-4 hover:text-blue-600"
+                >
+                  {project.title}
+                  <span aria-hidden="true" className="ml-1 text-xs text-neutral-400 no-underline">
+                    ↗
+                  </span>
+                </a>
+              ) : (
+                project.title
+              )}
             </h3>
             <p className="mt-1 text-sm leading-6 text-neutral-600">
               {project.description}

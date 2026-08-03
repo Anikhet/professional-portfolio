@@ -26,6 +26,9 @@ export default function ProjectCard({ project }: { project: Project }) {
             className="hover:text-blue-600"
           >
             {project.title}
+            <span aria-hidden="true" className="ml-1 text-xs text-neutral-400">
+              ↗
+            </span>
           </a>
         ) : (
           project.title
