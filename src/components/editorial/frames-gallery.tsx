@@ -4,7 +4,7 @@
  * `Lightbox` overlay so cover-cropped thumbnails can be seen whole.
  *
  * Kept as a client component (it owns the open-index state) and fed `pictures`
- * as a prop from the server-rendered FramesPage — no data fetching happens here.
+ * as a prop from the server-rendered FramesPage; no data fetching happens here.
  */
 "use client";
 
@@ -32,30 +32,15 @@ export function FramesGallery({ pictures }: { pictures: Picture[] }) {
         {pictures.map((pic, index) => (
           <figure
             key={pic.src}
-            className="ed-radius-2 ed-frame"
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              gridRow: `span ${pic.span}`,
-              background: "var(--ed-paper2)",
-              margin: 0,
-              cursor: "zoom-in",
-            }}
+            className="relative m-0 overflow-hidden rounded-md border border-neutral-200 bg-neutral-100"
+            style={{ gridRow: `span ${pic.span}`, cursor: "zoom-in" }}
           >
             <button
               type="button"
               onClick={() => setActiveIndex(index)}
               aria-label={`Open ${pic.caption}`}
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                padding: 0,
-                border: "none",
-                background: "transparent",
-                cursor: "zoom-in",
-              }}
+              className="absolute inset-0 h-full w-full border-none bg-transparent p-0"
+              style={{ cursor: "zoom-in" }}
             >
               <Image
                 src={pic.src}
@@ -65,7 +50,9 @@ export function FramesGallery({ pictures }: { pictures: Picture[] }) {
                 style={{ objectFit: "cover" }}
               />
             </button>
-            <figcaption className="ed-frame-caption mono">{pic.caption}</figcaption>
+            <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-2.5 pb-2 pt-4 font-mono text-[10px] tracking-wide text-neutral-100">
+              {pic.caption}
+            </figcaption>
           </figure>
         ))}
       </div>
