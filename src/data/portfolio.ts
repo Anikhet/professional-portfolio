@@ -60,7 +60,7 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     {
       name: "X",
       icon: Twitter,
-      url: "https://x.com/anikhetmulkyy",
+      url: "https://x.com/tehkinaa",
     },
     {
       name: "SoundCloud",

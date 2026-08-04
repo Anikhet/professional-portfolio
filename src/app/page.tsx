@@ -4,7 +4,7 @@ import { portfolioData } from "@/data/portfolio";
 import { PROJECTS } from "@/lib/projects";
 
 const SOCIAL_LINKS = [
-  { label: "X", href: "https://x.com/anikhetmulkyy" },
+  { label: "X", href: "https://x.com/tehkinaa" },
   { label: "GitHub", href: "https://github.com/Anikhet" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/anikhet-mulky/" },
   { label: "Medium", href: "https://medium.com/@anikhetmulky" },
