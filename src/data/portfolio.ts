@@ -38,7 +38,7 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
      * below it in ON THE JOB. First-person, conversational, recruiter-skimmable.
      */
     editorialBio: [
-      "Full-stack engineer who builds AI agents and the evals that prove they work. Anyone can demo an agent once; I care about measuring it at scale. Off the clock: video games and a telescope.",
+      "Full-stack engineer who ships. Hand me an ambiguous problem and I'll scope it, build it, and get it in front of users without needing to be managed through it. Mostly AI agents and the evals that prove they work. Off the clock: video games and a telescope.",
     ],
   },
   social: [
