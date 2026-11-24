@@ -1,9 +1,9 @@
 import Link from "next/link";
-import PageShell from "@/components/PageShell";
 import { portfolioData } from "@/data/portfolio";
 import { PROJECTS } from "@/lib/projects";
 
-const SOCIAL_LINKS = [
+const LINKS = [
+  { label: "Email", href: "mailto:animulky@gmail.com" },
   { label: "X", href: "https://x.com/tehkinaa" },
   { label: "GitHub", href: "https://github.com/Anikhet" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/anikhet-mulky/" },
@@ -11,112 +11,114 @@ const SOCIAL_LINKS = [
   { label: "Resume", href: portfolioData.profile.ctaUrl },
 ];
 
+const PAGES = [
+  { label: "Writing", href: "/writing" },
+  { label: "Frames", href: "/frames" },
+  { label: "Off duty", href: "/off-duty" },
+];
+
+const link =
+  "underline decoration-neutral-300 underline-offset-[3px] transition-colors hover:decoration-neutral-800 [@media(prefers-color-scheme:dark)]:decoration-neutral-600 [@media(prefers-color-scheme:dark)]:hover:decoration-neutral-200";
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="mt-14">
+      <h2 className="mb-5 text-neutral-400 [@media(prefers-color-scheme:dark)]:text-neutral-500">{title}</h2>
+      {children}
+    </section>
+  );
+}
+
+function Row({
+  title,
+  href,
+  meta,
+  sub,
+}: {
+  title: string;
+  href?: string;
+  meta?: string;
+  sub?: string;
+}) {
+  return (
+    <li className="flex items-baseline gap-4">
+      <div className="min-w-0 flex-1">
+        {href ? (
+          <a href={href} target="_blank" rel="noopener noreferrer" className={link}>
+            {title}
+          </a>
+        ) : (
+          <span>{title}</span>
+        )}
+        {sub && <p className="text-neutral-500 [@media(prefers-color-scheme:dark)]:text-neutral-400">{sub}</p>}
+      </div>
+      {meta && (
+        <span className="shrink-0 tabular-nums text-neutral-400 [@media(prefers-color-scheme:dark)]:text-neutral-500">{meta}</span>
+      )}
+    </li>
+  );
+}
+
+const year = (date: string) => {
+  const [start, end] = date.split(" - ").map((s) => s.match(/\d{4}/)?.[0] ?? s);
+  return start === end ? start : `${start} – ${end}`;
+};
+
 export default function Home() {
-  const experience = portfolioData.experience;
+  const { profile, experience, education } = portfolioData;
 
   return (
-    <PageShell>
-      <h1 className="text-4xl tracking-tight text-neutral-900 sm:text-5xl" style={{ fontFamily: '"Yuyu Short", sans-serif' }}>
-        {portfolioData.profile.name}
-      </h1>
+    <div className="min-h-screen bg-white text-neutral-900 antialiased [@media(prefers-color-scheme:dark)]:bg-neutral-950 [@media(prefers-color-scheme:dark)]:text-neutral-100">
+      <main className="mx-auto max-w-[34rem] px-6 py-20 text-[15px] leading-relaxed sm:py-28">
+        <h1 className="font-medium">{profile.name}</h1>
+        <p className="text-neutral-500 [@media(prefers-color-scheme:dark)]:text-neutral-400">{profile.role}, Rochester NY</p>
 
-      <p className="mt-8 text-sm leading-7 text-neutral-700">
-        {portfolioData.profile.editorialBio[0]}
-      </p>
+        <p className="mt-8">{profile.editorialBio[0]}</p>
 
-      <p className="mt-4 text-sm leading-7 text-neutral-700">
-        I am most active on:
-      </p>
+        <Section title="Work">
+          <ul className="space-y-4">
+            {experience.map((job) => (
+              <Row key={job.company} title={job.company} href={job.url} sub={job.role} meta={year(job.date)} />
+            ))}
+          </ul>
+        </Section>
 
-      <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-        {SOCIAL_LINKS.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            className="text-sm text-neutral-800 underline underline-offset-4 hover:text-neutral-600"
-          >
-            {link.label}
-          </a>
-        ))}
-      </div>
+        <Section title="Projects">
+          <ul className="space-y-4">
+            {PROJECTS.slice(0, 6).map((p) => (
+              <Row key={p.title} title={p.title} href={p.href} sub={p.description} />
+            ))}
+          </ul>
+          <Link href="/work" className={`mt-5 inline-block text-neutral-500 [@media(prefers-color-scheme:dark)]:text-neutral-400 ${link}`}>
+            All projects
+          </Link>
+        </Section>
 
-      <h2 className="mt-12 text-sm font-semibold text-neutral-900">
-        Work
-      </h2>
+        <Section title="Education">
+          <ul className="space-y-4">
+            {education.map((e) => (
+              <Row key={e.school} title={e.school} sub={e.degree} meta={year(e.date)} />
+            ))}
+          </ul>
+        </Section>
 
-      <div className="mt-6 space-y-8">
-        {experience.map((job, i) => (
-          <div key={job.company}>
-            <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold text-neutral-900">
-              {job.url ? (
-                <a
-                  href={job.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline decoration-neutral-300 underline-offset-4 hover:text-blue-600"
-                >
-                  {job.company}
-                </a>
-              ) : (
-                job.company
-              )}
-              {i === 0 && (
-                <span className="inline-flex items-center gap-1.5 text-xs text-neutral-500">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-neutral-400 opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-neutral-600" />
-                  </span>
-                  Current
-                </span>
-              )}
-            </h3>
-            <p className="mt-1 text-sm italic text-neutral-500">
-              {job.role}
-            </p>
-            <p className="mt-1 font-mono text-xs text-neutral-400">
-              {job.date}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      <h2 className="mt-12 text-sm font-semibold text-neutral-900">
-        Notable Work
-      </h2>
-
-      <div className="mt-6 space-y-8">
-        {PROJECTS.slice(0, 3).map((project) => (
-          <div key={project.title}>
-            <h3 className="text-sm font-semibold text-neutral-900">
-              {project.href ? (
-                <a
-                  href={project.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline decoration-neutral-300 underline-offset-4 hover:text-blue-600"
-                >
-                  {project.title}
-                  <span aria-hidden="true" className="ml-1 text-xs text-neutral-400 no-underline">
-                    ↗
-                  </span>
-                </a>
-              ) : (
-                project.title
-              )}
-            </h3>
-            <p className="mt-1 text-sm leading-6 text-neutral-600">
-              {project.description}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      <Link
-        href="/work"
-        className="mt-10 inline-block text-sm text-neutral-800 underline underline-offset-4 hover:text-neutral-600"
-      >
-        More Work
-      </Link>
-    </PageShell>
+        <Section title="Elsewhere">
+          <p className="flex flex-wrap gap-x-4 gap-y-1">
+            {LINKS.map((l) => (
+              <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className={link}>
+                {l.label}
+              </a>
+            ))}
+          </p>
+          <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-neutral-500 [@media(prefers-color-scheme:dark)]:text-neutral-400">
+            {PAGES.map((l) => (
+              <Link key={l.label} href={l.href} className={link}>
+                {l.label}
+              </Link>
+            ))}
+          </p>
+        </Section>
+      </main>
+    </div>
   );
 }
