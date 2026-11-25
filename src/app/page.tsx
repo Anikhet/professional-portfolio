@@ -49,7 +49,7 @@ export default function Home() {
         {/* Header */}
         <header className="flex items-center gap-4">
           <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border border-[var(--line)]">
-            <Image src="/avatar.jpg" alt={profile.name} fill sizes="56px" className="scale-[1.9] object-cover" priority />
+            <Image src="/avatar-portrait.jpg" alt={profile.name} fill sizes="112px" className="object-cover" priority />
           </div>
           <h1 className="text-2xl font-bold tracking-tight">{profile.name}</h1>
         </header>
