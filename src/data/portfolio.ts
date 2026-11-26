@@ -85,6 +85,19 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
       location: "Remote, US",
       date: "Oct 2025 - Present",
       url: "https://cloverlabs.ai/",
+      /** Company products worked on in this role (not personal projects). */
+      products: [
+        {
+          name: "Echos",
+          url: "https://tryechos.com/",
+          description: "AI content engine that generates short-form video and auto-publishes it across social platforms.",
+        },
+        {
+          name: "Red Rover",
+          url: "https://tryredrover.com/",
+          description: "AI agents that automate Reddit engagement, SEO, and reputation management for brands.",
+        },
+      ],
     },
     {
       role: "Software & AI Engineering Co-op",
@@ -115,20 +128,6 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     },
   ],
   projects: [
-    {
-      title: "Echos",
-      description: "AI content engine that generates short-form video and auto-publishes it across social platforms, backed by scrapers and workflow automation.",
-      image: "/echos.png",
-      link: "https://tryechos.com/",
-      tags: ["Next.js", "Hono", "Supabase", "AI Video", "Automation"],
-    },
-    {
-      title: "Red Rover",
-      description: "AI-driven 'Reddit Operating System': agents that automate engagement, SEO, and reputation management to grow brand presence.",
-      image: "/redrover.png",
-      link: "https://tryredrover.com/",
-      tags: ["AI Agents", "SEO", "Automation", "Reddit API", "Next.js"],
-    },
     {
       title: "Snoozy",
       description: "Personalized bedtime stories read aloud in a parent's own cloned voice, even when they can't be there.",

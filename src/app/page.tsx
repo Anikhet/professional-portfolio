@@ -118,6 +118,19 @@ export default function Home() {
                   <p className={`text-sm ${muted}`}>
                     {job.role} · {job.location}
                   </p>
+                  {"products" in job && job.products && (
+                    <ul className="mt-3 space-y-2 border-l border-[var(--line)] pl-4">
+                      {job.products.map((p) => (
+                        <li key={p.name} className="text-sm">
+                          <a href={p.url} {...ext} className="group inline-flex items-center gap-1 font-medium">
+                            <span className="group-hover:underline group-hover:underline-offset-4">{p.name}</span>
+                            <ArrowUpRight className={`h-3 w-3 ${muted}`} />
+                          </a>
+                          <p className="leading-relaxed text-[var(--soft)]">{p.description}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </li>
             ))}
