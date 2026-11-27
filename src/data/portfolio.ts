@@ -22,7 +22,7 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
     /** Portrait for the editorial front page (a real photo, not the memoji). */
     editorialPortrait: "/photo-sunset-boat.jpeg",
     /** Location line used in the Swiss contact section */
-    location: "Rochester, NY · open to remote",
+    location: "Newark, CA",
     /** Editorial headline for the About section (highlight phrase rendered in accent) */
     aboutHeadline:
       "I build robust full-stack products with AI at the core, from neuroevolution race-cars to production agents.",
