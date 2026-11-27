@@ -1,339 +1,192 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, FileText, Github, Linkedin, Mail, MapPin, PenLine } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
-import ProjectList from "@/components/home/project-list";
 import ThemeButton from "@/components/home/theme-button";
+import { CodeGlyph, PROJECT_GLYPHS, SaturnMark } from "@/components/home/icons";
+import { EmailIcon, GitHubIcon, LinkedInIcon, MediumIcon, XIcon, linkIcon } from "@/components/home/brand";
 
-const { profile, experience, education, projects, writing, games } = portfolioData;
+const { profile, experience, projects, writing } = portfolioData;
 
-const XIcon = (props: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
-
-const SOCIALS = [
-  { label: "GitHub", href: "https://github.com/Anikhet", Icon: Github },
+const LINKS = [
+  { label: "Email", href: "mailto:animulky@gmail.com", Icon: EmailIcon },
+  { label: "GitHub", href: "https://github.com/Anikhet", Icon: GitHubIcon },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/anikhet-mulky/", Icon: LinkedInIcon },
   { label: "X", href: "https://x.com/tehkinaa", Icon: XIcon },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/anikhet-mulky/", Icon: Linkedin },
-  { label: "Medium", href: "https://medium.com/@anikhetmulky", Icon: PenLine },
-  { label: "Email", href: "mailto:animulky@gmail.com", Icon: Mail },
+  { label: "Medium", href: "https://medium.com/@anikhetmulky", Icon: MediumIcon },
 ];
 
-const SKY = [
-  { src: "/thumb-saturn.jpg", caption: "Saturn & its rings" },
-  { src: "/thumb-jupiter.jpg", caption: "Jupiter" },
-  { src: "/astro-moon-terminator.jpg", caption: "Lunar terminator" },
-  { src: "/astro-star-cluster.jpg", caption: "Star cluster" },
+/** The personal projects shown on the homepage, in order, with a one-word kind. */
+const FEATURED: [string, string][] = [
+  ["Snoozy", "iOS app"],
+  ["AstroAgent", "Agent"],
+  ["DevInterview.AI", "Web app"],
+  ["Drip", "Web + iOS"],
+  ["Racing Car Reinforcement Learning", "RL"],
+  ["Discord Knowledge Bot", "RAG"],
 ];
-
-const COMPANY_TILE: Record<string, string> = {
-  "Clover Labs": "bg-emerald-500/15 text-emerald-500",
-  "Peeker AI": "bg-sky-500/15 text-sky-500",
-  "Bhabha Atomic Research Centre": "bg-amber-500/15 text-amber-500",
-};
 
 const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
-const muted = "text-[var(--muted)]";
-const underline = "underline decoration-[var(--line)] underline-offset-4 transition-colors hover:decoration-[var(--fg)]";
+const link = "underline decoration-[var(--line)] decoration-1 underline-offset-[5px] transition-colors hover:decoration-[var(--accent)]";
 
-/** Inline link in prose: readable text with an accent underline. */
-function A({ href, children, internal }: { href: string; children: React.ReactNode; internal?: boolean }) {
-  const cls =
-    "font-medium text-[var(--fg)] underline decoration-[var(--accent)] decoration-[1.5px] underline-offset-4 transition-colors hover:text-[var(--accent)]";
-  return internal ? (
-    <Link href={href} className={cls}>
-      {children}
-    </Link>
-  ) : (
-    <a href={href} {...ext} className={cls}>
-      {children}
-    </a>
-  );
-}
-
-function Section({ title, aside, children }: { title: string; aside?: React.ReactNode; children: React.ReactNode }) {
-  return (
-    <section className="mt-16">
-      <div className="mb-5 flex items-baseline justify-between">
-        <h2 className={`text-xs font-medium uppercase tracking-[0.14em] ${muted}`}>{title}</h2>
-        {aside}
-      </div>
-      {children}
-    </section>
-  );
-}
-
-function MoreLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link href={href} className={`group inline-flex items-center gap-1 text-xs ${muted} hover:text-[var(--fg)]`}>
-      {children}
-      <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-    </Link>
-  );
+function Heading({ children }: { children: React.ReactNode }) {
+  return <h2 className="mb-4 text-sm text-[var(--muted)]">{children}</h2>;
 }
 
 /** "Oct 2025 - Present" -> "2025 – now" */
-const span = (date: string) => {
+const years = (date: string) => {
   const [a, b] = date.split(" - ").map((s) => s.match(/\d{4}/)?.[0] ?? "now");
-  return a === b ? a : `${a} – ${b}`;
+  return a === b ? a : `${a}–${b}`;
 };
-
-const initials = (name: string) =>
-  name
-    .split(/\s+/)
-    .filter((w) => /^[A-Z]/.test(w))
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("");
 
 export default function Home() {
   const clover = experience[0];
-  const [echos, redRover] = "products" in clover && clover.products ? clover.products : [];
-  const snoozy = projects.find((p) => p.title === "Snoozy");
-  const astro = projects.find((p) => p.title === "AstroAgent");
-  const peeker = experience[1];
+  const products = "products" in clover && clover.products ? clover.products : [];
+  const featured = FEATURED.flatMap(([title, kind]) => {
+    const p = projects.find((x) => x.title === title);
+    return p ? [{ ...p, kind }] : [];
+  });
 
   return (
-    <div className="home min-h-screen bg-[var(--bg)] text-[var(--fg)] antialiased transition-colors">
-      <main className="mx-auto max-w-[40rem] px-5 pb-20 pt-10 sm:pt-16">
+    <div className="home min-h-screen bg-[var(--bg)] text-[15px] text-[var(--fg)] antialiased">
+      <main className="mx-auto max-w-[36rem] px-5 pb-20 pt-14 sm:pt-24">
         {/* Header */}
-        <header className="flex items-start justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full ring-1 ring-[var(--line)]">
-              <Image src="/avatar-portrait.jpg" alt={profile.name} fill sizes="128px" className="object-cover" priority />
+        <header className="flex items-start justify-between">
+          <div className="flex items-center gap-3.5">
+            <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
+              <Image src="/avatar-portrait.jpg" alt={profile.name} fill sizes="96px" className="object-cover" priority />
             </div>
             <div>
-              <h1 className="text-2xl font-bold tracking-tight sm:text-[1.7rem]">{profile.name}</h1>
-              <p className={`mt-0.5 flex flex-wrap items-center gap-x-2 text-sm ${muted}`}>
-                <span>
-                  {clover.role} @{" "}
-                  <a href={clover.url} {...ext} className="font-medium text-[var(--accent)] hover:underline hover:underline-offset-4">
-                    {clover.company}
-                  </a>
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <MapPin className="h-3.5 w-3.5" />
-                  {profile.location}
-                </span>
+              <h1 className="flex items-center gap-2 font-semibold">
+                {profile.name}
+                <SaturnMark className="h-[18px] w-[18px] text-[var(--accent)]" />
+              </h1>
+              <p className="text-sm text-[var(--muted)]">
+                Software engineer · {profile.location}
               </p>
             </div>
           </div>
           <ThemeButton />
         </header>
 
-        {/* Story */}
-        <div className="mt-8 space-y-4 leading-relaxed text-[var(--soft)]">
+        {/* About */}
+        <section className="mt-10 space-y-4 leading-relaxed text-[var(--soft)]">
           <p>
-            I build AI products at <A href={clover.url ?? "#"}>{clover.company}</A>, where I work on{" "}
-            {echos && <A href={echos.url}>{echos.name}</A>}, an engine that turns ideas into short-form video and
-            publishes it everywhere, and {redRover && <A href={redRover.url}>{redRover.name}</A>}, agents that grow
-            brands on Reddit.
-          </p>
-          <p>
-            On my own, I shipped {snoozy && <A href={snoozy.link}>Snoozy</A>} to the App Store: bedtime stories read
-            in a parent&apos;s own cloned voice. I also built {astro && <A href={astro.link}>AstroAgent</A>}, which tells
-            you what you&apos;re pointing your phone at in the night sky.
+            I build AI products at{" "}
+            <a href={clover.url} {...ext} className={`text-[var(--fg)] ${link}`}>
+              {clover.company}
+            </a>
+            . Mostly agents, and the evals that prove they work.
           </p>
           <p>
-            I care most about AI agents and the evals that prove they work. Before this: an AI engineering co-op at{" "}
-            <A href={("url" in peeker && peeker.url) || "#"}>{peeker.company}</A> and an MS in Computer Science at RIT.
+            Off the clock I point a telescope at Saturn and{" "}
+            <Link href="/frames" className={`text-[var(--fg)] ${link}`}>
+              photograph what I find
+            </Link>
+            .
           </p>
-          <p className="text-sm">
-            Off the clock I photograph planets through a backyard telescope (
-            <A href="/frames" internal>
-              see the sky
-            </A>
-            ) and play too much {games[0].name}.
-          </p>
-        </div>
+        </section>
 
-        <nav className="mt-7 flex flex-wrap items-center gap-2">
-          <a
-            href={profile.ctaUrl}
-            {...ext}
-            className="inline-flex h-9 items-center gap-2 rounded-lg bg-[var(--chip-on-bg)] px-3.5 text-sm font-medium text-[var(--chip-on-fg)] transition-opacity hover:opacity-85"
-          >
-            <FileText className="h-4 w-4" /> Resume
-          </a>
-          {SOCIALS.map(({ label, href, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              {...ext}
-              aria-label={label}
-              title={label}
-              className="grid h-9 w-9 place-items-center rounded-lg border border-[var(--line)] text-[var(--soft)] transition-colors hover:bg-[var(--hover)] hover:text-[var(--fg)]"
-            >
-              <Icon className="h-4 w-4" />
+        <nav className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+          {LINKS.map(({ label, href, Icon }) => (
+            <a key={label} href={href} {...ext} className="group inline-flex items-center gap-1.5 text-[var(--soft)] hover:text-[var(--fg)]">
+              <Icon className="h-3.5 w-3.5 text-[var(--muted)] transition-colors group-hover:text-[var(--accent)]" />
+              {label}
             </a>
           ))}
+          <a href={profile.ctaUrl} {...ext} className={`text-[var(--soft)] hover:text-[var(--fg)] ${link}`}>
+            Resume
+          </a>
         </nav>
 
         {/* Projects */}
-        <Section title="Projects" aside={<MoreLink href="/work">All work</MoreLink>}>
-          <ProjectList projects={projects} />
-        </Section>
-
-        {/* Experience */}
-        <Section title="Experience">
-          <ul className="space-y-1">
-            {experience.map((job, i) => (
-              <li key={job.company} className="-mx-3 flex gap-4 rounded-xl p-3">
-                <div
-                  className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl text-sm font-bold ${
-                    COMPANY_TILE[job.company] ?? "bg-neutral-500/15 text-neutral-500"
-                  }`}
-                >
-                  {initials(job.company)}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <div className="flex min-w-0 items-center gap-2">
-                      {"url" in job && job.url ? (
-                        <a href={job.url} {...ext} className={`font-semibold ${underline}`}>
-                          {job.company}
-                        </a>
-                      ) : (
-                        <span className="font-semibold">{job.company}</span>
-                      )}
-                      {i === 0 && (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-emerald-500">
-                          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" /> Now
-                        </span>
-                      )}
+        <section className="mt-16">
+          <Heading>Projects</Heading>
+          <ul className="space-y-5">
+            {featured.map((p) => {
+              const Glyph = PROJECT_GLYPHS[p.title] ?? CodeGlyph;
+              const brand = linkIcon(p.link);
+              return (
+                <li key={p.title} className="flex gap-3.5">
+                  <Glyph className="mt-0.5 h-5 w-5 shrink-0 text-[var(--accent)]" />
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <a href={p.link} {...ext} className={`font-medium ${link}`}>
+                        {p.title === "Racing Car Reinforcement Learning" ? "Racing RL" : p.title}
+                      </a>
+                      <span className="inline-flex shrink-0 items-center gap-1.5 text-xs text-[var(--muted)]">
+                        {brand && <brand.Icon className="h-3 w-3" />}
+                        {p.kind}
+                      </span>
                     </div>
-                    <span className={`shrink-0 font-mono text-xs tabular-nums ${muted}`}>{span(job.date)}</span>
+                    <p className="mt-0.5 text-sm leading-relaxed text-[var(--soft)]">{p.description}</p>
                   </div>
-                  <p className={`text-sm ${muted}`}>
-                    {job.role} · {job.location}
-                  </p>
-                  {"products" in job && job.products && (
-                    <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                      {job.products.map((p) => (
-                        <a
-                          key={p.name}
-                          href={p.url}
-                          {...ext}
-                          className="group rounded-lg border border-[var(--line)] p-3 transition-colors hover:border-[var(--muted)] hover:bg-[var(--hover)]"
-                        >
-                          <span className="inline-flex items-center gap-1 text-sm font-semibold">
-                            {p.name}
-                            <ArrowUpRight className={`h-3 w-3 ${muted} transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5`} />
-                          </span>
-                          <span className="mt-1 block text-xs leading-relaxed text-[var(--soft)]">{p.description}</span>
-                        </a>
-                      ))}
-                    </div>
-                  )}
+                </li>
+              );
+            })}
+          </ul>
+          <Link href="/work" className="group mt-6 inline-flex items-center gap-1 text-sm text-[var(--muted)] hover:text-[var(--fg)]">
+            All projects
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Link>
+        </section>
+
+        {/* Work */}
+        <section className="mt-16">
+          <Heading>Work</Heading>
+          <ul className="space-y-4">
+            {experience.map((job) => (
+              <li key={job.company}>
+                <div className="flex items-baseline justify-between gap-3">
+                  <span>
+                    {"url" in job && job.url ? (
+                      <a href={job.url} {...ext} className={`font-medium ${link}`}>
+                        {job.company}
+                      </a>
+                    ) : (
+                      <span className="font-medium">{job.company}</span>
+                    )}
+                    <span className="text-[var(--muted)]"> · {job.role}</span>
+                  </span>
+                  <span className="shrink-0 text-xs tabular-nums text-[var(--muted)]">{years(job.date)}</span>
                 </div>
+                {job === clover && products.length > 0 && (
+                  <p className="mt-0.5 text-sm text-[var(--soft)]">
+                    Worked on{" "}
+                    {products.map((pr, i) => (
+                      <span key={pr.name}>
+                        {i > 0 && " and "}
+                        <a href={pr.url} {...ext} className={link}>
+                          {pr.name}
+                        </a>
+                      </span>
+                    ))}
+                    : AI short-form video and Reddit growth agents.
+                  </p>
+                )}
               </li>
             ))}
           </ul>
-        </Section>
-
-        {/* Through the telescope */}
-        <Section title="Through my telescope" aside={<MoreLink href="/frames">All frames</MoreLink>}>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-            {SKY.map((s) => (
-              <Link key={s.src} href="/frames" className="group relative aspect-square overflow-hidden rounded-xl bg-black">
-                <Image
-                  src={s.src}
-                  alt={s.caption}
-                  fill
-                  sizes="(min-width: 640px) 160px, 45vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-2.5 pb-2 pt-6 text-xs font-medium text-white">
-                  {s.caption}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </Section>
-
-        {/* Currently playing */}
-        <Section title="Currently playing" aside={<MoreLink href="/off-duty">Off duty</MoreLink>}>
-          <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
-            {games.slice(0, 6).map((g) => (
-              <Link key={g.name} href="/off-duty" className="group">
-                <div className="relative aspect-[2/3] overflow-hidden rounded-lg bg-[var(--card)] ring-1 ring-[var(--line)]">
-                  <Image
-                    src={g.cover.src}
-                    alt={g.cover.alt}
-                    fill
-                    sizes="(min-width: 640px) 100px, 30vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <p className="mt-1.5 truncate text-xs font-medium">{g.name}</p>
-                <p className={`truncate text-[11px] ${muted}`}>{g.status}</p>
-              </Link>
-            ))}
-          </div>
-        </Section>
+        </section>
 
         {/* Writing */}
-        <Section title="Writing" aside={<MoreLink href="/writing">All writing</MoreLink>}>
-          <ul>
+        <section className="mt-16">
+          <Heading>Writing</Heading>
+          <ul className="space-y-3">
             {writing.map((w) => (
               <li key={w.title}>
-                <a
-                  href={w.url}
-                  {...ext}
-                  className="group -mx-3 flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-[var(--hover)]"
-                >
-                  <span className="mt-0.5 shrink-0 rounded-md border border-[var(--line)] px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-[var(--muted)]">
-                    Medium
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block font-medium leading-snug">{w.title}</span>
-                    <span className={`mt-1 block text-sm ${muted}`}>{w.blurb}</span>
-                  </span>
-                  <ArrowUpRight className={`mt-1 h-4 w-4 shrink-0 ${muted} transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5`} />
+                <a href={w.url} {...ext} className="group flex items-start gap-3.5">
+                  <MediumIcon className="mt-1 h-3.5 w-3.5 shrink-0 text-[var(--muted)] transition-colors group-hover:text-[var(--accent)]" />
+                  <span className={`text-[var(--fg)] ${link}`}>{w.title}</span>
                 </a>
               </li>
             ))}
           </ul>
-        </Section>
-
-        {/* Education */}
-        <Section title="Education">
-          <ul className="space-y-3">
-            {education.map((e) => (
-              <li key={e.school} className="flex items-baseline justify-between gap-4">
-                <div className="min-w-0">
-                  <p className="font-medium">{e.school}</p>
-                  <p className={`text-sm ${muted}`}>{e.degree}</p>
-                </div>
-                <span className={`shrink-0 font-mono text-xs tabular-nums ${muted}`}>{span(e.date)}</span>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        {/* Reach me */}
-        <section className="mt-16 rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6">
-          <h2 className="text-lg font-semibold">Let&apos;s talk</h2>
-          <p className="mt-1 text-sm text-[var(--soft)]">
-            Building something with agents, or want a second pair of eyes on your evals? Email me.
-          </p>
-          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-            <a href="mailto:animulky@gmail.com" className={`font-medium ${underline}`}>
-              animulky@gmail.com
-            </a>
-            <a href={profile.ctaUrl} {...ext} className={underline}>
-              Résumé
-            </a>
-            <a href="https://www.linkedin.com/in/anikhet-mulky/" {...ext} className={underline}>
-              LinkedIn
-            </a>
-          </div>
         </section>
 
-        <footer className={`mt-10 text-center text-xs ${muted}`}>
-          {profile.name} · {profile.location}
+        <footer className="mt-20 flex items-center gap-2 text-xs text-[var(--muted)]">
+          <SaturnMark className="h-3.5 w-3.5" />
+          {profile.name} · MS CS, RIT
         </footer>
       </main>
     </div>
