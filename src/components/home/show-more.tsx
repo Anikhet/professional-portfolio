@@ -4,14 +4,14 @@ import { Children, useState, type ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
 
 /** Renders the first `initial` children; the rest unfold behind a "Show all N" pill. */
-export default function ShowMore({ initial, children }: { initial: number; children: ReactNode }) {
+export default function ShowMore({ initial, children, gap = "space-y-6" }: { initial: number; children: ReactNode; gap?: string }) {
   const items = Children.toArray(children);
   const [open, setOpen] = useState(false);
   const hidden = items.length - initial;
 
   return (
     <>
-      <div className="space-y-6">{open ? items : items.slice(0, initial)}</div>
+      <div className={gap}>{open ? items : items.slice(0, initial)}</div>
       {hidden > 0 && (
         <div className="relative mt-6 flex justify-center">
           {!open && (

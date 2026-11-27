@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Mail, PenLine, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, PenLine, ArrowUpRight, MapPin, FileText } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
-import ShowMore from "@/components/home/show-more";
+import ProjectList from "@/components/home/project-list";
+import ThemeButton from "@/components/home/theme-button";
 
 const { profile, experience, education, projects, writing } = portfolioData;
 
@@ -37,33 +38,36 @@ const span = (date: string) => {
 
 export default function Home() {
   return (
-    <div
-      className="min-h-screen bg-[var(--bg)] text-[var(--fg)] antialiased
-        [--accent:#e11d48] [--bg:#ffffff] [--fg:#171717] [--hover:#f5f5f5] [--line:#d4d4d4] [--muted:#737373] [--soft:#525252]
-        [@media(prefers-color-scheme:dark)]:[--accent:#fb7185] [@media(prefers-color-scheme:dark)]:[--bg:#0a0a0a]
-        [@media(prefers-color-scheme:dark)]:[--fg:#f5f5f5] [@media(prefers-color-scheme:dark)]:[--hover:#171717]
-        [@media(prefers-color-scheme:dark)]:[--line:#404040] [@media(prefers-color-scheme:dark)]:[--muted:#737373]
-        [@media(prefers-color-scheme:dark)]:[--soft:#a3a3a3]"
-    >
-      <main className="mx-auto max-w-[38rem] px-5 pb-24 pt-16 sm:pt-20">
+    <div className="home min-h-screen bg-[var(--bg)] text-[var(--fg)] antialiased transition-colors">
+      <main className="mx-auto max-w-[38rem] px-5 pb-24 pt-12 sm:pt-16">
         {/* Header */}
-        <header className="flex items-center gap-4">
-          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border border-[var(--line)]">
-            <Image src="/avatar-portrait.jpg" alt={profile.name} fill sizes="112px" className="object-cover" priority />
+        <header>
+          <div className="flex items-start justify-between">
+            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border border-[var(--line)]">
+              <Image src="/avatar-portrait.jpg" alt={profile.name} fill sizes="160px" className="object-cover" priority />
+            </div>
+            <ThemeButton />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight">{profile.name}</h1>
+          <h1 className="mt-5 text-3xl font-bold tracking-tight sm:text-[2rem]">Hi, I&apos;m {profile.name}</h1>
+          <p className={`mt-2 flex items-center gap-1.5 text-sm ${muted}`}>
+            <MapPin className="h-3.5 w-3.5" /> Rochester, NY · open to remote
+          </p>
+          <p className="mt-3">
+            {experience[0].role} @{" "}
+            <a href={experience[0].url} {...ext} className="font-semibold text-[var(--accent)] hover:underline hover:underline-offset-4">
+              {experience[0].company}
+            </a>
+          </p>
         </header>
 
-        <p className="mt-6 leading-relaxed text-[var(--soft)]">
-          Full-stack engineer, currently building AI products at{" "}
-          <a href={experience[0].url} {...ext} className="text-[var(--accent)] underline underline-offset-4">
-            {experience[0].company}
+        <nav className="mt-5 flex flex-wrap items-center gap-2">
+          <a
+            href={profile.ctaUrl}
+            {...ext}
+            className="inline-flex h-9 items-center gap-2 rounded-lg bg-[var(--chip-on-bg)] px-3.5 text-sm font-medium text-[var(--chip-on-fg)] transition-opacity hover:opacity-85"
+          >
+            <FileText className="h-4 w-4" /> Resume
           </a>
-          . Hand me an ambiguous problem and I&apos;ll scope it, build it, and get it in front of users. Mostly AI
-          agents and the evals that prove they work. Off the clock: video games and a telescope.
-        </p>
-
-        <nav className="mt-6 flex gap-2">
           {SOCIALS.map(({ label, href, Icon }) => (
             <a
               key={label}
@@ -71,30 +75,23 @@ export default function Home() {
               {...ext}
               aria-label={label}
               title={label}
-              className="grid h-9 w-9 place-items-center rounded-full border border-[var(--line)] text-[var(--soft)] transition-colors hover:bg-[var(--hover)] hover:text-[var(--fg)]"
+              className="grid h-9 w-9 place-items-center rounded-lg border border-[var(--line)] text-[var(--soft)] transition-colors hover:bg-[var(--hover)] hover:text-[var(--fg)]"
             >
               <Icon className="h-4 w-4" />
             </a>
           ))}
         </nav>
 
+        <p className="mt-8 leading-relaxed text-[var(--soft)]">
+          Full-stack engineer who ships. Hand me an ambiguous problem and I&apos;ll scope it, build it, and get it in
+          front of users. Mostly AI agents and the evals that prove they work. Off the clock: video games and a
+          telescope.
+        </p>
+
         {/* Projects */}
         <section className="mt-16">
           <Label>Projects</Label>
-          <ShowMore initial={4}>
-            {projects.map((p) => (
-              <article key={p.title}>
-                <div className="flex items-baseline justify-between gap-4">
-                  <a href={p.link} {...ext} className="group inline-flex items-center gap-1 font-semibold">
-                    <span className="group-hover:underline group-hover:underline-offset-4">{p.title}</span>
-                    <ArrowUpRight className={`h-3.5 w-3.5 ${muted} transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5`} />
-                  </a>
-                  <span className={`hidden shrink-0 text-xs sm:block ${muted}`}>{p.tags.slice(0, 2).join(" · ")}</span>
-                </div>
-                <p className="mt-1 text-sm leading-relaxed text-[var(--soft)]">{p.description}</p>
-              </article>
-            ))}
-          </ShowMore>
+          <ProjectList projects={projects} />
         </section>
 
         {/* Experience */}
