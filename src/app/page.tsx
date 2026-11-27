@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 import ThemeButton from "@/components/home/theme-button";
-import { CodeGlyph, PROJECT_GLYPHS, SaturnMark } from "@/components/home/icons";
 import { EmailIcon, GitHubIcon, LinkedInIcon, MediumIcon, XIcon, linkIcon } from "@/components/home/brand";
 
 const { profile, experience, projects, writing } = portfolioData;
@@ -57,10 +56,7 @@ export default function Home() {
               <Image src="/avatar-portrait.jpg" alt={profile.name} fill sizes="96px" className="object-cover" priority />
             </div>
             <div>
-              <h1 className="flex items-center gap-2 font-semibold">
-                {profile.name}
-                <SaturnMark className="h-[18px] w-[18px] text-[var(--accent)]" />
-              </h1>
+              <h1 className="font-semibold">{profile.name}</h1>
               <p className="text-sm text-[var(--muted)]">
                 Software engineer · {profile.location}
               </p>
@@ -104,12 +100,10 @@ export default function Home() {
           <Heading>Projects</Heading>
           <ul className="space-y-5">
             {featured.map((p) => {
-              const Glyph = PROJECT_GLYPHS[p.title] ?? CodeGlyph;
               const brand = p.link ? linkIcon(p.link) : null;
               return (
-                <li key={p.title} className="flex gap-3.5">
-                  <Glyph className="mt-0.5 h-5 w-5 shrink-0 text-[var(--accent)]" />
-                  <div className="min-w-0 flex-1">
+                <li key={p.title}>
+                  <div>
                     <div className="flex items-baseline justify-between gap-3">
                       {p.link ? (
                         <a href={p.link} {...ext} className={`font-medium ${link}`}>
@@ -188,8 +182,7 @@ export default function Home() {
           </ul>
         </section>
 
-        <footer className="mt-20 flex items-center gap-2 text-xs text-[var(--muted)]">
-          <SaturnMark className="h-3.5 w-3.5" />
+        <footer className="mt-20 text-xs text-[var(--muted)]">
           {profile.name} · MS CS, RIT
         </footer>
       </main>
