@@ -15,6 +15,6 @@ export const PROJECTS: Project[] = portfolioData.projects.map((project) => ({
   title: project.title,
   description: project.description,
   image: AVAILABLE_IMAGES.has(project.image.toLowerCase()) ? project.image : undefined,
-  href: project.link,
+  href: project.link || undefined,
   tags: project.tags,
 }));

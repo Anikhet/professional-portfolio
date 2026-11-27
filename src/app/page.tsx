@@ -18,12 +18,12 @@ const LINKS = [
 
 /** The personal projects shown on the homepage, in order, with a one-word kind. */
 const FEATURED: [string, string][] = [
+  ["Protoboard", "WebMCP"],
+  ["OutFan", "Coming soon"],
   ["Snoozy", "iOS app"],
+  ["syslog-triage", "Go + Python"],
+  ["Palimpsest", "CLI"],
   ["AstroAgent", "Agent"],
-  ["DevInterview.AI", "Web app"],
-  ["Drip", "Web + iOS"],
-  ["Racing Car Reinforcement Learning", "RL"],
-  ["Discord Knowledge Bot", "RAG"],
 ];
 
 const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
@@ -105,15 +105,19 @@ export default function Home() {
           <ul className="space-y-5">
             {featured.map((p) => {
               const Glyph = PROJECT_GLYPHS[p.title] ?? CodeGlyph;
-              const brand = linkIcon(p.link);
+              const brand = p.link ? linkIcon(p.link) : null;
               return (
                 <li key={p.title} className="flex gap-3.5">
                   <Glyph className="mt-0.5 h-5 w-5 shrink-0 text-[var(--accent)]" />
                   <div className="min-w-0 flex-1">
                     <div className="flex items-baseline justify-between gap-3">
-                      <a href={p.link} {...ext} className={`font-medium ${link}`}>
-                        {p.title === "Racing Car Reinforcement Learning" ? "Racing RL" : p.title}
-                      </a>
+                      {p.link ? (
+                        <a href={p.link} {...ext} className={`font-medium ${link}`}>
+                          {p.title}
+                        </a>
+                      ) : (
+                        <span className="font-medium">{p.title}</span>
+                      )}
                       <span className="inline-flex shrink-0 items-center gap-1.5 text-xs text-[var(--muted)]">
                         {brand && <brand.Icon className="h-3 w-3" />}
                         {p.kind}

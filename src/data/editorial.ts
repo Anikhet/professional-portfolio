@@ -110,7 +110,7 @@ function toWorkStory(p: ProjectShape) {
     blurb: p.description,
     image: resolveImage(p.image, p.title),
     tags: p.tags.slice(0, 3),
-    url: p.link,
+    url: p.link || undefined,
   };
 }
 

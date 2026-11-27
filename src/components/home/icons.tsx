@@ -36,6 +36,49 @@ export function SaturnMark(props: P) {
   );
 }
 
+/** Protoboard: a breadboard with its power rails and a chip seated across the gap. */
+export function BreadboardGlyph(props: P) {
+  return (
+    <Glyph {...props}>
+      <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
+      <path d="M5.5 7.5h13M5.5 16.5h13" strokeDasharray="0.1 2.6" />
+      <rect x="8.5" y="10" width="7" height="4" rx="0.6" />
+      <path d="M10 10V9M12 10V9M14 10V9M10 15v-1M12 15v-1M14 15v-1" />
+    </Glyph>
+  );
+}
+
+/** OutFan: a speech bubble asking a question. */
+export function TriviaGlyph(props: P) {
+  return (
+    <Glyph {...props}>
+      <path d="M12 3.5a8 8 0 0 1 6.9 12.1l1.1 4.9-4.9-1.1A8 8 0 1 1 12 3.5z" />
+      <path d="M9.8 9.7a2.3 2.3 0 1 1 3.2 2.1c-.6.3-1 .8-1 1.4v.3" />
+      <circle cx="12" cy="16.3" r="0.5" fill="currentColor" stroke="none" />
+    </Glyph>
+  );
+}
+
+/** syslog-triage: log lines, one of them flagged. */
+export function LogsGlyph(props: P) {
+  return (
+    <Glyph {...props}>
+      <path d="M3.5 6h11M3.5 10h14M3.5 14h8M3.5 18h12" />
+      <circle cx="17" cy="14" r="2" fill="currentColor" stroke="none" />
+    </Glyph>
+  );
+}
+
+/** Palimpsest: a video frame with subtitles. */
+export function SubtitlesGlyph(props: P) {
+  return (
+    <Glyph {...props}>
+      <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
+      <path d="M6.5 13.5h11M8.5 16.5h7" />
+    </Glyph>
+  );
+}
+
 /** Snoozy: a crescent moon with a voice wave (bedtime + cloned voice). */
 export function SnoozyGlyph(props: P) {
   return (
@@ -165,6 +208,10 @@ export function CodeGlyph(props: P) {
 }
 
 export const PROJECT_GLYPHS: Record<string, (props: P) => React.JSX.Element> = {
+  Protoboard: BreadboardGlyph,
+  OutFan: TriviaGlyph,
+  "syslog-triage": LogsGlyph,
+  Palimpsest: SubtitlesGlyph,
   Snoozy: SnoozyGlyph,
   AstroAgent: AstroGlyph,
   "DevInterview.AI": InterviewGlyph,
