@@ -129,6 +129,13 @@ Currently pursuing my Master’s in Computer Science at RIT, I’m looking to jo
   ],
   projects: [
     {
+      title: "prunecss",
+      description: "A Rust alternative to PurgeCSS, published on crates.io. It scans HTML, JSX, Vue and Svelte for the class names you use and removes CSS that can never match: 5–24× faster than the PurgeCSS CLI in its benchmarks, with no wrongly removed rules on any test corpus.",
+      image: "",
+      link: "https://github.com/Anikhet/prunecss",
+      tags: ["Rust", "CLI", "CSS", "Performance"],
+    },
+    {
       title: "Protoboard",
       description: "A breadboard you and an AI agent build real circuits on, through WebMCP tools. A real circuit solver runs underneath, so the agent can measure its 555 timer at 2.01 Hz and tune it to 4.00 Hz.",
       image: "",

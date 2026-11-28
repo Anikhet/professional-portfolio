@@ -15,14 +15,14 @@ const LINKS = [
   { label: "Medium", href: "https://medium.com/@anikhetmulky", Icon: MediumIcon },
 ];
 
-/** The personal projects shown on the homepage, in order, with a one-word kind. */
-const FEATURED: [string, string][] = [
-  ["Protoboard", "WebMCP"],
-  ["OutFan", "Coming soon"],
-  ["Snoozy", "iOS app"],
-  ["syslog-triage", "Go + Python"],
-  ["Palimpsest", "CLI"],
-  ["AstroAgent", "Agent"],
+/** The personal projects shown on the homepage, in order. `proof` is the bold fact on the right, `note` follows it. */
+const FEATURED: { title: string; proof?: string; note: string }[] = [
+  { title: "prunecss", proof: "9× faster", note: "than PurgeCSS" },
+  { title: "Protoboard", note: "WebMCP" },
+  { title: "OutFan", note: "Coming soon" },
+  { title: "Snoozy", note: "iOS app" },
+  { title: "syslog-triage", note: "Go + Python" },
+  { title: "Palimpsest", note: "CLI" },
 ];
 
 const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
@@ -41,9 +41,9 @@ const years = (date: string) => {
 export default function Home() {
   const clover = experience[0];
   const products = "products" in clover && clover.products ? clover.products : [];
-  const featured = FEATURED.flatMap(([title, kind]) => {
+  const featured = FEATURED.flatMap(({ title, proof, note }) => {
     const p = projects.find((x) => x.title === title);
-    return p ? [{ ...p, kind }] : [];
+    return p ? [{ ...p, proof, note }] : [];
   });
 
   return (
@@ -114,7 +114,8 @@ export default function Home() {
                       )}
                       <span className="inline-flex shrink-0 items-center gap-1.5 text-xs text-[var(--muted)]">
                         {brand && <brand.Icon className="h-3 w-3" />}
-                        {p.kind}
+                        {p.proof && <span className="font-semibold text-[var(--fg)]">{p.proof}</span>}
+                        {p.note}
                       </span>
                     </div>
                     <p className="mt-0.5 text-sm leading-relaxed text-[var(--soft)]">{p.description}</p>
